@@ -1,2 +1,10 @@
 giggle
 ======
+
+Documentation
+=============
+
+License
+=======
+
+MIT
