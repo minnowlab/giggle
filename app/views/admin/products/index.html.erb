@@ -4,3 +4,26 @@
     <small class="pull-right"><%= link_to "创建新产品", new_admin_product_path, class: "btn btn-primary" %></small>
   </h2>
 </div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>名称</td>
+      <td>描述</td>
+      <td>价格</td>
+      <td>详情</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td>product.name</td>
+        <td>product.description</td>
+        <td>product.price</td>
+        <td>product.details</td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
