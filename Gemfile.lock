@@ -27,7 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
-    bootstrap-sass (3.0.0.0.rc2)
+    bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
     builder (3.1.4)
     coffee-rails (4.0.1)
@@ -85,7 +85,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rspec-core (2.14.6)
+    rspec-core (2.14.7)
     rspec-expectations (2.14.3)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.4)
@@ -131,7 +131,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.0.0.0.rc)
+  bootstrap-sass (~> 3.0.0.0)
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   font-awesome-rails

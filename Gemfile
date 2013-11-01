@@ -29,7 +29,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.0.0.0.rc'
+gem 'bootstrap-sass', '~> 3.0.0.0'
 gem "font-awesome-rails"
 
 group :doc do
