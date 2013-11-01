@@ -1,4 +1,4 @@
-<%= form_for @product, url: admin_products_path do |f| %>
+<%= form_for(@product, url: (@product.new_record? ? admin_products_path : admin_product_path(@product))) do |f| %>
   <% if @product.errors.any? %>
     <div class="row">
       <div class="col-md-12">
@@ -38,7 +38,7 @@
       </div>
 
       <hr>
-      
+
     </div>
   </div>
 

@@ -22,7 +22,9 @@
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td><%= product.details %></td>
-        <td></td>
+        <td>
+          <%= link_to "编辑", edit_admin_product_path(product), class: "btn btn-primary btn-sm" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
