@@ -38,6 +38,7 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     Product.find(params[:id]).destroy
+    redirect_to admin_products_path
   end
 
   private
