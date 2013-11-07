@@ -13,7 +13,11 @@
         <li><%= link_to "产品管理", admin_products_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "登录", "#" %></li>
+       <% if signed_in? %>
+        <li><%= link_to "退出", signout_path, method: "delete" %></li>
+       <% else %>
+        <li><%= link_to "登陆", signin_path %></li>
+       <% end %>
       </ul>
     </div>
   </div>

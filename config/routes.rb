@@ -1,7 +1,20 @@
 Giggle::Application.routes.draw do
+#  get "admins/index"
+#  get "admins/new"
+#  get "admins/edit"
+#  get "admins/show"
+#  get "admins/create"
+#  get "admins/update"
+#  get "admins/destroy"
   namespace :admin do
     resources :products
   end
+ 
+  resources :admins
+  resources :session, only: [:new, :create, :destroy]
+  match '/signup', to: 'admins#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

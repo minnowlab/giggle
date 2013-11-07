@@ -1,0 +1,21 @@
+<% provide(:title, "Sign in") %>
+<h2>Sign in</h2>
+<div class="container">
+     <div class="col-md-4">
+     </div>
+     <div class="col-md-4">
+  <div class="form-group">
+  <%= form_for(:session, url: session_index_path) do |f| %>
+  <div class="form-group">
+  <%= f.label :name, class: "control-label col-sm-1" %>
+  <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.label :passowrd, class: "control-label col-sm-1"%>
+  <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.submit "Sign in", class: "btn btn-default btn-primart" %>
+  </div>
+  <% end %>
+</div>
