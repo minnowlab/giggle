@@ -1,11 +1,4 @@
 Giggle::Application.routes.draw do
-#  get "admins/index"
-#  get "admins/new"
-#  get "admins/edit"
-#  get "admins/show"
-#  get "admins/create"
-#  get "admins/update"
-#  get "admins/destroy"
   namespace :admin do
     resources :products
   end
