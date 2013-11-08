@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
   layout "admin"
-  before_action :signed_in_admin, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :signed_in_admin
 
   def index
     @products=Product.all
