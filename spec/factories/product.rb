@@ -4,5 +4,9 @@ FactoryGirl.define do
     description "MyString"
     details "MyString"
     price 15.2
+
+    factory :invalid_product do 
+      name nil
+    end
   end
 end

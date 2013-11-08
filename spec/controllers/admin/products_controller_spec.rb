@@ -55,5 +55,18 @@ describe Admin::ProductsController do
         expect(response).to redirect_to admin_products_path
       end 
     end
+
+    context "with invalid attributes" do
+      it "does not save the new product in the database" do
+        expect{
+          post :create, product: attributes_for(:invalid_product)
+        }.to_not change(Product, :count)
+      end
+
+      it "re-renders the :new template" do 
+        post :create, product: attributes_for(:invalid_product)
+        expect(response).to render_template :new
+      end 
+    end
   end
 end
