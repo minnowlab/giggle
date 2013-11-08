@@ -1,2 +1,21 @@
-<h1>Admins#edit</h1>
-<p>Find me in app/views/admins/edit.html.erb</p>
+<% provide(:title, "Edit user") %>
+<h1>更新你的资料</h1>
+
+<div class= "row">
+  <div class= "span6 offset3">
+    <%= form_for(@admin) do |f| %>
+     <%= render 'shared/error_messages', object: f.object %>
+
+     <%= f.label :name %>
+     <%= f.text_field :name %>
+
+     <%= f.label :password %>
+     <%= f.password_field :password %>
+
+     <%= f.label :password_confirmation, "Confirm Password" %>
+     <%= f.password_field:password_confirmation %>
+
+     <%= f.submit "Save changes", class:"btn btn-large btn-primary" %>
+   <% end %>
+  </div>
+</div>

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     admin = Admin.find_by(name: params[:session][:name].downcase)
     if admin && admin.authenticate(params[:session][:password])
       sign_in admin
-      redirect_to @admin
+      redirect_to admin
     else
       flash.now[:error] = 'Invalid name/passowrd'
       render 'new'
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to loginin_path
+    redirect_to signin_path
   end
 end

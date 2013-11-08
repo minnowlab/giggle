@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   layout "admin"
+  before_action :signed_in_admin, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   def index
   end
 
@@ -8,6 +9,7 @@ class AdminsController < ApplicationController
   end
 
   def edit
+    @admin = Admin.find(params[:id])
   end
 
   def show
@@ -17,7 +19,8 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(admin_params)
     if @admin.save
-      flash[:success]="create admin"
+      sign_in @admin
+      flash[:success]="创建用户"
       redirect_to @admin
     else
       render 'new'
@@ -25,6 +28,15 @@ class AdminsController < ApplicationController
   end
 
   def update
+    @admin = Admin.find(params[:id])
+    if @admin.update_attributes(admin_params)
+      flash[:success] = "已更新"
+      sign_in @admin
+      redirect_to @admin
+    else
+      render 'edit' 
+   end
+ 
   end
 
   def destroy

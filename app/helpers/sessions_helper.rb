@@ -22,5 +22,11 @@ module SessionsHelper
 
   def sign_out
     self.current_admin = nil
+#    cookies.delete(:remember_token)
   end
+
+  def signed_in_admin
+    redirect_to signin_path, notice: "请先登录!" unless signed_in?
+  end
+
 end

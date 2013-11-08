@@ -1,5 +1,6 @@
 class Admin < ActiveRecord::Base
   before_save { self.name = name.downcase }
+  before_create :create_remember_token
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   has_secure_password
   validate :password, length: { minimum: 6 }
