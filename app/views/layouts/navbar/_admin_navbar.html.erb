@@ -14,6 +14,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
        <% if signed_in? %>
+        <li><%= link_to "用户", current_admin %></li>
         <li><%= link_to "退出", signout_path, method: "delete" %></li>
        <% else %>
         <li><%= link_to "登陆", signin_path %></li>
