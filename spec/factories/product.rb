@@ -1,9 +1,11 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :product do
-    name "MyString"
-    description "MyString"
-    details "MyString"
-    price 15.2
+    name { Faker::Name.name }
+    description { Faker::Lorem.sentence(10) }
+    details { Faker::Lorem.paragraph(3) }
+    price 182.5
 
     factory :invalid_product do 
       name nil

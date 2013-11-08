@@ -1,6 +1,8 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :admin do
-    name "MyString"
+    name { Faker::Name.name }
     password_digest "MyString"
   end
 end

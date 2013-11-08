@@ -40,6 +40,7 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails'
+  gem "faker", "~> 1.2.0"
   gem 'puma'
   gem 'rspec-rails'
 end
