@@ -5,11 +5,11 @@ class Admin < ActiveRecord::Base
   has_secure_password
   validate :password, length: { minimum: 6 }
 
-  def Admin.new_remember_token
+  def self.new_remember_token
     SecureRandom.urlsafe_base64
   end
 
-  def Admin.encrypt(token)
+  def self.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
 

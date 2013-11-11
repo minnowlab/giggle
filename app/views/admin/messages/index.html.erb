@@ -19,7 +19,7 @@
       <tr>
         <td><%= message.id %></td>
         <td><%= message.content %></td>
-        <td><%= message.product.name %></td>
+        <td><%= message.product.try(:name) %></td>
         <td>
           <%= link_to "编辑", edit_admin_message_path(message), class: "btn btn-primary btn-sm" %>
           <%= link_to "删除", admin_message_path(message), class: "btn btn-danger btn-sm", confirm: "请问您确定要删除吗？", method: :delete %>

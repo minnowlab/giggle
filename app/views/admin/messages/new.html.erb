@@ -29,7 +29,7 @@
 
       <div class="form-group">
         <%= f.label :product_id %>
-        <%= f.text_field :product_id, class: "form-control" %>
+        <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), class: "form-control" %>
       </div>
 
     </div>
