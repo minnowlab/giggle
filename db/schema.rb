@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108070715) do
+ActiveRecord::Schema.define(version: 20131108093144) do
 
   create_table "admins", force: true do |t|
     t.string   "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20131108070715) do
 
   add_index "admins", ["name"], name: "index_admins_on_name", unique: true, using: :btree
   add_index "admins", ["remember_token"], name: "index_admins_on_remember_token", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "content"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["product_id", "created_at"], name: "index_messages_on_product_id_and_created_at", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"

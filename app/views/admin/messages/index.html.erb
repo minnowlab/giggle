@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h2>
+    留言管理
+    <small class="pull-right"><%= link_to "创建新留言", new_admin_message_path, class: "btn btn-primary" %></small>
+  </h2>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>留言编码</td>
+      <td>留言内容</td>
+      <td>对应产品</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.id %></td>
+        <td><%= message.content %></td>
+        <td><%= message.product.name %></td>
+        <td>
+          <%= link_to "编辑", edit_admin_message_path(message), class: "btn btn-primary btn-sm" %>
+          <%= link_to "删除", admin_message_path(message), class: "btn btn-danger btn-sm", confirm: "请问您确定要删除吗？", method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+

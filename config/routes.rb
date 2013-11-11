@@ -1,6 +1,7 @@
 Giggle::Application.routes.draw do
   namespace :admin do
     resources :products
+    resources :messages
   end
  
   resources :admins
