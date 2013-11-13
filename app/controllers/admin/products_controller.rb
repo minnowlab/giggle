@@ -1,21 +1,20 @@
 class Admin::ProductsController < ApplicationController
   layout "admin"
   before_action :signed_in_admin
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products=Product.all
+    @products = Product.all
   end
 
   def show
-    @product=Product.find(params[:id])
   end
 
   def new
-    @product=Product.new
+    @product = Product.new
   end
 
   def create
-    @product=Product.new(product_params)
     if @product.save
       redirect_to admin_products_path
     else
@@ -24,12 +23,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product=Product.find(params[:id])
   end
 
   def update
-    @product=Product.find(params[:id])
-
     if @product.update(product_params)
       redirect_to admin_products_path
     else
@@ -38,11 +34,14 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
+    @product.destroy
     redirect_to admin_products_path
   end
 
   private
+  def find_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :details, :price)

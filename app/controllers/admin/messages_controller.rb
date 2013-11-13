@@ -1,13 +1,13 @@
 class Admin::MessagesController < ApplicationController
   layout "admin"
   before_action :signed_in_admin
+  before_action :find_message, only: [:show, :edit, :update, :destroy]
 
   def index
     @messages = Message.all
   end
 
   def show
-    @message = Message.find(params[:id])
   end
 
   def new
@@ -24,27 +24,27 @@ class Admin::MessagesController < ApplicationController
   end
 
   def edit
-    @message = Message.find(params[:id])
   end
 
   def update
-    @message = Message.find(params[:id])
-
-      if @message.update(message_params)
-        redirect_to admin_messages_path
-      else
-         render 'edit'
-      end
+    if @message.update(message_params)
+      redirect_to admin_messages_path
+    else
+       render 'edit'
+    end
   end
 
   def destroy
-    Message.find(params[:id]).destroy
+    @message.destroy
     redirect_to admin_messages_path
   end
 
   private
+  def find_message
+    @message = Message.find(params[:id])
+  end
     
-    def message_params
-      params.require(:message).permit(:content, :product_id)
-    end
+  def message_params
+    params.require(:message).permit(:content, :product_id)
+  end
 end
