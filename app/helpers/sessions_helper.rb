@@ -5,10 +5,6 @@ module SessionsHelper
     @current_user = user
   end
 
-  def current_user=(user)
-    @current_user = user
-  end
-
   def current_user
     @current_user ||= sign_in_from_session || sign_in_from_cookies unless defined?(@current_user)
     @current_user
