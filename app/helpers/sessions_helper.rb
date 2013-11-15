@@ -56,5 +56,4 @@ module SessionsHelper
   def signed_in_user
     redirect_to signin_path, notice: "请先登录!" unless signed_in?
   end
-
 end

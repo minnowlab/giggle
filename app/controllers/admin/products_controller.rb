@@ -1,6 +1,4 @@
-class Admin::ProductsController < ApplicationController
-  layout "admin"
-  before_action :signed_in_admin
+class Admin::ProductsController < Admin::BaseController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -39,11 +37,12 @@ class Admin::ProductsController < ApplicationController
   end
 
   private
-  def find_product
-    @product = Product.find(params[:id])
-  end
+  
+    def find_product
+      @product = Product.find(params[:id])
+    end
 
-  def product_params
-    params.require(:product).permit(:name, :description, :details, :price)
-  end
+    def product_params
+      params.require(:product).permit(:name, :description, :details, :price)
+    end
 end

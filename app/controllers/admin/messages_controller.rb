@@ -1,6 +1,4 @@
-class Admin::MessagesController < ApplicationController
-  layout "admin"
-  before_action :signed_in_admin
+class Admin::MessagesController < Admin::BaseController
   before_action :find_message, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -40,11 +38,12 @@ class Admin::MessagesController < ApplicationController
   end
 
   private
-  def find_message
-    @message = Message.find(params[:id])
-  end
-    
-  def message_params
-    params.require(:message).permit(:content, :product_id)
-  end
+  
+    def find_message
+      @message = Message.find(params[:id])
+    end
+      
+    def message_params
+      params.require(:message).permit(:content, :product_id)
+    end
 end
