@@ -9,9 +9,7 @@
 <body>
   <%= render "layouts/navbar/admin_navbar" %>
   <div class="container">
-   <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-   <% end %>
+    <%= render "layouts/shared/flash_notice" %>
     <%= yield %>
     <hr>
     <footer>

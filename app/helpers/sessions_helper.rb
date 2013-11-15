@@ -54,6 +54,9 @@ module SessionsHelper
   end
 
   def signed_in_user
-    redirect_to user_sign_in_path, notice: "请先登录!" unless signed_in?
+    unless signed_in?
+      flash[:danger] = "请先登录！"
+      redirect_to user_sign_in_path
+    end 
   end
 end
