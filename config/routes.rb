@@ -1,14 +1,15 @@
 Giggle::Application.routes.draw do
+  get '/sign-in', to: 'sessions#new', as: :user_sign_in
+  delete '/sign-out', to: 'sessions#destroy', as: :user_sign_out
+  resources :sessions, only: :create
+
   namespace :admin do
     resources :products
     resources :messages
   end
  
   resources :admins
-  resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'admins#new', via: 'get'
-  match '/signin', to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
 
   resources :products, only: [:index, :show]
 

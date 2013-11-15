@@ -1,14 +1,13 @@
 class SessionsController < ApplicationController
-  layout "admin"  
   def new
-    render 'new'  
   end
 
   def create
-    admin = Admin.find_by(name: params[:session][:name].downcase)
-    if admin && admin.authenticate(params[:session][:password])
-      sign_in admin
-      redirect_to admin
+    user = User.find_by(email: params[:email].downcase)
+    if user && user.authenticate(params[:password])
+      sign_in user
+      remember_me if params[:remember_me]
+      redirect_to root_path
     else
       flash.now[:error] = 'Invalid name/passowrd'
       render 'new'

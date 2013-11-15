@@ -1,22 +1,29 @@
 <% provide(:title, "Sign in") %>
 <h2>登录</h2>
 <div class="container">
-     <div class="col-md-4">
-     </div>
-     <div class="col-md-4">
-  <div class="form-group">
-  <%= form_for(:session, url: sessions_path) do |f| %>
-  <div class="form-group">
-  <%= f.label :name, class: "control-label col-sm-1" %>
-  <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group">
-  <%= f.label :passowrd, class: "control-label col-sm-1"%>
-  <%= f.password_field :password, class: "form-control" %>
-  </div>
-  <div class="form-group">
-  <%= f.submit "Sign in", class: "btn btn-default btn-primart" %>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form_tag sessions_path do %>
+        <div class="form-group">
+          <%= label_tag :email, "邮箱", class: "control-label col-sm-1" %>
+          <%= text_field_tag :email, "", class: "form-control" %>
+        </div>
 
-  </div>
-  <% end %>
+        <div class="form-group">
+          <%= label_tag :passowrd, "密码", class: "control-label col-sm-1"%>
+          <%= password_field_tag :password, "", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= check_box_tag :remember_me, nil, false, :tabindex => 3 %>
+          记得我？
+        </div>
+
+        <div class="form-group">
+          <%= submit_tag "Sign in", class: "btn btn-default btn-primart" %>
+        </div>
+      <% end %>
+    </div>
+  </div>   
 </div>
