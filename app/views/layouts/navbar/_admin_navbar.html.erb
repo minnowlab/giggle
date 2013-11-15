@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Giggle</a>
+      <%= link_to "Giggle Admin", admin_root_path, class: "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -14,6 +14,7 @@
         <li><%= link_to "留言管理", admin_messages_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "返回首页", root_path %></li>
         <li><%= link_to "退出", user_sign_out_path, method: "delete" %></li>
       </ul>
     </div>

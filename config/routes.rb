@@ -4,6 +4,7 @@ Giggle::Application.routes.draw do
   resources :sessions, only: :create
 
   namespace :admin do
+    root 'products#index'
     resources :products
     resources :messages
   end
