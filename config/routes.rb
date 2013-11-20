@@ -7,6 +7,7 @@ Giggle::Application.routes.draw do
     root 'products#index'
     resources :products
     resources :messages
+    resources :users
   end
  
   resources :admins

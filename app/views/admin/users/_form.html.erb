@@ -1,0 +1,52 @@
+<%= form_for(@user, url: (@user.new_record? ? admin_users_path : admin_user_path(@user))) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@user.errors.count, "error") %> prohibited this message from being saved:</h4>
+
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+
+      <hr>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= f.submit "确认提交", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

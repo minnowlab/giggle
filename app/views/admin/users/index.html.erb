@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h2>
+    用户管理
+    <small class="pull-right"><%= link_to "创建新用户", new_admin_user_path, class: "btn btn-primary" %></small>
+  </h2>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>邮箱</td>
+      <td>名字</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.name %></td>
+        <td>
+          <%= link_to "编辑", edit_admin_user_path(user), class: "btn btn-primary btn-sm" %>
+          <%= link_to "删除", admin_user_path(user), class: "btn btn-danger btn-sm", confirm: "请问您确定要删除吗？", method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
