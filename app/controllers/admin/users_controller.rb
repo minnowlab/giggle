@@ -24,7 +24,16 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    if @user.update(user_params)
+    password_changed = !params[:user][:password].empty? || !params[:user][:password_confirmation].empty?
+
+    if password_changed
+      @user.assign_attributes(user_params)
+    else
+      @user.skip_password = true
+      @user.assign_attributes(user_without_password_params)
+    end
+
+    if @user.save
       redirect_to admin_users_path
     else
       render 'edit'
@@ -44,5 +53,9 @@ class Admin::UsersController < Admin::BaseController
 
     def user_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
+    end
+
+    def user_without_password_params
+      params.require(:user).permit(:email, :name)
     end
 end
