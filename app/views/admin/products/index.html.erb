@@ -24,7 +24,7 @@
         <td><%= product.details %></td>
         <td>
           <%= link_to "编辑", edit_admin_product_path(product), class: "btn btn-primary btn-sm" %>
-          <%= link_to "删除", admin_product_path(product), class: "btn btn-danger btn-sm", confirm: "请问您确定要删除吗？", method: :delete %>
+          <%= link_to "删除", admin_product_path(product), class: "btn btn-danger btn-sm", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
         </td>
       </tr>
     <% end %>
