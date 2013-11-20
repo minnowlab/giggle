@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       remember_me if params[:remember_me]
       redirect_to root_path
     else
-      flash[:danger] = '邮箱地址或密码有误，请重新输入！'
+      flash.now[:danger] = '邮箱地址或密码有误，请重新输入！'
       render 'new'
     end
   end 
