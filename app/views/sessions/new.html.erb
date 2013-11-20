@@ -1,27 +1,16 @@
-<div class="container">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <div class="form-group">
-      <%= form_tag sessions_path do %>
-        <div class="form-group">
-          <%= label_tag :email, "邮箱", class: "control-label col-sm-1" %>
-          <%= text_field_tag :email, "", class: "form-control" %>
-        </div>
+<%= form_tag sessions_path, class: "form-signin" do %>
+  <h2 class="form-signin-heading">请登录</h2>
 
-        <div class="form-group">
-          <%= label_tag :passowrd, "密码", class: "control-label col-sm-1"%>
-          <%= password_field_tag :password, "", class: "form-control" %>
-        </div>
+  <%= text_field_tag :email, "", class: "form-control", placeholder: "邮箱" %>
+  <%= password_field_tag :password, "", class: "form-control", placeholder: "密码" %>
 
-        <div class="form-group">
-          <%= check_box_tag :remember_me, nil, false, :tabindex => 3 %>
-          记得我？
-        </div>
+  <label class="checkbox">
+    <%= check_box_tag :remember_me, nil, false %>
+    记得我？
+  </label>
 
-        <div class="form-group">
-          <%= submit_tag "Sign in", class: "btn btn-default btn-primart" %>
-        </div>
-      <% end %>
-    </div>
-  </div>   
-</div>
+  <%= button_tag class: "btn btn-lg btn-primary btn-block", type: :submit do %>
+    <i class="fa fa-sign-in"></i> 
+    登录
+  <% end %>
+<% end %>
