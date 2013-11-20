@@ -1,0 +1,35 @@
+<%= form_for(@product_category, url: (@product_category.new_record? ? admin_product_categorys_path : admin_product_category_path(@product_category))) do |f| %>
+  <% if @product_category.errors.any? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@product_category.errors.count, "error") %> prohibited this message from being saved:</h4>
+
+          <ul>
+          <% @product_category.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= f.submit "确认提交", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+                

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120031759) do
+ActiveRecord::Schema.define(version: 20131120081308) do
 
   create_table "messages", force: true do |t|
     t.string   "content"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20131120031759) do
 
   add_index "messages", ["product_id", "created_at"], name: "index_messages_on_product_id_and_created_at", using: :btree
 
+  create_table "product_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_categories", ["name"], name: "index_product_categories_on_name", unique: true, using: :btree
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -29,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131120031759) do
     t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
   create_table "users", force: true do |t|
