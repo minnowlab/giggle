@@ -25,12 +25,9 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    password_changed = !params[:user][:password].empty? || !params[:user][:password_confirmation].empty?
+    @user.skip_password = true unless !params[:user][:password].empty? || !params[:user][:password_confirmation].empty?
 
-    @user.skip_password = true unless password_changed
-    @user.assign_attributes(user_params)
-
-    if @user.save
+    if @user.update(user_params)
       redirect_to admin_users_path
     else
       render 'edit'
