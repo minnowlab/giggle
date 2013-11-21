@@ -25,7 +25,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
-    @user.skip_password = true unless !params[:user][:password].empty? || !params[:user][:password_confirmation].empty?
+    @user.skip_password = true unless !params[:user][:password].blank? || !params[:user][:password_confirmation].blank?
 
     if @user.update(user_params)
       redirect_to admin_users_path

@@ -1,22 +1,47 @@
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Giggle", root_path, class: "navbar-brand" %>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <% if signed_in? %>
-          <li><%= link_to "管理员", admin_root_path %></li>
-          <li><%= link_to "退出", user_sign_out_path, method: "delete" %></li>
-        <% else %>
-          <li><%= link_to "登陆", user_sign_in_path %></li>
-        <% end %>
-      </ul>
-    </div>
+<div id="navbar_center">
+  <div class="inner_wrapper">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <%= link_to root_path, class: "navbar-brand logo_text" do %>
+                <h1>
+                  <i class="fa fa-puzzle-piece"></i>
+                  Giggle Free
+                </h1>
+              <% end %>
+            </div>
+
+            <div class="main_nav navbar-collapse navbar-ex1-collapse collapse">
+              <ul class="navigation menu">
+                <% if signed_in? %>
+                  <li><%= link_to "后台管理", admin_root_path %></li>
+                  <li>
+                    <%= link_to user_sign_out_path, method: "delete" do %>
+                      <i class="fa fa-sign-out"></i>
+                      登出
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to user_sign_in_path do %>
+                      <i class="fa fa-sign-in"></i>
+                      登入
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
