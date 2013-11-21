@@ -1,4 +1,4 @@
-<%= form_for(@product_category, url: (@product_category.new_record? ? admin_product_categorys_path : admin_product_category_path(@product_category))) do |f| %>
+<%= form_for(@product_category, url: (@product_category.new_record? ? admin_product_categories_path : admin_product_category_path(@product_category))) do |f| %>
   <% if @product_category.errors.any? %>
     <div class="row">
       <div class="col-md-12">

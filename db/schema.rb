@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120081308) do
+ActiveRecord::Schema.define(version: 20131121055735) do
 
   create_table "messages", force: true do |t|
     t.string   "content"
@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(version: 20131120081308) do
     t.string   "name"
     t.string   "description"
     t.text     "details"
-    t.decimal  "price",       precision: 8, scale: 2
+    t.decimal  "price",               precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
+    t.integer  "product_category_id"
   end
 
   create_table "users", force: true do |t|

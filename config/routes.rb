@@ -8,7 +8,7 @@ Giggle::Application.routes.draw do
     resources :products
     resources :messages
     resources :users
-    resources :product_categorys
+    resources :product_categories
   end
  
   resources :admins
