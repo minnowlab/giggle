@@ -6,6 +6,7 @@ class Admin::ProductCategoriesController < Admin::BaseController
   end
 
   def show
+    @products = @product_category.products
   end
 
   def new
