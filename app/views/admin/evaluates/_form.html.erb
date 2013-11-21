@@ -1,0 +1,32 @@
+<%= form_for(@evaluate, url: (@evaluate.new_record? ? admin_evaluates_path : admin_evaluate_path(@evaluate))) do |f| %>
+  <% if @evaluate.errors.any? %>
+   <div class="row">
+    <div class="col-md-12">
+     <div class="alert alert-danger">
+      <h4><%= pluralize(@product.errors.count, "error") %> prohibited thie message from being saved:</h4>
+    
+     <ul>
+     <% @evaluate.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+     </ul>
+    </div>
+   </div>
+  </div>
+ <% end %>
+
+ <div class="row">
+  <div class="col-md-3">
+   <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+   </div>
+
+   <div class="form-group">
+    <%= f.label :details %>
+    <%= f.text_area :body, size: "60x12" %>
+   </div>
+
+
+
+

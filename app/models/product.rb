@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
 
-  has_many :messages, dependent: :destroy
+  has_many :messages
+  has_many :evaluates
   belongs_to :product_category
   
   validates :name, presence: true

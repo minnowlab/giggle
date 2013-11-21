@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121055735) do
+ActiveRecord::Schema.define(version: 20131121082422) do
+
+  create_table "evaluates", force: true do |t|
+    t.string   "title"
+    t.text     "details"
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.string   "content"

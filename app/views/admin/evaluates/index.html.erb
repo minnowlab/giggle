@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h2>
+   评测管理
+   <small class="pull-right"><%= link_to "创建新评测", new_admin_evaluate_path, class: "btn btn-primary" %></small>
+  </h2>
+</div>
+
+<table class="table table_hover">
+  <thead>
+    <tr>
+      <td></td>
+      <td>标题</td>
+      <td>评测产品</td>
+      <td>评测用户</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @evaluates.each do |evaluate| %>
+     <tr>
+      <td></td>
+      <td><%= evaluate.title %></td>
+      <td><%= evaluate.product.name %></td>
+      <td><%= evaluate.user.name %></td>
+      <td>
+        <%= link_to "编辑", edit_admin_evaluate_path(evaluate), class: "btn btn-primary btn-sm" %>
+        <%= link_to "删除", admin_evaluate_path(evaluate), class: "btn btn-danger btn-sm", date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+ </tbody>
+</table>
