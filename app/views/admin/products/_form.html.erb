@@ -37,6 +37,12 @@
         <%= f.text_area :details, rows: 6, class: "form-control" %>
       </div>
 
+      <div class="form-group">
+        <%= f.label :category_id, "产品类" %>
+        <%= f.select :category_id, options_from_collection_for_select(ProductCategory.all, :id, :name), class: "form-control" %>
+      </div>
+
+
       <hr>
 
     </div>

@@ -12,6 +12,7 @@
       <td>描述</td>
       <td>价格</td>
       <td>详情</td>
+      <td>产品类</td>
       <td></td>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td><%= product.details %></td>
+        <td><%= product.product_category.try(:name) %></td>
         <td>
           <%= link_to "编辑", edit_admin_product_path(product), class: "btn btn-primary btn-sm" %>
           <%= link_to "删除", admin_product_path(product), class: "btn btn-danger btn-sm", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
