@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131121055735) do
-=======
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20131120095118) do
-=======
-ActiveRecord::Schema.define(version: 20131120081308) do
->>>>>>> 5a1d69eb4d51b36b886bb1ead61c08afe86d9767
->>>>>>> 23aa103db9fe856541b468663e3b7bf320359c76
 
   create_table "messages", force: true do |t|
     t.string   "content"
