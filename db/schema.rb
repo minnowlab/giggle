@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121082422) do
+ActiveRecord::Schema.define(version: 20131122095722) do
 
   create_table "evaluates", force: true do |t|
     t.string   "title"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20131121082422) do
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "evaluate_id"
   end
 
   add_index "messages", ["product_id", "created_at"], name: "index_messages_on_product_id_and_created_at", using: :btree
