@@ -1,5 +1,5 @@
 class Admin::EvaluatesController < Admin::BaseController
-  before_action :find_evaluates, only: [:show, :edit, :update, :destroy]
+  before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
   def index
     @evaluates = Evaluate.all
   end
@@ -12,7 +12,7 @@ class Admin::EvaluatesController < Admin::BaseController
  
   def update
     if @evaluate.update(evaluate_params)
-      redirect_to admin_evaluate_path
+      redirect_to admin_evaluates_path
     else
      render 'edit'
     end
@@ -24,6 +24,7 @@ class Admin::EvaluatesController < Admin::BaseController
 
   def create
     @evaluate = Evaluate.new(evaluate_params)
+ #   @evaluate.user = current_user
     if @evaluate.save
       redirect_to admin_evaluates_path
     else

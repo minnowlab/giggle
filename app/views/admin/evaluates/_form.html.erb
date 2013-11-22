@@ -3,7 +3,7 @@
    <div class="row">
     <div class="col-md-12">
      <div class="alert alert-danger">
-      <h4><%= pluralize(@product.errors.count, "error") %> prohibited thie message from being saved:</h4>
+      <h4><%= pluralize(@evaluate.errors.count, "error") %> prohibited thie message from being saved:</h4>
     
      <ul>
      <% @evaluate.errors.full_messages.each do |msg| %>
@@ -18,15 +18,42 @@
  <div class="row">
   <div class="col-md-3">
    <div class="form-group">
-    <%= f.label :title %>
+    <%= f.label :title, "标题" %>
     <%= f.text_field :title, class: "form-control" %>
    </div>
+   <% if @evaluate.new_record? %>
+    <div class="form-group">
+      <%= f.label :product_id, "产品" %>
+      <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), class: "form-control" %>
+    </div>
 
+    <div class="form-group">
+      <%= f.label "用户:#{current_user.name}" %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    </div>
+   <% else %>
+       <div class="form-group">
+      <%= f.label "产品:#{@evaluate.product.try(:name)}" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "用户:#{@evaluate.user.try(:name)}" %>
+    </div>
+    <% end %>
    <div class="form-group">
-    <%= f.label :details %>
-    <%= f.text_area :body, size: "60x12" %>
+    <%= f.label :details, "内容" %>
+    <%= f.text_area :details, size: "60x12" %>
    </div>
 
+   <hr>
 
-
-
+ </div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= f.submit "确认提交", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

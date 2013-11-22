@@ -1,0 +1,21 @@
+<%= render "product_nav_tabs" %>
+
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-lg-3 col-md-6 product-info">
+      <div class="thumbnail">
+        <div class="caption">
+          <h4>
+            <%= product.name %>
+          </h4>
+          <p>
+            <%= product.description %>
+          </p>
+          <p>
+            <%= link_to "查看产品", product_path(product), class: "btn btn-primary" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

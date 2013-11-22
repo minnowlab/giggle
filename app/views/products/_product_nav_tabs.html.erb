@@ -1,0 +1,12 @@
+<div class="row product-nav-tabs">
+  <div class="col-lg-12 col-md-6">
+    <ul class="nav nav-tabs">
+      <li class="<%= 'active' if params[:sort].blank? %>">
+        <%= link_to "默认排序", products_path %>
+      </li>
+      <li class="<%= 'active' if params[:sort] == 'popularity' %>">
+        <%= link_to "人气", products_path(sort: "popularity") %>
+      </li>
+    </ul>
+  </div>
+</div>
