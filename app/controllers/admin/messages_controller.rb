@@ -44,6 +44,6 @@ class Admin::MessagesController < Admin::BaseController
     end
       
     def message_params
-      params.require(:message).permit(:content, :product_id)
+      params.require(:message).permit(:content, :product_id, :user_id, :evaluate_id)
     end
 end

@@ -5,6 +5,7 @@ class Admin::EvaluatesController < Admin::BaseController
   end
 
   def show
+    @message = @evaluate.messages.build
   end
 
   def edit
@@ -37,6 +38,13 @@ class Admin::EvaluatesController < Admin::BaseController
     redirect_to admin_evaluates_path
   end
 
+  def create_message
+    @message = @evaluate.messages.build(message_params)
+    if @message.save
+      redirect_to admin_evaluate_path(@evaluate)
+    end
+  end
+
   private
     
     def find_evaluate
@@ -45,5 +53,9 @@ class Admin::EvaluatesController < Admin::BaseController
 
     def evaluate_params
       params.require(:evaluate).permit(:title, :details, :product_id, :user_id)
+    end
+
+    def message_params
+      params.require(:message).permit(:content, :user_id, :evaluate_id)
     end
 end

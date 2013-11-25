@@ -14,6 +14,7 @@ Giggle::Application.routes.draw do
     resources :users
     resources :product_categories
     resources :evaluates
+    
   end
  
   resources :admins

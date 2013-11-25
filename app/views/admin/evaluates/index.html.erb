@@ -8,7 +8,6 @@
 <table class="table table_hover">
   <thead>
     <tr>
-      <td></td>
       <td>标题</td>
       <td>评测产品</td>
       <td>评测用户</td>
@@ -18,7 +17,6 @@
   <tbody>
     <% @evaluates.each do |evaluate| %>
      <tr>
-      <td></td>
       <td><a href="<%= admin_evaluate_path(evaluate) %>"><%= evaluate.title %></a></td>
       <td><%= evaluate.product.try(:name) %></td>
       <td><%= evaluate.user.try(:name) %></td>
