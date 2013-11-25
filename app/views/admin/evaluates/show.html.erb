@@ -1,23 +1,21 @@
 <div class="page-header">
   <h2>
-   <%= @evaluate.title %>
+    <%= @evaluate.title %>
   </h2>
 </div>
 
 <table class="table table_hover">
-  <thead>
-  	
-   <section class="word_center">
-       评测产品:<%= @evaluate.product.try(:name) %>
-       <br>
-       评测者:<%= @evaluate.user.try(:name) %>
-       <br>
-       <%= @evaluate.created_at %>
-   </section>
+  <thead>	
+    <section class="word_center">
+      评测产品:<%= @evaluate.product.try(:name) %>
+      <br>
+      评测者:<%= @evaluate.user.try(:name) %>
+      <br>
+      <%= @evaluate.created_at %>
+    </section>
   </thead>
 
- <div class="evaluates_content">
- 	<%= @evaluate.details %>
- </div>
-
+  <div class="evaluates_content">
+    <%= @evaluate.details %>
+  </div>
 </table>
