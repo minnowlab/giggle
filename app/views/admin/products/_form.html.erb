@@ -6,9 +6,9 @@
           <h4><%= pluralize(@product.errors.count, "error") %> prohibited this message from being saved:</h4>
 
           <ul>
-          <% @product.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
+            <% @product.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
           </ul>
         </div>
       </div>
