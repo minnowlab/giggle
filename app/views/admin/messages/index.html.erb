@@ -18,7 +18,7 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= message.content %></td>
+        <td><%= message.content.truncate(15) %></td>
         <td><%= message.product.try(:name) %></td>
         <td><%= message.evaluate.try(:title) %></td>
         <td><%= message.user.try(:name) %></td>

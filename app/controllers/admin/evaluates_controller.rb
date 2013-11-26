@@ -1,11 +1,14 @@
 class Admin::EvaluatesController < Admin::BaseController
-  before_action :find_evaluate, only: [:show, :edit, :update, :destroy, :create_message]
+
+  before_action :find_evaluate, only: [:show, :edit, :update, :destroy, :create_message, :destroy_message]
+  
   def index
     @evaluates = Evaluate.all
   end
 
   def show
     @message = @evaluate.messages.build
+    @feed_items = @evaluate.feed.all
   end
 
   def edit
@@ -25,7 +28,6 @@ class Admin::EvaluatesController < Admin::BaseController
 
   def create
     @evaluate = Evaluate.new(evaluate_params)
- #   @evaluate.user = current_user
     if @evaluate.save
       redirect_to admin_evaluates_path
     else
@@ -34,6 +36,7 @@ class Admin::EvaluatesController < Admin::BaseController
   end
  
   def destroy
+    @evaluate = Evaluate.find(params[:id])
     @evaluate.destroy
     redirect_to admin_evaluates_path
   end
@@ -42,7 +45,16 @@ class Admin::EvaluatesController < Admin::BaseController
     @message = @evaluate.messages.build(message_params)
     if @message.save
       redirect_to admin_evaluate_path(@evaluate)
+    else
+      @feed_items = @evaluate.feed.all
+      render action: :show
     end
+  end
+
+  def destroy_message
+    @message = Message.find(params[:message_id])
+    @message.destroy
+    redirect_to admin_evaluate_path(@evaluate)
   end
 
   private

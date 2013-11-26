@@ -18,8 +18,7 @@
  <div class="row">
   <div class="col-md-3">
    <div class="form-group">
-    <%= f.label :content, "内容" %>
-    <%= f.text_area :content, size: "40x5", placeholder: "发表内容..." %>
+    <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
    </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
    <hr>

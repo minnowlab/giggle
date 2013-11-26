@@ -16,6 +16,7 @@ Giggle::Application.routes.draw do
     resources :evaluates do
       member do
          post :create_message
+         delete :destroy_message
         end
       end
   end

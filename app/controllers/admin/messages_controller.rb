@@ -1,5 +1,5 @@
 class Admin::MessagesController < Admin::BaseController
-  before_action :find_message, only: [:show, :edit, :update, :destroy]
+  before_action :find_message, only: [:show, :edit, :update, :destroy, :destroy_message]
 
   def index
     @messages = Message.all
@@ -36,6 +36,12 @@ class Admin::MessagesController < Admin::BaseController
     @message.destroy
     redirect_to admin_messages_path
   end
+
+#  def destroy_message
+#    @message.destroy
+#    redirect_to admin_evaluate_path(@message.evaluate)
+#  end
+
 
   private
   

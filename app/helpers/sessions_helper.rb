@@ -10,6 +10,10 @@ module SessionsHelper
     @current_user
   end
 
+  def current_user?(user)
+    user==current_user
+  end
+
   def sign_in_from_session
     if session[:user_id].present?
       begin
