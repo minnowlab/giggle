@@ -8,18 +8,20 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <td>留言编码</td>
-      <td>留言内容</td>
-      <td>对应产品</td>
-      <td></td>
+      <th>留言内容</th>
+      <th>产品</th>
+      <th>评测</th>
+      <th>用户</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= message.id %></td>
         <td><%= message.content %></td>
         <td><%= message.product.try(:name) %></td>
+        <td><%= message.evaluate.try(:title) %></td>
+        <td><%= message.user.try(:name) %></td>
         <td>
           <%= link_to "编辑", edit_admin_message_path(message), class: "btn btn-primary btn-sm" %>
           <%= link_to "删除", admin_message_path(message), class: "btn btn-danger btn-sm", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>

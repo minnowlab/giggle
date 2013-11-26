@@ -8,28 +8,14 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <td></td>
-      <td></td>
-      <td>类别</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th>类别</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @product_categories.each do |product_category| %>
       <tr>
-        <td></td>
-        <td></td>
         <td><%= product_category.name %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
         <td>
           <%= link_to "查看产品", admin_product_category_path(product_category), class: "btn btn-primary btn-sm" %>
           <%= link_to "编辑", edit_admin_product_category_path(product_category), class: "btn btn-primary btn-sm" %>

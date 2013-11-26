@@ -1,25 +1,23 @@
 <div class="page-header">
   <h2>
-   产品评测管理
-   <small class="pull-right"><%= link_to "创建新评测", new_admin_evaluate_path, class: "btn btn-primary" %></small>
+    产品评测管理
+    <small class="pull-right"><%= link_to "创建新评测", new_admin_evaluate_path, class: "btn btn-primary" %></small>
   </h2>
 </div>
 
 <table class="table table_hover">
   <thead>
     <tr>
-      <td></td>
-      <td>标题</td>
-      <td>评测产品</td>
-      <td>评测用户</td>
-      <td></td>
+      <th>标题</th>
+      <th>评测产品</th>
+      <th>评测用户</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @evaluates.each do |evaluate| %>
      <tr>
-      <td></td>
-      <td><a href="<%= admin_evaluate_path(evaluate) %>"><%= evaluate.title %></a></td>
+      <td><%= link_to evaluate.title, admin_evaluate_path(evaluate) %></td>
       <td><%= evaluate.product.try(:name) %></td>
       <td><%= evaluate.user.try(:name) %></td>
       <td>

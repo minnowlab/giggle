@@ -13,7 +13,11 @@ Giggle::Application.routes.draw do
     resources :messages
     resources :users
     resources :product_categories
-    resources :evaluates
+    resources :evaluates do
+      member do
+         post :create_message
+        end
+      end
   end
  
   resources :admins

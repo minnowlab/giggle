@@ -6,9 +6,9 @@
           <h4><%= pluralize(@product_category.errors.count, "error") %> prohibited this message from being saved:</h4>
 
           <ul>
-          <% @product_category.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
+            <% @product_category.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -21,7 +21,6 @@
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>
       </div>
-
     </div>
   </div>
   <div class="row">
