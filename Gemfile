@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 1.2'
 # Role
 gem 'cancan'
 
+#File uploads
+gem 'carrierwave'
+
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.0.0.0'
 gem "font-awesome-rails"
