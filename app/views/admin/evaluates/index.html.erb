@@ -4,7 +4,7 @@
     <small class="pull-right"><%= link_to "创建新评测", new_admin_evaluate_path, class: "btn btn-primary" %></small>
   </h2>
 </div>
-
+<%= paginate @evaluates %>
 <table class="table table_hover">
   <thead>
     <tr>
@@ -14,6 +14,7 @@
       <th></th>
     </tr>
   </thead>
+
   <tbody>
     <% @evaluates.each do |evaluate| %>
      <tr>
@@ -28,3 +29,4 @@
   <% end %>
  </tbody>
 </table>
+<%= paginate @evaluates %>

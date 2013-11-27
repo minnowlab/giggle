@@ -4,7 +4,7 @@
     <small class="pull-right"><%= link_to "创建新用户", new_admin_user_path, class: "btn btn-primary" %></small>
   </h2>
 </div>
-
+<%= paginate @users %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -26,3 +26,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @users %>

@@ -38,6 +38,9 @@ gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.0.0.0'
 gem "font-awesome-rails"
 
+#Data paging
+gem 'kaminari'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

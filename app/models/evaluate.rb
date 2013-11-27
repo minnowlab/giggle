@@ -1,4 +1,5 @@
 class Evaluate < ActiveRecord::Base
+
   validates :title, presence: true
   validates :details, presence: true
   validates :product_id, presence: true
