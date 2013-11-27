@@ -2,7 +2,12 @@ class Admin::MessagesController < Admin::BaseController
   before_action :find_message, only: [:show, :edit, :update, :destroy, :destroy_message]
 
   def index
-    @messages = Message.all
+    @messages = Message.sort(params[:sort])
+#    if params[:sort]
+#      @messages = Message.where("#{params[:sort]}_id IS NULL")
+#    else
+#      @messages = Message.all
+#    end
   end
 
   def show
@@ -36,11 +41,6 @@ class Admin::MessagesController < Admin::BaseController
     @message.destroy
     redirect_to admin_messages_path
   end
-
-#  def destroy_message
-#    @message.destroy
-#    redirect_to admin_evaluate_path(@message.evaluate)
-#  end
 
 
   private

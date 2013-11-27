@@ -5,4 +5,11 @@ class Message < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true, length: { maximum: 140 }
 
+  def self.sort(sort)
+   if sort.nil?
+  	all 
+    else
+  	where("#{sort}_id IS NULL")
+   end
+  end
 end

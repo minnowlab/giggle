@@ -8,7 +8,7 @@ class Admin::EvaluatesController < Admin::BaseController
 
   def show
     @message = @evaluate.messages.build
-    @feed_items = @evaluate.feed.all
+    @feed_items = @evaluate.feed
   end
 
   def edit

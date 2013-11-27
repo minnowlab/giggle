@@ -10,7 +10,12 @@ Giggle::Application.routes.draw do
   namespace :admin do
     root 'products#index'
     resources :products
-    resources :messages
+    resources :messages 
+#    do
+#      collection do
+#        get :index_products, :index_evaluates
+#      end
+#    end
     resources :users
     resources :product_categories
     resources :evaluates do

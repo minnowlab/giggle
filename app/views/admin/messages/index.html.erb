@@ -12,8 +12,14 @@
   <thead>
     <tr>
       <th>留言内容</th>
+      <% if params[:sort] == 'evaluate' %>
+      <th>产品</th>
+      <% elsif params[:sort] == 'product' %>
+      <th>评测</th>
+      <% elsif params[:sort].blank? %>
       <th>产品</th>
       <th>评测</th>
+      <% end %>
       <th>用户</th>
       <th></th>
     </tr>
@@ -22,8 +28,14 @@
     <% @messages.each do |message| %>
       <tr>
         <td><%= message.content.truncate(15) %></td>
+        <% if params[:sort] == 'evaluate' %>
+        <td><%= message.product.try(:name) %></td>
+        <% elsif params[:sort] == 'product' %>
+        <td><%= message.evaluate.try(:title) %></td>
+        <% elsif params[:sort].blank? %>
         <td><%= message.product.try(:name) %></td>
         <td><%= message.evaluate.try(:title) %></td>
+        <% end %>
         <td><%= message.user.try(:name) %></td>
         <td>
           <%= link_to "编辑", edit_admin_message_path(message), class: "btn btn-primary btn-sm" %>
