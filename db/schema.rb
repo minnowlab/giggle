@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122095722) do
+ActiveRecord::Schema.define(version: 20131127033716) do
 
   create_table "evaluates", force: true do |t|
     t.string   "title"
@@ -40,6 +40,18 @@ ActiveRecord::Schema.define(version: 20131122095722) do
   end
 
   add_index "product_categories", ["name"], name: "index_product_categories_on_name", unique: true, using: :btree
+
+  create_table "product_pictures", force: true do |t|
+    t.string   "picture"
+    t.boolean  "choice"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_pictures", ["product_id"], name: "index_product_pictures_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "name"
