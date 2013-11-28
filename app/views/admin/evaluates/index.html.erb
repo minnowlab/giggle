@@ -23,7 +23,7 @@
       <td><%= evaluate.user.try(:name) %></td>
       <td>
         <%= link_to "编辑", edit_admin_evaluate_path(evaluate), class: "btn btn-primary btn-sm" %>
-        <%= link_to "删除", admin_evaluate_path(evaluate), class: "btn btn-danger btn-sm", date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+        <%= link_to "删除", admin_evaluate_path(evaluate, page: params[:page]), class: "btn btn-danger btn-sm", date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
       </td>
     </tr>
   <% end %>

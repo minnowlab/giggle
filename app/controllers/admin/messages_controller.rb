@@ -34,7 +34,12 @@ class Admin::MessagesController < Admin::BaseController
 
   def destroy
     @message.destroy
-    redirect_to admin_messages_path
+    @messages = Message.page(params[:page])
+    if @messages.blank?
+      redirect_to admin_messages_path
+    else
+      redirect_to :back
+    end
   end
 
 

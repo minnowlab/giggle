@@ -2,7 +2,7 @@ class Admin::ProductCategoriesController < Admin::BaseController
   before_action :find_product_category, only: [:show, :edit, :update, :destroy, :all]
 
   def index
-    @product_categories = ProductCategory.all.page(params[:page])
+    @product_categories = ProductCategory.page(params[:page])
   end
 
   def show
@@ -36,7 +36,12 @@ class Admin::ProductCategoriesController < Admin::BaseController
 
   def destroy
     @product_category.destroy
-    redirect_to admin_product_categories_path
+    @product_categories = ProductCategory.page(params[:page])
+    if @product_categories.blank?
+      redirect_to admin_product_categories_path
+    else
+      redirect_to :back
+    end
   end
 
   private

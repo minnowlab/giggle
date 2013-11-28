@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all.page(params[:page])
+    @users = User.page(params[:page])
   end
 
   def show
@@ -36,7 +36,12 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path
+    @users = User.page(params[:page])
+    if @users.blank?
+      redirect_to admin_users_path
+    else
+      redirect_to :back
+    end
   end
 
   private

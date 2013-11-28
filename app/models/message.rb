@@ -7,10 +7,10 @@ class Message < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
 
   def self.sort(sort)
-   if sort.nil?
-  	all 
+    if sort.nil?
+      all
     else
-  	where("#{sort}_id IS NULL")
-   end
+      where("#{sort}_id IS NULL")
+    end
   end
 end
