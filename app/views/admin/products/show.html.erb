@@ -1,8 +1,10 @@
+<%= render "add_product_picture_modal" %>
+
 <div class="row">
   <div class="col-md-3">
     <p class="lead">产品管理</p>
     <div class="list-group">
-      <%= link_to "添加图片", "#", class: "list-group-item" %>
+      <%= link_to "添加图片", "#add_product_picture_modal", class: "list-group-item",  "data-toggle" => "modal" %>
     </div>
   </div>
 
