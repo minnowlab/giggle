@@ -4,22 +4,18 @@
   </h2>
 </div>
 
-<table class="table table_hover">
-  <thead>	
-    <section class="word_center">
-      产品 : <%= @evaluate.product.try(:name) %>
-      <br>
-      评测者 : <%= @evaluate.user.try(:name) %>
-      <br>
-      创建时间：<%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
-    </section>
-  </thead>
+<div class="word_center">
+  产品：<%= @evaluate.product.try(:name) %>
+  <br>
+  评测者：<%= @evaluate.user.try(:name) %>
+  <br>
+  创建时间：<%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
+</div>
 
-  <div class="evaluates_content">
-  	<%= @evaluate.details %>
-  </div>
-  <hr>
-  <%= render 'message_form' %>
-  <hr>
-  <%= render 'feed' %>
-</table>
+<div class="evaluates_content">
+  <%= @evaluate.details %>
+</div>
+<hr>
+<%= render 'message_form' %>
+<hr>
+<%= render 'feed' %>

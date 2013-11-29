@@ -15,9 +15,11 @@ class Admin::EvaluatesController < Admin::BaseController
  
   def update
     if @evaluate.update(evaluate_params)
+      flash[:success] = '更新成功！'
       redirect_to admin_evaluates_path
     else
-     render 'edit'
+      flash.now[:danger] = '更新失败，请重新更新！'
+      render 'edit'
     end
   end
 
@@ -28,8 +30,10 @@ class Admin::EvaluatesController < Admin::BaseController
   def create
     @evaluate = Evaluate.new(evaluate_params)
     if @evaluate.save
+      flash[:success] = '创建成功！'
       redirect_to admin_evaluates_path
     else
+      flash.now[:danger] = '创建失败，请重新创建！'
       render 'new'
     end
   end
@@ -37,6 +41,7 @@ class Admin::EvaluatesController < Admin::BaseController
   def destroy
     @evaluate.destroy
     @evaluates = Evaluate.page(params[:page])
+    flash[:success] = '删除成功！'
     if @evaluates.blank?
       redirect_to admin_evaluates_path
     else
@@ -47,9 +52,11 @@ class Admin::EvaluatesController < Admin::BaseController
   def create_message
     @message = @evaluate.messages.build(message_params)
     if @message.save
+      flash[:success] = '创建成功！'
       redirect_to :back
     else
       @feed_items = @evaluate.feed.all
+      flash.now[:danger] = '创建失败，请重新创建！'
       render action: :show
     end
   end
@@ -57,7 +64,7 @@ class Admin::EvaluatesController < Admin::BaseController
   def destroy_message
     @message = Message.find(params[:message_id])
     @message.destroy
-#    redirect_to admin_evaluate_path(@evaluate)
+    flash[:success] = '删除成功！'
     redirect_to :back
   end
 

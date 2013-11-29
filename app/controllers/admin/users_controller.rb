@@ -15,8 +15,10 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = '创建成功！'
       redirect_to admin_users_path
     else
+      flash.now[:danger] = '更新失败，请重新更新！'
       render 'new'
     end
   end
@@ -28,8 +30,10 @@ class Admin::UsersController < Admin::BaseController
     @user.skip_password = true unless !params[:user][:password].blank? || !params[:user][:password_confirmation].blank?
 
     if @user.update(user_params)
+      flash[:success] = '更新成功！'
       redirect_to admin_users_path
     else
+      flash.now[:danger] = '更新失败，请重新更新！'
       render 'edit'
     end
   end
@@ -37,6 +41,7 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     @user.destroy
     @users = User.page(params[:page])
+    flash[:success] = '删除成功！'
     if @users.blank?
       redirect_to admin_users_path
     else

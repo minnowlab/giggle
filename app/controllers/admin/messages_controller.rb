@@ -15,9 +15,11 @@ class Admin::MessagesController < Admin::BaseController
   def create
     @message = Message.new(message_params)
     if @message.save
-       redirect_to admin_messages_path 
+      flash[:success] = '创建成功！'
+      redirect_to admin_messages_path 
     else
-       render 'new'
+      flash.now[:danger] = '创建失败，请重新创建！'
+      render 'new'
     end
   end
 
@@ -26,22 +28,24 @@ class Admin::MessagesController < Admin::BaseController
 
   def update
     if @message.update(message_params)
+      flash[:success] = '更新成功！'
       redirect_to admin_messages_path
     else
-       render 'edit'
+      flash.now[:danger] = '更新失败，请重新更新！'
+      render 'edit'
     end
   end
 
   def destroy
     @message.destroy
     @messages = Message.page(params[:page])
+    flash[:success] = '删除成功！'
     if @messages.blank?
       redirect_to admin_messages_path
     else
       redirect_to :back
     end
   end
-
 
   private
   

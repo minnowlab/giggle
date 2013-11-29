@@ -1,29 +1,29 @@
- <%= form_for(@message, url: create_message_admin_evaluate_path) do |f| %>
+<%= form_for(@message, url: create_message_admin_evaluate_path) do |f| %>
   <% if @message.errors.any? %>
-   <div class="row">
-    <div class="col-md-12">
-     <div class="alert alert-danger">
-      <h4><%= pluralize(@message.errors.count, "error") %> prohibited thie message from being saved:</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@message.errors.count, "error") %> prohibited thie message from being saved:</h4>
     
-     <ul>
-     <% @message.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-     <% end %>
-     </ul>
+          <ul>
+            <% @message.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
- <% end %>
+  <% end %>
 
- <div class="row">
-  <div class="col-md-3">
-   <div class="form-group">
-    <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
-   </div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-   <hr>
- </div>
-</div>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <hr>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-12">
       <div class="actions">
