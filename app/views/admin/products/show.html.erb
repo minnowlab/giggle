@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-3">
+    <p class="lead">产品管理</p>
+    <div class="list-group">
+      <%= link_to "添加图片", "#", class: "list-group-item" %>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="thumbnail">
+      <div class="caption-full">
+        <h4 class="pull-right">
+          RMB <%= @product.price %>
+        </h4>
+        <h4>
+          <i class="fa fa-glass"></i>
+          <%= @product.name %>
+        </h4>
+        <p>
+          <i class="fa fa-info-circle"></i>
+          <%= @product.description %>
+        </p>
+        <hr>
+        <p>
+          <%= simple_format(@product.details) %>
+        </p>
+      </div>    
+    </div>
+  </div>
+</div>

@@ -11,7 +11,6 @@
       <th>名称</th>
       <th>描述</th>
       <th>价格</th>
-      <th>详情</th>
       <th>产品类</th>
       <th></th>
     </tr>
@@ -19,10 +18,9 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
+        <td><%= link_to product.name, admin_product_path(product) %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
-        <td><%= product.details %></td>
         <td><%= product.product_category.try(:name) %></td>
         <td>
           <%= link_to "编辑", edit_admin_product_path(product), class: "btn btn-primary btn-sm" %>
