@@ -11,15 +11,30 @@
      <div class="row">
       <div class="col-xs-4">
        <%= label_tag "产品搜索:" %>
-       <%= text_field_tag :key, "", placeholder: "产品名称", class: "form-control" %>
+       <%= text_field_tag :keyword, params[:keyword], placeholder: "产品名称", class: "form-control" %>
       </div>
      </div>
+     -
      <div class="row">
       <div class="col-md-8 price_range" >
-        <%= text_field_tag :low_price, "", placeholder: "最低价", class: "form-control" %>-
-        <%= text_field_tag :high_price, "", placeholder: "最高价", class: "form-control" %>
+        <%= label_tag "价格:" %>
+        <%= text_field_tag :low_price, params[:low_price], placeholder: "最低价", class: "form-control" %> |
+        <%= text_field_tag :high_price, params[:high_price], placeholder: "最高价", class: "form-control" %>
+      </div>
+     </div>-
+
+     <div class="row">
+      <div class="col-md-2">
+       <%= label_tag "产品类别:" %>
+       <%= select_tag :product_category_id, options_from_collection_for_select(ProductCategory.all, :id, :name, params[:product_category_id]), include_blank: true, class: "form-control" %>
+      </div>
      </div>
-      <%= submit_tag "Search", class: "btn btn-lg btn-primary btn-block"%>
+
+     <div class="row">
+      <div class="col-md-8">
+      <%= submit_tag "Search", class: "btn btn-primary "%>
+      </div>
+     </div>
     <% end %>
  </div>
 </section>

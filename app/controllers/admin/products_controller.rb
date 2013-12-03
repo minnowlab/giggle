@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
   before_action :find_product, only: [:show, :edit, :update, :destroy, :create_product_picture]
 
   def index
-    @products = Product.search(params[:key]).page(params[:page])
+    @products = Product.search(params).page(params[:page])
   end
 
   def show
@@ -72,4 +72,5 @@ class Admin::ProductsController < Admin::BaseController
     def product_picture_params
       params.require(:product_picture).permit(:picture)
     end
+
 end

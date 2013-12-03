@@ -9,10 +9,10 @@ class Product < ActiveRecord::Base
   validates :product_category_id, presence: true
 
  def self.search(key)
-    if key.nil?
+    if key.blank?
       all
-    else
-      where('name LIKE ?', "%#{key}%")
+    else 
+      where("name LIKE ? AND price < ? AND price > ? AND product_category_id = ?", key[:keyword], key[:high_price], key[:low_price], key[:product_category_id])
     end
   end
 
