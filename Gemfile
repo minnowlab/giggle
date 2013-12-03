@@ -33,6 +33,7 @@ gem 'cancan'
 
 #File uploads
 gem 'carrierwave'
+gem "mini_magick"
 
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.0.0.0'

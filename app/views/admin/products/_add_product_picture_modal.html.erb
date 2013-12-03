@@ -5,10 +5,17 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">添加产品图片</h4>
       </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-      </div>
+      <%= form_for(@product_picture, url: create_product_picture_admin_product_path(@product)) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :picture %>
+            <%= f.file_field :picture %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "提交", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
