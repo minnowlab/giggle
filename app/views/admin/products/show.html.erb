@@ -9,24 +9,43 @@
   </div>
 
   <div class="col-md-9">
-    <div class="thumbnail">
-      <div class="caption-full">
-        <h4 class="pull-right">
-          RMB <%= @product.price %>
-        </h4>
-        <h4>
-          <i class="fa fa-glass"></i>
-          <%= @product.name %>
-        </h4>
-        <p>
-          <i class="fa fa-info-circle"></i>
-          <%= @product.description %>
-        </p>
-        <hr>
-        <p>
-          <%= simple_format(@product.details) %>
-        </p>
-      </div>    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="thumbnail">
+          <div class="caption-full">
+            <h4 class="pull-right">
+              RMB <%= @product.price %>
+            </h4>
+            <h4>
+              <i class="fa fa-glass"></i>
+              <%= @product.name %>
+            </h4>
+            <p>
+              <i class="fa fa-info-circle"></i>
+              <%= @product.description %>
+            </p>
+            <hr>
+            <p>
+              <%= simple_format(@product.details) %>
+            </p>
+          </div>    
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <hr>
+      <% @product.product_pictures.each do |product_picture| %>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+          <div class="thumbnail">
+            <%= image_tag product_picture.picture_url(:small) %>
+            <div class="caption">
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+
 </div>
+
