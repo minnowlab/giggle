@@ -6,4 +6,13 @@ class Product < ActiveRecord::Base
   
   validates :name, presence: true
   validates :product_category_id, presence: true
+
+ def self.search(key)
+    if key.nil?
+      all
+    else
+      where('name LIKE ?', "%#{key}%")
+    end
+  end
+
 end

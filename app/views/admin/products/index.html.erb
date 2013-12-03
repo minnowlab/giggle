@@ -5,6 +5,27 @@
   </h2>
 </div>
 
+<section>
+  <div class="row">
+    <%= form_tag admin_products_path, method: "get" do %>
+     <div class="row">
+      <div class="col-xs-4">
+       <%= label_tag "产品搜索:" %>
+       <%= text_field_tag :key, "", placeholder: "产品名称", class: "form-control" %>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-8 price_range" >
+        <%= text_field_tag :low_price, "", placeholder: "最低价", class: "form-control" %>-
+        <%= text_field_tag :high_price, "", placeholder: "最高价", class: "form-control" %>
+     </div>
+      <%= submit_tag "Search", class: "btn btn-lg btn-primary btn-block"%>
+    <% end %>
+ </div>
+</section>
+
+<%= paginate @products %>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -30,3 +51,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @products %>
