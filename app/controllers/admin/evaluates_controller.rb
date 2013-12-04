@@ -2,7 +2,8 @@ class Admin::EvaluatesController < Admin::BaseController
   before_action :find_evaluate, only: [:show, :edit, :update, :destroy, :create_message, :destroy_message]
   
   def index
-    @evaluates = Evaluate.page(params[:page])
+    @evaluates = Evaluate.search_evaluate params
+    @evaluates = @evaluates.page(params[:page])
   end
 
   def show

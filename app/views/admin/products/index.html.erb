@@ -7,31 +7,27 @@
 <div class="row">
  <%= form_tag admin_products_path, class: "form-inline", method: "get" do %>
   <div class="col-xs-2">
-   <%= label_tag "搜索:" %>
-   <%= text_field_tag :keywords, params[:keywords], placeholder: "产品名称", class: "form-control" %>
+    <%= text_field_tag :keywords, params[:keywords], placeholder: "产品名称", class: "form-control" %>
   </div>
-</div>
-<div class="row">
-  <div class="form-group col-md-1">
-    
+  <div class="col-xs-1">
     <%= text_field_tag :min_price, params[:min_price], placeholder: "最低价", class: "form-control" %>
   </div>
-  <div class="form-group col-md-1">
+  <div class="col-xs-1">
     <%= text_field_tag :max_price, params[:max_price], placeholder: "最高价", class: "form-control" %>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
-    <%= label_tag "产品类别:" %>
+  <div class="col-xs-2">
     <%= select_tag :product_category_id, options_from_collection_for_select(ProductCategory.all, :id, :name, params[:product_category_id]), include_blank: true, class: "form-control" %>
   </div>
-</div>
+  <div class="col-xs-1">
     <%= submit_tag "搜索", class: "btn btn-primary "%>
+  </div>
     <% end %>
     <%= form_tag admin_products_path, method: "get" do %>
-    <%= submit_tag "返回", class: "btn btn-primary "%>
+      <div class="col-xs-1">
+       <%= submit_tag "返回", class: "btn btn-primary "%>
+      </div>
     <% end %>
-
+</div>
 <%= paginate @products %>
 
 <table class="table table-hover">
