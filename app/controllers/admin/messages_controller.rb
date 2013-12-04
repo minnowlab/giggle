@@ -2,7 +2,11 @@ class Admin::MessagesController < Admin::BaseController
   before_action :find_message, only: [:show, :edit, :update, :destroy, :destroy_message]
 
   def index
-    @messages = Message.sort(params[:sort]).page(params[:page])
+    if !params[:sort].nil?
+     @messages = Message.sort(params[:sort]).page(params[:page])
+    else
+     @messages = Message.message_search(params).page(params[:page])
+    end
   end
 
   def show

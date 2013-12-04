@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.page(params[:page])
+    @users = User.user_search(params).page(params[:page])
   end
 
   def show
