@@ -8,12 +8,12 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :product_category_id, presence: true
 
- def self.search(key)
-    if key.blank?
-      all
-    else 
-      where("name LIKE ? AND price < ? AND price > ? AND product_category_id = ?", key[:keyword], key[:high_price], key[:low_price], key[:product_category_id])
-    end
+  def self.search_product this_params
+    product = Product.all
+    product = product.where("name LIKE ? ", "%#{this_params[:keywords]}%") unless this_params[:keywords].blank?
+    product = product.where("price < ?", this_params[:max_price]) unless this_params[:max_price].blank?
+    product = product.where("price > ?", this_params[:min_price]) unless this_params[:min_price].blank?
+    product = product.where("product_category_id = ?", this_params[:product_category_id]) unless this_params[:product_category_id].blank?
+    product
   end
-
 end

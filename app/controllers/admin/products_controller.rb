@@ -2,7 +2,8 @@ class Admin::ProductsController < Admin::BaseController
   before_action :find_product, only: [:show, :edit, :update, :destroy, :create_product_picture]
 
   def index
-    @products = Product.search(params).page(params[:page])
+    @products = Product.search_product params
+    @products = @products.page(params[:page])
   end
 
   def show
