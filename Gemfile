@@ -3,7 +3,7 @@ source 'http://ruby.taobao.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 
 # database for Active Record
 gem 'mysql2'
