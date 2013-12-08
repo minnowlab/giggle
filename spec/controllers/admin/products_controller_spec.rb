@@ -40,23 +40,17 @@ describe Admin::ProductsController do
   end
 
   describe"POST#create"do
-    before :each do
-      @product = [
-        attributes_for(:product),
-        attributes_for(:product),
-        attributes_for(:product)
-      ]
-    end
+    let(:product) { build(:product) }
 
     context "with valid attributes" do
       it "saves the new product in the database" do
         expect{
-          post :create, product: attributes_for(:product, products_attributes: @product)
+          post :create, product: attributes_for(:product, products_attributes: product)
         }.to change(Product, :count).by(1)
       end
 
       it "redirects to products#index" do
-        post :create, product: attributes_for(:product, products_attributes: @product)
+        post :create, product: attributes_for(:product, products_attributes: product)
         expect(response).to redirect_to admin_products_path
       end 
     end
@@ -64,71 +58,67 @@ describe Admin::ProductsController do
     context "with invalid attributes" do
       it "does not save the new product in the database" do
         expect{
-          post :create, product: attributes_for(:invalid_product)
+          post :create, product: attributes_for(:nil_name_product)
         }.to_not change(Product, :count)
       end
 
       it "re-renders the :new template" do 
-        post :create, product: attributes_for(:invalid_product)
+        post :create, product: attributes_for(:nil_name_product)
         expect(response).to render_template :new
       end 
     end
   end
 
   describe 'PATCH#update' do 
-    before :each do
-      @product = create(:product, name: 'Lily', description: 'About the Lily.')
-    end
+    let(:product) { create(:product, name: 'Lily', description: 'About the Lily.') }
 
     context "valid attributes" do
       it "located the requested @product" do
-        patch :update, id: @product, product: attributes_for(:product)
-        expect(assigns(:product)).to eq(@product) 
+        patch :update, id: product, product: attributes_for(:product)
+        expect(assigns(:product)).to eq(product) 
       end
 
-      it "changes @product's attributes" do 
-        patch :update, id: @product, product: attributes_for(:product, name: "Larry", description: "About the Larry.", details: "Larry's details.", price: 200.5)
-        @product.reload
-        expect(@product.name).to eq("Larry")
-        expect(@product.description).to eq("About the Larry.")
-        expect(@product.details).to eq("Larry's details.")
-        expect(@product.price).to eq(200.5)
+      it "changes product's attributes" do 
+        patch :update, id: product, product: attributes_for(:product, name: "Larry", description: "About the Larry.", details: "Larry's details.", price: 200.5)
+        product.reload
+        expect(product.name).to eq("Larry")
+        expect(product.description).to eq("About the Larry.")
+        expect(product.details).to eq("Larry's details.")
+        expect(product.price).to eq(200.5)
       end
 
       it "redirects to the updated product" do
-        patch :update, id: @product, product: attributes_for(:product) 
+        patch :update, id: product, product: attributes_for(:product) 
         expect(response).to redirect_to admin_products_path
       end 
     end
     
     context "with invalid attributes" do
       it "does not change the product's attributes" do
-        patch :update, id: @product, product: attributes_for(:product, name: nil, description: "About the Larry.") 
-        @product.reload 
-        expect(@product.name).to eq("Lily") 
-        expect(@product.description).to_not eq("About the Larry.")
+        patch :update, id: product, product: attributes_for(:product, name: nil, description: "About the Larry.") 
+        product.reload 
+        expect(product.name).to eq("Lily") 
+        expect(product.description).to_not eq("About the Larry.")
       end
 
       it "re-renders the edit template" do
-        patch :update, id: @product, product: attributes_for(:invalid_product) 
+        patch :update, id: product, product: attributes_for(:nil_name_product) 
         expect(response).to render_template :edit
       end
     end
   end
 
   describe 'DELETE#destroy' do 
-    before :each do
-      @product = create(:product) 
-    end
+    let(:product) { create(:product) }
 
     it "deletes the product" do 
       expect{
-        delete :destroy, id: @product
-      }.to change(Product,:count).by(-1)
+        delete :destroy, id: product
+      }.to change(Product, :count).by(0)
     end
 
     it "redirects to products#index" do
-      delete :destroy, id: @product 
+      delete :destroy, id: product 
       expect(response).to redirect_to admin_products_path
     end 
   end

@@ -33,7 +33,7 @@ class Admin::ProductCategoriesController < Admin::BaseController
       redirect_to admin_product_categories_path
     else
       flash.now[:danger] = '更新失败，请重新更新！'
-      render 'new'
+      render 'edit'
     end
   end
 

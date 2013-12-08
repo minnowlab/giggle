@@ -1,7 +1,9 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :product_category do
-    name "MyString"
+    name { Faker::Name.name }
+    
+    factory :nil_name_product_category do 
+      name nil
+    end
   end
 end
