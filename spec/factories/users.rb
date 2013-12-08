@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :user do
     email { Faker::Internet.email }
-    password_digest "MyString"
-    remember_token "MyString"
+    password "123456789"
+    password_confirmation "123456789"
     name { Faker::Name.name }
   end
 end

@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Admin::ProductsController do
+  before :each do
+    user = create(:user)
+    session[:user_id] = user.id
+  end
+
   describe 'GET#index' do
     it 'renders the :index view' do
       get :index
@@ -110,7 +115,6 @@ describe Admin::ProductsController do
       end
     end
   end
-
 
   describe 'DELETE#destroy' do 
     before :each do
