@@ -8,8 +8,12 @@ FactoryGirl.define do
     price 182.5
     product_category_id 5
 
-    factory :invalid_product do 
+    factory :nil_name_product do 
       name nil
+    end
+
+    factory :nil_product_category_id_product do
+      product_category_id nil
     end
   end
 end
