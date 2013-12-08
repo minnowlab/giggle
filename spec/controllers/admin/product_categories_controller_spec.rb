@@ -55,14 +55,14 @@ describe Admin::ProductCategoriesController do
   end
 
   describe'GET#edit'do
+    let(:product_category) { create(:product_category) }
+
     it "assigns the requested product_category to product_category" do
-      product_category = create(:product_category)
       get :edit, id: product_category
       expect(assigns(:product_category)).to eq product_category
     end
 
     it "renders the :edit template" do
-      product_category = create(:product_category)
       get :edit, id: product_category
       expect(response).to render_template :edit
     end 

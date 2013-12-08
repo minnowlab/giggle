@@ -25,14 +25,14 @@ describe Admin::ProductsController do
   end
 
   describe'GET#edit'do
+    let(:product) { create(:product) }
+
     it "assigns the requested product to @product" do
-      product = create(:product)
       get :edit, id: product
       expect(assigns(:product)).to eq product
     end
 
     it "renders the :edit template" do
-      product = create(:product)
       get :edit, id: product
       expect(response).to render_template :edit
     end 
