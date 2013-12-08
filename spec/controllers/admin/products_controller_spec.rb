@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe Admin::ProductsController do
   before :each do
-    user = create(:user)
-    session[:user_id] = user.id
+    set_user_session create(:user)
   end
 
   describe 'GET#index' do
