@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
 
   has_secure_password
+
+  has_many :evaluates
+  has_many :messages
+  
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
 
@@ -11,8 +15,6 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 50 }
   validates :password, length: { minimum: 6 }, unless: :skip_password
-  has_many :evaluates
-  has_many :messages
 
   def remember_token
     [id, Digest::SHA512.hexdigest(password_digest)].join('$')
