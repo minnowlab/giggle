@@ -1,22 +1,42 @@
 <div class="row">
   <div class="col-lg-8">
-    <h2>
-      <%= @product.name %>
-    </h2>
-    <p>
-      <i class="fa fa-quote-left"></i>
-      <%= @product.description %>
-    </p>
+    <div>
+      <h2>
+        <%= @product.name %>
+      </h2>
+      <p>
+        <i class="fa fa-quote-left"></i>
+        <%= @product.description %>
+      </p>
+     <hr>
+      <p>
+        <i class="fa fa-clock-o"></i> 
+        创建时间： <%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
+      </p>
+      <hr>
+      <p>
+        <%= simple_format(@product.details) %>
+      </p>
+    </div>
     <hr>
-    <p>
-      <i class="fa fa-clock-o"></i> 
-      创建时间： <%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
-    </p>
+    <div>
+      <h4>评测</h4>
+        <% @evaluates.each do |evaluate| %>
+          <h3><%= link_to evaluate.title, admin_evaluate_path(evaluate) %></h3>
+          <p><%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.</p>
+          <small><%= evaluate.details.truncate(50) %></small>
+        <% end %>
+    </div>  
+
     <hr>
-    <p>
-      <%= simple_format(@product.details) %>
-    </p>
+    <div>
+      <%= render 'messages_show' %>
+    <hr>
+      <%= render 'message_form' %>
+    </div>
+
   </div>
+  
 
   <div class="col-lg-4">
     <div class="well">

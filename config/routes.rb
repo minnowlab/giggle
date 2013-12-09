@@ -29,7 +29,12 @@ Giggle::Application.routes.draw do
   resources :admins
   match '/signup', to: 'admins#new', via: 'get'
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    member do
+      post :create_message
+      delete :destroy_message
+    end
+  end
 
   root 'products#index'
 end
