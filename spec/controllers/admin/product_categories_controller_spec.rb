@@ -91,13 +91,9 @@ describe Admin::ProductCategoriesController do
     
     context "with invalid attributes" do
       it "does not change the product_category's attributes" do
-        patch :update, id: product_category, product_category: attributes_for(:product_category, name: nil) 
+        patch :update, id: product_category, product_category: attributes_for(:nil_name_product) 
         product_category.reload 
         expect(product_category.name).to eq("Toy") 
-      end
-
-      it "re-renders the edit template" do
-        patch :update, id: product_category, product_category: attributes_for(:nil_name_product) 
         expect(response).to render_template :edit
       end
     end
