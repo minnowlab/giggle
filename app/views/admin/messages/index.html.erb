@@ -6,28 +6,24 @@
 </div>
 
 <div class="row">
- <%= form_tag admin_messages_path, class: "form-inline", method: "get" do %>
-  <div class="col-xs-2">
-    <%= text_field_tag :content, params[:content], placeholder: "留言内容", class: "form-control" %>
-  </div>
-  <div class="col-xs-2">
-    <%= text_field_tag :product, params[:product], placeholder: "产品", class: "form-control" %>
-  </div>
-  <div class="col-xs-2">
-    <%= text_field_tag :evaluate, params[:evaluate], placeholder: "评测", class: "form-control" %>
-  </div>
-  <div class="col-xs-2">
-    <%= text_field_tag :user, params[:user], placeholder: "用户", class: "form-control" %>
-  </div>
-  <div class="col-xs-1">
-    <%= submit_tag "搜索", class: "btn btn-primary "%>
-  </div>
-    <% end %>
-    <%= form_tag admin_messages_path, method: "get" do %>
-      <div class="col-xs-1">
-       <%= submit_tag "返回", class: "btn btn-primary "%>
-      </div>
-    <% end %>
+  <%= form_tag admin_messages_path, class: "form-inline", method: "get" do %>
+    <div class="col-xs-2">
+      <%= text_field_tag :content, params[:content], placeholder: "留言内容", class: "form-control" %>
+    </div>
+    <div class="col-xs-2">
+      <%= text_field_tag :product, params[:product], placeholder: "产品", class: "form-control" %>
+    </div>
+    <div class="col-xs-2">
+      <%= text_field_tag :evaluate, params[:evaluate], placeholder: "评测", class: "form-control" %>
+    </div>
+    <div class="col-xs-2">
+      <%= text_field_tag :user, params[:user], placeholder: "用户", class: "form-control" %>
+    </div>
+    <div class="col-xs-1">
+      <%= submit_tag "搜索", class: "btn btn-primary "%>
+    </div>
+  <% end %>
+  <%= link_to "返回", admin_messages_path, class: "btn btn-primary" %>
 </div>
 
 <%= render "message_nav_tabs" %>
