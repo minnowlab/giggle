@@ -20,11 +20,7 @@
     <%= submit_tag "搜索", class: "btn btn-primary "%>
   </div>
     <% end %>
-    <%= form_tag admin_evaluates_path, method: "get" do %>
-      <div class="col-xs-1">
-       <%= submit_tag "返回", class: "btn btn-primary "%>
-      </div>
-    <% end %>
+    <%= link_to "返回", admin_evaluates_path, class: "btn btn-primary" %>
 </div>
 
 <%= paginate @evaluates %>
