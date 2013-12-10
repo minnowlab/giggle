@@ -24,13 +24,13 @@
         <hr>
         <em>不超过140个字</em>
         <hr>
-      	  <%= f.hidden_field :user_id, value: current_user.id %>
+    	  <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="actions">
           <%= f.submit "确认提交", class: 'btn btn-primary' %>
         </div>
         <hr>
       <% else %>
-          请<%= link_to "登录", user_sign_in_path %>后发表评论!
+        请<%= link_to "登录", user_sign_in_path %>后发表评论!
       <% end %>
     </div>
   </div>

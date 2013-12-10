@@ -7,11 +7,12 @@
     <small>
       <%= time_ago_in_words(message.created_at) %> ago.
     </small>
-    <div><%= message.content %>
-    <% if current_user?(message.user) %>
-      <%= link_to "删除", destroy_message_product_path(message_id: message), method: :delete %>
+    <div>
+      <%= message.content %>
+      <% if current_user?(message.user) %>
+        <%= link_to "删除", destroy_message_product_path(message_id: message), method: :delete %>
+      <% end %>
     </div>
-      <hr>
-    <% end %>
+    <hr>
   <% end %>
 <% end %>
