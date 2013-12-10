@@ -25,17 +25,15 @@ describe Admin::MessagesController do
   end
 
   describe"POST#create"do
-    let(:message) { build(:message) }
-
     context "with valid attributes" do
       it "saves the new message in the database" do
         expect{
-          post :create, message: attributes_for(:message, messages_attributes: message)
+          post :create, message: attributes_for(:message)
         }.to change(Message, :count).by(1)
       end
 
       it "redirects to messages#index" do
-        post :create, message: attributes_for(:message, messages_attributes: message)
+        post :create, message: attributes_for(:message)
         expect(response).to redirect_to admin_messages_path
       end 
     end

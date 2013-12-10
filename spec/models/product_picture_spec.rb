@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe ProductPicture do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a valid factory" do
+    expect(create(:product_picture)).to be_valid 
+  end
 end

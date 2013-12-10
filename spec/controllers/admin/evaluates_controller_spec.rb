@@ -25,17 +25,15 @@ describe Admin::EvaluatesController do
   end
 
   describe"POST#create"do
-    let(:evaluate) { build(:evaluate) }
-
     context "with valid attributes" do
       it "saves the new evaluate in the database" do
         expect{
-          post :create, evaluate: attributes_for(:evaluate, evaluates_attributes: evaluate)
+          post :create, evaluate: attributes_for(:evaluate, user_id: 1, product_id: 1)
         }.to change(Evaluate, :count).by(1)
       end
 
       it "redirects to evaluates#index" do
-        post :create, evaluate: attributes_for(:evaluate, evaluates_attributes: evaluate)
+        post :create, evaluate: attributes_for(:evaluate, user_id: 1, product_id: 1)
         expect(response).to redirect_to admin_evaluates_path
       end 
     end

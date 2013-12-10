@@ -39,17 +39,15 @@ describe Admin::ProductsController do
   end
 
   describe"POST#create"do
-    let(:product) { build(:product) }
-
     context "with valid attributes" do
       it "saves the new product in the database" do
         expect{
-          post :create, product: attributes_for(:product, products_attributes: product)
+          post :create, product: attributes_for(:product, product_category_id: 1)
         }.to change(Product, :count).by(1)
       end
 
       it "redirects to products#index" do
-        post :create, product: attributes_for(:product, products_attributes: product)
+        post :create, product: attributes_for(:product, product_category_id: 1)
         expect(response).to redirect_to admin_products_path
       end 
     end

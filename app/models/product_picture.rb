@@ -2,6 +2,8 @@ class ProductPicture < ActiveRecord::Base
   mount_uploader :picture, ProductPictureUploader
   belongs_to :product
 
+  validates :picture, presence: true
+
   before_save :update_picture_attributes
 
   private
