@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-lg-8">
+    <div>
+      <h2>
+        <%= @product.name %>
+      </h2>
+    </div>
+    <hr>
+    <div>
+      <%= link_to "我想写评测", "#", class:"btn btn-primary" %>
+    </div>  
+    <hr>
+    <div>
+      <% @evaluates.each do |evaluate| %>
+        <h3>
+        	<%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %>
+        </h3>
+        <p>
+        	<%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.
+        </p>
+        <small>
+        	<%= evaluate.details.truncate(300) %>
+        </small>
+        <hr style="border:1px dashed gray" />
+      <% end %>
+    </div>
+
+  </div>
+  
+
+  <div class="col-lg-4">
+    <div class="well">
+    </div>
+  </div>
+</div>

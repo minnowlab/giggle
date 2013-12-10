@@ -17,9 +17,12 @@ class ProductsController < ApplicationController
       flash[:success] = '评论成功！'
       redirect_to :back
     else
-      @evaluates = @product.evaluates
+      @message = Message.new
+      @evaluates = @product.evaluates.order("created_at desc").limit(5)
+      @message_items = @product.messages
       flash.now[:danger] = '评论失败,请重新评论！'
       render 'show'
+      
     end
   end
 

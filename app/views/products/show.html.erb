@@ -21,8 +21,9 @@
     <hr>
     <div>
       <h4>评测</h4>
+      <em><%= link_to "所有评测", product_evaluates_path(product_id: @product) %></em>
         <% @evaluates.each do |evaluate| %>
-          <h3><%= link_to evaluate.title, admin_evaluate_path(evaluate) %></h3>
+          <h3><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h3>
           <p><%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.</p>
           <small><%= evaluate.details.truncate(50) %></small>
         <% end %>
