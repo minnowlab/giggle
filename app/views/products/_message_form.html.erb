@@ -1,20 +1,5 @@
 <%= form_for(@message, url: create_message_product_path) do |f| %>
-  <% if @message.errors.any? %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@message.errors.count, "error") %> prohibited thie message from being saved:</h4>
-    
-          <ul>
-            <% @message.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="row">
     <div class="col-md-3">
       <% if signed_in? %>

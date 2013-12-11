@@ -7,30 +7,29 @@ class ProductsController < ApplicationController
 
   def show
     @evaluates = @product.evaluates.order("created_at desc").limit(5)
-    @message = Message.new
-    @message_items = @product.messages
+    @message = @product.messages.build
+    @message_items = @product.feed.page(params[:page])
   end
  
   def create_message
   	@message = @product.messages.build(messages_params)
     if @message.save
       flash[:success] = '评论成功！'
-      redirect_to :back
+      redirect_to @product
     else
-      @message = Message.new
       @evaluates = @product.evaluates.order("created_at desc").limit(5)
-      @message_items = @product.messages
+      @message_items = @product.feed.page(params[:page])
       flash.now[:danger] = '评论失败,请重新评论！'
       render 'show'
-      
     end
   end
 
   def destroy_message
     @message = Message.find(params[:message_id])
+    @product = @message.product
     @message.destroy
     flash[:success] = '删除成功！'
-    redirect_to :back
+    redirect_to @product
     
   end
 

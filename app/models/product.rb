@@ -16,4 +16,8 @@ class Product < ActiveRecord::Base
     product = product.where("product_category_id = ?", this_params[:product_category_id]) unless this_params[:product_category_id].blank?
     product
   end
+
+  def feed
+    Message.where("product_id = ?", id)
+  end
 end

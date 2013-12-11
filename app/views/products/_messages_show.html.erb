@@ -1,3 +1,4 @@
+<%= paginate @message_items %>
 <% if @message_items.any? %>
   <h4>评论</h4>
   <% @message_items.each do |message| %>
@@ -5,7 +6,7 @@
       <%= message.user.try(:name) %>
     </span>,
     <small>
-      <%= message.created_at %> 发布.
+      <%= time_ago_in_words(message.created_at) %> 前发布.
     </small>
     <div>
       <%= simple_format(message.content) %>
@@ -16,3 +17,4 @@
     <hr>
   <% end %>
 <% end %>
+<%= paginate @message_items %>

@@ -1,3 +1,4 @@
+<%= paginate @message_items %>
 <% if @message_items.any? %>
   <h4>评论</h4>
   <% @message_items.each do |message| %>
@@ -16,3 +17,4 @@
     <hr>
   <% end %>
 <% end %>
+<%= paginate @message_items %>

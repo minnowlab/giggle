@@ -6,8 +6,9 @@ class EvaluatesController < ApplicationController
   end
 
   def show
-    @message = Message.new
-    @message_items = @evaluate.messages
+    @message = @evaluate.messages.build
+    @message_items = @evaluate.feed.page(params[:page])
+    @product = @evaluate.product
   end
 
   def edit
@@ -22,25 +23,26 @@ class EvaluatesController < ApplicationController
   	
   end
 
-  def create
-  	
-  end
 
-  def destroy
-  	
-  end
 
   def create_message
     @message = @evaluate.messages.build(messages_params)
     if @message.save
       flash[:success] = '评论成功！'
-      redirect_to :back
+      redirect_to product_evaluate_path(:product_id, @evaluate)
     else
-      @message = Message.new
-      @message_items = @evaluate.messages
+      @message_items = @evaluate.feed.page(params[:page])
       flash.now[:danger] = '评论失败,请重新评论!'
       render 'show'
     end
+  end
+
+  def destroy_message
+    @message = Message.find(params[:message_id])
+    @evaluate = @message.evaluate
+    @message.destroy
+    flash[:success] = "删除成功！"
+    redirect_to product_evaluate_path(:product_id, @evaluate)
   end
 
   private
@@ -49,7 +51,7 @@ class EvaluatesController < ApplicationController
     end
 
     def messages_params
-      params.require(:message).permit(:content, :user_id, :evaluate_id)
+      params.require(:message).permit(:content, :user_id, :evaluate_id, :product_id)
     end
 
 end

@@ -53,7 +53,7 @@ class Admin::EvaluatesController < Admin::BaseController
     @message = @evaluate.messages.build(message_params)
     if @message.save
       flash[:success] = '创建成功！'
-      redirect_to :back
+      redirect_to admin_evaluate_path(@evaluate)
     else
       @feed_items = @evaluate.feed.all
       flash.now[:danger] = '创建失败，请重新创建！'
@@ -65,7 +65,7 @@ class Admin::EvaluatesController < Admin::BaseController
     @message = Message.find(params[:message_id])
     @message.destroy
     flash[:success] = '删除成功！'
-    redirect_to :back
+    redirect_to admin_evaluate_path(@evaluate)
   end
 
   private
