@@ -29,6 +29,7 @@ class Admin::EvaluatesController < Admin::BaseController
 
   def create
     @evaluate = Evaluate.new(evaluate_params)
+    @evaluate.user_id = current_user.id
     if @evaluate.save
       flash[:success] = '创建成功！'
       redirect_to admin_evaluates_path
@@ -75,7 +76,7 @@ class Admin::EvaluatesController < Admin::BaseController
     end
 
     def evaluate_params
-      params.require(:evaluate).permit(:title, :details, :product_id, :user_id)
+      params.require(:evaluate).permit(:title, :details, :product_id)
     end
 
     def message_params

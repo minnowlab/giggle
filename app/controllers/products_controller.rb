@@ -12,7 +12,8 @@ class ProductsController < ApplicationController
   end
  
   def create_message
-  	@message = @product.messages.build(messages_params)
+    @message = @product.messages.build(messages_params)
+    @message.user_id = current_user.id
     if @message.save
       flash[:success] = '评论成功！'
       redirect_to @product
@@ -40,7 +41,7 @@ class ProductsController < ApplicationController
     end
 
     def messages_params
-      params.require(:message).permit(:content, :user_id, :product_id)
+      params.require(:message).permit(:content, :product_id)
       
     end
 

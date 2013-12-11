@@ -6,7 +6,7 @@
       <%= message.user.try(:name) %>
     </span>,
     <small>
-      <%= message.created_at %> ago.
+      <%= time_ago_in_words(message.created_at) %> 前发布.
     </small>
     <div>
       <%= simple_format(message.content) %>

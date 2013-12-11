@@ -27,6 +27,7 @@ class EvaluatesController < ApplicationController
 
   def create_message
     @message = @evaluate.messages.build(messages_params)
+    @message.user_id = current_user.id
     if @message.save
       flash[:success] = '评论成功！'
       redirect_to product_evaluate_path(:product_id, @evaluate)
@@ -51,7 +52,7 @@ class EvaluatesController < ApplicationController
     end
 
     def messages_params
-      params.require(:message).permit(:content, :user_id, :evaluate_id, :product_id)
+      params.require(:message).permit(:content, :evaluate_id, :product_id)
     end
 
 end

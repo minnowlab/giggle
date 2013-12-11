@@ -14,6 +14,7 @@ class Admin::MessagesController < Admin::BaseController
 
   def create
     @message = Message.new(message_params)
+    @message.user_id = current_user.id
     if @message.save
       flash[:success] = '创建成功！'
       redirect_to admin_messages_path 
@@ -54,6 +55,6 @@ class Admin::MessagesController < Admin::BaseController
     end
       
     def message_params
-      params.require(:message).permit(:content, :product_id, :user_id, :evaluate_id)
+      params.require(:message).permit(:content, :product_id, :evaluate_id)
     end
 end
