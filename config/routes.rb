@@ -1,4 +1,5 @@
 Giggle::Application.routes.draw do
+
   get '/sign-in', to: 'sessions#new', as: :user_sign_in
   delete '/sign-out', to: 'sessions#destroy', as: :user_sign_out
   resources :sessions, only: :create
@@ -11,11 +12,6 @@ Giggle::Application.routes.draw do
       end
     end
     resources :messages 
-#    do
-#      collection do
-#        get :index_products, :index_evaluates
-#      end
-#    end
     resources :users
     resources :product_categories
     resources :evaluates do
@@ -41,6 +37,8 @@ Giggle::Application.routes.draw do
       delete :destroy_message
     end
   end
+  
+  resources :users
 
   root 'products#index'
 end

@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="">
+<h3><%= @user.name %></h3>
+
+<p>发表过<%= @user.messages.count %>条<%= link_to "留言", "#" %>！</p>
+<p>发布过<%= @user.evaluates.count %>条<%= link_to "评测", "#" %>！</p>
+  </div>
+
+</div>
