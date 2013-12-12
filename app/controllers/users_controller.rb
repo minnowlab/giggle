@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   layout "user"
-  before_action :find_user, only: [:show, :edit, :changepassword, :changeemail]
+
   def index
-  	@user = User.page(params[:page])
+
   end
 
   def show
@@ -14,7 +14,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(users_params)
+
+    if current_user.authenticate(params[:user][:password])
+      current_user.save(email: params[:user][:email])
+      flash[:success] = '修改成功！'
+      redirect_to user_path
+    else
+      flash.now[:danger] = '修改失败，请重新输入！'
+      render 'change_email'
+    end
     
   end
 
@@ -22,19 +30,15 @@ class UsersController < ApplicationController
     
   end
 
-  def changepassword
+  def change_password
     
   end
 
-  def changeemail
+  def change_email
     
   end
 
   private
-    def find_user
-      @user = User.find(params[:id])
-    end
-
     def users_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end

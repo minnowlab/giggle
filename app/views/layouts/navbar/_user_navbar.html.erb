@@ -23,7 +23,7 @@
               <ul class="navigation menu">
                 <% if signed_in? %>
                   <li><%= link_to "后台管理", admin_root_path %></li>
-                  <li><%= link_to "您好，#{current_user.name}", user_path(current_user) %></li>
+                  <li><%= link_to "您好，#{current_user.name}", current_user %></li>
                   <li>
                     <%= link_to user_sign_out_path, method: "delete" do %>
                       <i class="fa fa-sign-out"></i>
