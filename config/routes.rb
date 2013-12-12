@@ -38,7 +38,13 @@ Giggle::Application.routes.draw do
     end
   end
   
-  resources :users
+  resources :users do
+    member do
+      get :changepassword
+      get :changeemail
+    end
+  end
+
 
   root 'products#index'
 end

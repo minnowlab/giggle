@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout "user"
-  before_action :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show, :edit, :changepassword, :changeemail]
   def index
   	@user = User.page(params[:page])
   end
@@ -22,6 +22,13 @@ class UsersController < ApplicationController
     
   end
 
+  def changepassword
+    
+  end
+
+  def changeemail
+    
+  end
 
   private
     def find_user

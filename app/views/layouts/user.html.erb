@@ -11,19 +11,19 @@
   <div class="container">
     <%= render "layouts/shared/flash_notice" %>
   </div>
-  <div class="row">
-  <div class="col-md-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="col-md-2"><%= render "layouts/shared/user_them" %></td>
+              <td class="col-md-5"><%= yield %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  <div class="col-md-2">
-    <%= render "layouts/shared/user_them" %>
-  </div>
-  <div class="col-md-6">
-    <%= yield %>
-  </div>
-</div>
-    
-    
-
-
 </body>
 </html>

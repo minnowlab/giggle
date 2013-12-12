@@ -1,5 +1,6 @@
-<h3><%= link_to @user.name, @user %></h3>
-<p>发表过<%= @user.messages.count %>条<%= link_to "留言", "#" %>！</p>
-<p>发布过<%= @user.evaluates.count %>条<%= link_to "评测", "#" %>！</p>
-<p><%= link_to "修改个人资料", edit_user_path(@user) %></p>
-
+<div class="list-group">
+  <%= link_to "帐号管理", @user, class: "list-group-item active" %>
+  <%= link_to "修改密码", changepassword_user_path(@user), class: "list-group-item" %>
+  <%= link_to "修改登录邮件地址", changeemail_user_path(@user), class: "list-group-item" %>
+  <%= link_to "修改所有信息", edit_user_path(@user), class: "list-group-item" %>
+</div>
