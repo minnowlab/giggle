@@ -2,28 +2,16 @@ class UsersController < ApplicationController
   layout "user"
 
   def index
-
   end
 
   def show
-
   end
 
   def edit
-  	
   end
 
   def update
 
-    if current_user.authenticate(params[:user][:password])
-      current_user.save(email: params[:user][:email])
-      flash[:success] = '修改成功！'
-      redirect_to user_path
-    else
-      flash.now[:danger] = '修改失败，请重新输入！'
-      render 'change_email'
-    end
-    
   end
 
   def create
@@ -31,16 +19,44 @@ class UsersController < ApplicationController
   end
 
   def change_password
-    
   end
 
-  def change_email
-    
+  def change_name
+  end
+
+  def update_name
+    if current_user.authenticate(params[:user][:password])
+      current_user.skip_password = true
+      current_user.update(name: params[:user][:name])
+      flash[:success] = '修改成功！'
+      redirect_to user_path
+    else
+      flash.now[:danger] = '修改失败，请输入正确密码！'
+      render 'change_name'
+    end
+  end
+
+  def update_password
+    if current_user.authenticate(params[:user][:old_password])
+      if current_user.update(update_new_password)
+      redirect_to user_path
+      else
+      flash.now[:danger] = '修改失败，请重新输入！'
+      render 'change_password'
+      end
+    else
+      flash.now[:danger] = '修改失败，请重新输入！'
+      render 'change_password'
+    end
   end
 
   private
     def users_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
+    end
+  
+    def update_new_password
+      params.require(:user).permit(:password, :password_confirmation)
     end
 
 end

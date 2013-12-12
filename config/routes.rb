@@ -41,7 +41,9 @@ Giggle::Application.routes.draw do
   resource :user do
     member do
       get :change_password
-      get :change_email
+      get :change_name
+      patch :update_name
+      patch :update_password
     end
   end
 

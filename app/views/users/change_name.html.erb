@@ -1,10 +1,10 @@
-<div class="list-group-item active ">修改登录邮箱</div>
-  <%= form_for(current_user, method: :patch) do |f| %>
+<div class="list-group-item active ">修改用户名</div>
+  <%= form_for(current_user, url: update_name_user_path, method: :patch) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="col-xs-6 col-sm-8">
-      <p>原登录邮箱地址: <%= current_user.email %></p>
-      <%= f.label "请输入新邮箱地址帐号:" %>
-      <%= f.text_field :email, class: "form-control" %>
+      <p>原用户名: <%= current_user.name %></p>
+      <%= f.label "请输入新用户名:" %>
+      <%= f.text_field :name, class: "form-control" %>
       <%= f.label "请输入密码:" %>
       <%= f.password_field :password, class: "form-control" %>
       <hr>
