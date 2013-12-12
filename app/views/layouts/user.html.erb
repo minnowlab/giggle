@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Giggle</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render "layouts/navbar/user_navbar" %>
+  <div class="container">
+    <%= render "layouts/shared/flash_notice" %>
+  </div>
+  <div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-2">
+    <%= render "layouts/shared/user_them" %>
+  </div>
+  <div class="col-md-6">
+    <%= yield %>
+  </div>
+</div>
+    
+    
+
+
+</body>
+</html>

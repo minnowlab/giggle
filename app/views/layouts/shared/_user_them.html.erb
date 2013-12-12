@@ -1,0 +1,5 @@
+<h3><%= link_to @user.name, @user %></h3>
+<p>发表过<%= @user.messages.count %>条<%= link_to "留言", "#" %>！</p>
+<p>发布过<%= @user.evaluates.count %>条<%= link_to "评测", "#" %>！</p>
+<p><%= link_to "修改个人资料", edit_user_path(@user) %></p>
+

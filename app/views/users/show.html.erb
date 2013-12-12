@@ -1,9 +1,30 @@
-<div class="row">
-  <div class="">
-<h3><%= @user.name %></h3>
+<table class="table table_hover">
+  <thead>
+    <tr>
+      <th>邮件</th>
+  </thead>
+  <tbody>
+     <tr>
+      <td><%= @user.email %></td>
+    </tr>
+   </tbody>
+  <thead>
+    <tr>
+      <th>邮件</th>
+  </thead>
+  <tbody>
+     <tr>
+      <td><%= @user.email %></td>
+    </tr>
+ </tbody>
+   <thead>
+    <tr>
+      <th>邮件</th>
+  </thead>
+  <tbody>
+     <tr>
+      <td><%= @user.email %></td>
+    </tr>
+ </tbody>
+</table>
 
-<p>发表过<%= @user.messages.count %>条<%= link_to "留言", "#" %>！</p>
-<p>发布过<%= @user.evaluates.count %>条<%= link_to "评测", "#" %>！</p>
-  </div>
-
-</div>
