@@ -22,22 +22,25 @@
     <div>
       <h4>评测</h4>
       <em><%= link_to "所有评测", product_evaluates_path(product_id: @product) %></em>
-        <% @evaluates.each do |evaluate| %>
-          <h3><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h3>
-          <p><%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.</p>
-          <small><%= evaluate.details.truncate(50) %></small>
-        <% end %>
-    </div>  
+      <% @evaluates.each do |evaluate| %>
+        <h3><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h3>
+        <p><%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.</p>
+        <small><%= evaluate.details.truncate(50) %></small>
+      <% end %>
+    </div>
 
     <hr>
     <div>
-      <%= render 'messages_show' %>
-    <hr>
+      <%= paginate @message_items %>
+      <h4><%= @message_items.any? ? "评论" : "暂无评论" %></h4>
+      <div id="message_items">
+        <%= render partial: 'message', collection: @message_items %>
+      </div>
+      <%= paginate @message_items %>
+      <hr>
       <%= render 'message_form' %>
     </div>
-
   </div>
-  
 
   <div class="col-lg-4">
     <div class="well">

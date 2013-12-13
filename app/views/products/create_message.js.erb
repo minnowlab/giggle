@@ -1,5 +1,6 @@
 <% if @message.errors.empty? %>
-  $('<%= j(render :partial => 'message', :object => @message) %> ').appendTo($('#message_items'));
+  $('<%= j(render :partial => 'message', :object => @message) %>').appendTo($('#message_items'));
+  $('#create_message_form').val("");
 <% else %>
-  alert('@message.errors.full_messages.join(',')');
+  alert("<%= @message.errors.full_messages.join(',') %>");
 <% end %>
