@@ -39,7 +39,8 @@ class UsersController < ApplicationController
   def update_password
     if current_user.authenticate(params[:user][:old_password])
       if current_user.update(update_new_password)
-      redirect_to user_path
+        flash[:success] = '修改成功！'
+        redirect_to user_path
       else
       flash.now[:danger] = '修改失败，请重新输入！'
       render 'change_password'

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :create_message]
-
+  before_action :find_message, only: [:destroy_message, :edit_message, :update_message]
   def index
     @products = Product.all
   end
@@ -25,7 +25,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy_message
-    @message = Message.find(params[:message_id])
     @product = @message.product
     @message.destroy
     flash[:success] = '删除成功！'
@@ -33,11 +32,17 @@ class ProductsController < ApplicationController
   end
 
   def edit_message
-    
   end
 
   def update_message
-    
+    if @message.update(message_update_params) 
+      @product = @message.product
+      flash[:success] = '修改成功！'
+      redirect_to @product
+    else
+      flash.now[:danger] = '修改失败，请重新修改！'
+      render 'edit_message'
+    end
   end
 
   private
@@ -48,7 +53,13 @@ class ProductsController < ApplicationController
 
     def messages_params
       params.require(:message).permit(:content, :product_id)
-      
     end
 
+    def find_message
+      @message = Message.find(params[:message_id])
+    end
+
+    def message_update_params
+      params.require(:message).permit(:content)
+    end
 end
