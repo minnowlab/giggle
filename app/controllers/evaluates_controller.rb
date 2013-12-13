@@ -17,7 +17,20 @@ class EvaluatesController < ApplicationController
   end
 
   def new
-    
+    @product = Product.find(params[:product_id])
+    @evaluate = @product.evaluates.build
+  end
+
+  def create
+    @product = Product.find(params[:product_id])
+    @evaluate = @product.evaluates.build(evaluate_params.merge(user: current_user))
+    if @evaluate.save
+      flash[:success] = '评测创建成功！'
+      redirect_to product_evaluate_path(:product_id, @evaluate)
+    else
+      flash.now[:danger] = '创建失败，请重新创建！'
+      render 'new'
+    end
   end
 
   def update
@@ -64,6 +77,10 @@ class EvaluatesController < ApplicationController
   private
     def find_evaluate
       @evaluate = Evaluate.find(params[:id])
+    end
+
+    def evaluate_params
+      params.require(:evaluate).permit(:title, :details)
     end
 
     def messages_params

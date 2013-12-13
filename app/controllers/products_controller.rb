@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :create_message]
+  before_action :find_product, only: [:show, :create_message, :show_messages]
   before_action :find_message, only: [:destroy_message, :edit_message, :update_message]
   def index
     @products = Product.all
@@ -43,6 +43,11 @@ class ProductsController < ApplicationController
       flash.now[:danger] = '修改失败，请重新修改！'
       render 'edit_message'
     end
+  end
+
+  def show_messages
+    @message = @product.messages.build
+    @message_items = @product.feed.page(params[:page])
   end
 
   private

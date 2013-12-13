@@ -39,6 +39,7 @@ Giggle::Application.routes.draw do
       delete :destroy_message
       get :edit_message
       patch :update_message
+      get :show_messages
     end
   end
   

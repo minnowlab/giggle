@@ -1,40 +1,34 @@
 <div class="row">
   <div class="col-lg-8">
-    <div>
-      <%= render 'shared/product_head' %>
-      <p>
-        <i class="fa fa-quote-left"></i>
-        <%= @product.description %>
-      </p>
-     <hr>
-      <p>
-        <i class="fa fa-clock-o"></i> 
-        创建时间： <%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
-      </p>
-      <hr>
-      <p>
-        <%= simple_format(@product.details) %>
-      </p>
-    </div>
+    <%= render 'shared/product_head' %>
     <hr>
+    <p>
+      <i class="fa fa-quote-left"></i>
+        <%= @product.description %>
+    </p>
+    <hr>
+    <p>
+      <i class="fa fa-clock-o"></i> 
+        创建时间： <%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
+    </p>
+    <hr>
+    <p>
+      <%= simple_format(@product.details) %>
+    </p>
+    <hr>
+    <hr>
+    <h4>评测</h4>
     <div>
-      <h4>评测</h4>
-      <em><%= link_to "所有评测", product_evaluates_path(product_id: @product) %></em>
       <% @evaluates.each do |evaluate| %>
         <h3><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h3>
         <p><%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.</p>
         <small><%= evaluate.details.truncate(50) %></small>
       <% end %>
     </div>
-
+    <hr>
     <hr>
     <div>
-      <%= paginate @message_items %>
-      <h4><%= @message_items.any? ? "评论(#{@product.feed.count}条评论, #{@product.feed.map(&:user_id).uniq.count}人参与)" : "暂无评论" %></h4>
-      <div id="message_items">
-        <%= render partial: 'message', collection: @message_items %>
-      </div>
-      <%= paginate @message_items %>
+      <%= render 'messages_show' %>
       <hr>
       <%= render 'message_form' %>
     </div>
