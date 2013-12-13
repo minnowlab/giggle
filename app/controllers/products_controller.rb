@@ -12,16 +12,15 @@ class ProductsController < ApplicationController
   end
  
   def create_message
-    @message = @product.messages.build(messages_params)
-    @message.user_id = current_user.id
-    if @message.save
-      flash[:success] = '评论成功！'
-      redirect_to @product
-    else
-      @evaluates = @product.evaluates.order("created_at desc").limit(5)
-      @message_items = @product.feed.page(params[:page])
-      flash.now[:danger] = '评论失败,请重新评论！'
-      render 'show'
+    @message = @product.messages.build(messages_params.merge(user: current_user))
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to @product }
+        format.js
+      else
+        format.html { render 'show' }
+        format.js
+      end
     end
   end
 
@@ -31,6 +30,13 @@ class ProductsController < ApplicationController
     @message.destroy
     flash[:success] = '删除成功！'
     redirect_to @product
+  end
+
+  def edit_message
+    
+  end
+
+  def update_message
     
   end
 

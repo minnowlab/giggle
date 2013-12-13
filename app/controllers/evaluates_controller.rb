@@ -26,8 +26,7 @@ class EvaluatesController < ApplicationController
 
 
   def create_message
-    @message = @evaluate.messages.build(messages_params)
-    @message.user_id = current_user.id
+    @message = @evaluate.messages.build(messages_params.merge(user: current_user))
     if @message.save
       flash[:success] = '评论成功！'
       redirect_to product_evaluate_path(:product_id, @evaluate)
@@ -44,6 +43,14 @@ class EvaluatesController < ApplicationController
     @message.destroy
     flash[:success] = "删除成功！"
     redirect_to product_evaluate_path(:product_id, @evaluate)
+  end
+
+  def edit_message
+    
+  end
+
+  def update_message
+    
   end
 
   private

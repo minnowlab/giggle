@@ -11,6 +11,7 @@
     <div>
       <%= simple_format(message.content) %>
       <% if current_user?(message.user) %>
+        <%= link_to "修改", edit_message_product_path(message) %>
         <%= link_to "删除", destroy_message_product_path(message_id: message), method: :delete %>
       <% end %>
     </div>

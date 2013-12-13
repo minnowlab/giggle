@@ -1,0 +1,5 @@
+<% if @message.errors.empty? %>
+  $('<%= j(render :partial => 'message', :object => @message) %> ').appendTo($('#message_items'));
+<% else %>
+  alert('@message.errors.full_messages.join(',')');
+<% end %>
