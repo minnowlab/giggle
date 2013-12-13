@@ -17,7 +17,7 @@ class EvaluatesController < ApplicationController
   end
 
   def new
-
+    
   end
 
   def update
