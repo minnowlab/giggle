@@ -1,19 +1,5 @@
 <%= form_for(@user, url: (@user.new_record? ? admin_users_path : admin_user_path(@user))) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@user.errors.count, "error") %> prohibited this message from being saved:</h4>
-
-          <ul>
-            <% @user.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", object: @user %>
 
   <div class="row">
     <div class="col-md-3">

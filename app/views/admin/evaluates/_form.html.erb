@@ -1,19 +1,5 @@
 <%= form_for(@evaluate, url: (@evaluate.new_record? ? admin_evaluates_path : admin_evaluate_path(@evaluate))) do |f| %>
-  <% if @evaluate.errors.any? %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@evaluate.errors.count, "error") %> prohibited thie message from being saved:</h4>
-    
-          <ul>
-            <% @evaluate.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", object: @evaluate %>
 
   <div class="row">
     <div class="col-md-3">

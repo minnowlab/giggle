@@ -1,19 +1,5 @@
 <%= form_for(@product_category, url: (@product_category.new_record? ? admin_product_categories_path : admin_product_category_path(@product_category))) do |f| %>
-  <% if @product_category.errors.any? %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@product_category.errors.count, "error") %> prohibited this message from being saved:</h4>
-
-          <ul>
-            <% @product_category.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", object: @product_category %>
 
   <div class="row">
     <div class="col-md-3">

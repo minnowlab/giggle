@@ -1,19 +1,5 @@
 <%= form_for(@message, url: (@message.new_record? ? admin_messages_path : admin_message_path(@message))) do |f| %>
-  <% if @message.errors.any? %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h4>
-
-          <ul>
-            <% @message.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", object: @message %>
 
   <div class="row">
     <div class="col-md-3">

@@ -6,18 +6,18 @@
 </div>
 
 <div class="row">
- <%= form_tag admin_users_path, class: "form-inline", method: "get" do %>
-  <div class="col-xs-2">
-    <%= text_field_tag :email, params[:email], placeholder: "邮箱", class: "form-control" %>
-  </div>
-  <div class="col-xs-2">
-    <%= text_field_tag :user, params[:user], placeholder: "用户名", class: "form-control" %>
-  </div>
-  <div class="col-xs-1">
-    <%= submit_tag "搜索", class: "btn btn-primary "%>
-  </div>
-    <% end %>
-    <%= link_to "返回", admin_users_path, class: "btn btn-primary" %>
+  <%= form_tag admin_users_path, class: "form-inline", method: "get" do %>
+    <div class="col-xs-2">
+      <%= text_field_tag :email, params[:email], placeholder: "邮箱", class: "form-control" %>
+    </div>
+    <div class="col-xs-2">
+      <%= text_field_tag :user, params[:user], placeholder: "用户名", class: "form-control" %>
+    </div>
+    <div class="col-xs-1">
+      <%= submit_tag "搜索", class: "btn btn-primary "%>
+    </div>
+  <% end %>
+  <%= link_to "返回", admin_users_path, class: "btn btn-primary" %>
 </div>
 
 <%= paginate @users %>
