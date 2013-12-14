@@ -3,19 +3,18 @@
 <div id="product_items">
   <div class="row">
     <% @products.each do |product| %>
-      <div class="col-xs-6 col-md-4">
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="item">
-          <div class="product_thumbnail"></div>
+          <div class="product_thumbnail">
+            <%= link_to image_tag(product.cover_picture(:small)), product_path(product) %>
+          </div>
           <div class="product_info">
-            <h4>
-              <%= product.name %>
-            </h4>
-            <p>
-              <%= product.description.truncate(15) %>
-            </p>
-            <p>
-              <%= link_to "查看产品", product_path(product), class: "btn btn-primary" %>
-            </p>
+            <h5>
+              <%= link_to product.name, product_path(product) %>
+            </h5>
+            <small>
+              <%= product.description.truncate(20) %>
+            </small>
           </div>
         </div>
       </div>

@@ -20,4 +20,8 @@ class Product < ActiveRecord::Base
   def feed
     Message.where("product_id = ?", id)
   end
+
+  def cover_picture picture_category
+    self.product_pictures.where(cover: true).first.try(:picture_url, picture_category)
+  end
 end

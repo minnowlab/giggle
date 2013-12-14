@@ -5,7 +5,7 @@
   -webkit-border-radius: 7px;
      -moz-border-radius: 7px;
           border-radius: 7px;
-  border: 1px solid #eee;
+  border: 1px solid #ebf5f8;
 
   a{
     font-weight: bold;
@@ -20,12 +20,21 @@
   }
 }
 
-#product_items .item {
-  background: white;
-  -webkit-border-radius: 7px;
-     -moz-border-radius: 7px;
-          border-radius: 7px;
-  border: 1px solid #eee;
-  margin-bottom: 20px;
-  padding: 10px;
+#product_items{
+  .item{
+    background: white;
+    -webkit-border-radius: 7px;
+       -moz-border-radius: 7px;
+            border-radius: 7px;
+    border: 1px solid #ebf5f8;
+    margin-bottom: 20px;
+    padding: 10px;
+    .product_thumbnail{
+      height: 253px;
+      overflow: hidden;
+      img{
+        width: 100%;
+      }
+    }
+  }
 }
