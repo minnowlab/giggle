@@ -36,14 +36,15 @@ Giggle::Application.routes.draw do
         post :create_message
         delete :destroy_message
         get :edit_message
-        post :update_message
+        patch :update_message
       end
     end
     member do
       post :create_message
       delete :destroy_message
       get :edit_message
-      post :update_message
+      patch :update_message
+      get :show_messages
     end
   end
   

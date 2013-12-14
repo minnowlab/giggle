@@ -1,13 +1,11 @@
 <div class="row">
   <div class="col-lg-8">
     <div>
-      <h2>
-        <%= @product.name %>
-      </h2>
+      <%= render 'shared/product_head' %>
     </div>
     <hr>
     <div>
-      <%= link_to "我想写评测", "#", class:"btn btn-primary" %>
+      <%= link_to "我想写评测", new_product_evaluate_path(product_id: @product), class:"btn btn-primary" %>
     </div>  
     <hr>
     <div>
