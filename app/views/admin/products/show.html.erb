@@ -36,10 +36,16 @@
     <div class="row">
       <hr>
       <% @product.product_pictures.each do |product_picture| %>
-        <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="col-xs-6 col-md-4">
           <div class="thumbnail">
-            <%= image_tag product_picture.picture_url(:small) %>
+            <div class="product_picture">
+              <%= image_tag product_picture.picture_url(:small) %>
+            </div>
             <div class="caption">
+              <%= link_to_if product_picture.cover, "已设为封面", "#", class: "btn btn-info btn-xs disabled" do %>
+                <%= link_to "设置为封面", setting_cover_admin_product_picture_path(product_picture), class: "btn btn-info btn-xs", method: :patch %>
+              <% end %>
+              <%= link_to "删除", admin_product_picture_path(product_picture), class: "btn btn-danger btn-xs", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
             </div>
           </div>
         </div>

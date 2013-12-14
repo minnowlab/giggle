@@ -11,6 +11,11 @@ Giggle::Application.routes.draw do
         post :create_product_picture
       end
     end
+    resources :product_pictures do
+      member do
+        patch :setting_cover
+      end
+    end
     resources :messages 
     resources :users
     resources :product_categories
