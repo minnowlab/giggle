@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 
-  has_many :messages
+  has_many :messages, :as => :messageable
   has_many :evaluates
   has_many :product_pictures
   belongs_to :product_category
@@ -18,6 +18,6 @@ class Product < ActiveRecord::Base
   end
 
   def feed
-    Message.where("product_id = ?", id)
+    Message.where("messageable_type LIKE ? AND messageable_id = ? ", "%Product%", id)
   end
 end

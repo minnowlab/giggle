@@ -53,7 +53,7 @@ class EvaluatesController < ApplicationController
 
   def destroy_message
     @message = Message.find(params[:message_id])
-    @evaluate = @message.evaluate
+    @evaluate = @message.messageable
     @message.destroy
     flash[:success] = "删除成功！"
     redirect_to product_evaluate_path(:product_id, @evaluate)

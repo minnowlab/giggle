@@ -4,11 +4,11 @@
       <li class="<%= 'active' if params[:sort].blank? %>">
         <%= link_to "默认", admin_messages_path(params.merge(sort: nil)) %>
       </li>
-      <li class="<%= 'active' if params[:sort] == 'evaluate' %>">
-        <%= link_to "产品", admin_messages_path(params.merge(sort: "evaluate")) %>
+      <li class="<%= 'active' if params[:sort] == 'Product' %>">
+        <%= link_to "产品", admin_messages_path(params.merge(sort: "Product")) %>
       </li>
-      <li class="<%= 'active' if params[:sort] == 'product' %>">
-        <%= link_to "评测", admin_messages_path(params.merge(sort: "product")) %>
+      <li class="<%= 'active' if params[:sort] == 'Evaluate' %>">
+        <%= link_to "评测", admin_messages_path(params.merge(sort: "Evaluate")) %>
       </li>
     </ul>
   </div>

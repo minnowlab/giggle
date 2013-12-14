@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy_message
-    @product = @message.product
+    @product = @message.messageable
     @message.destroy
     flash[:success] = '删除成功！'
     redirect_to @product

@@ -2,7 +2,7 @@ class Evaluate < ActiveRecord::Base
 
   belongs_to :product
   belongs_to :user
-  has_many :messages
+  has_many :messages, :as => :messageable
 
   validates :title, presence: true
   validates :details, presence: true
@@ -10,7 +10,7 @@ class Evaluate < ActiveRecord::Base
   validates :user_id, presence: true
 
   def feed
-    Message.where("evaluate_id = ?", id)
+    Message.where("messageable_type LIKE ? AND messageable_id = ?", "%Evaluate%", id)
   end
 
   def self.search_evaluate this_params
