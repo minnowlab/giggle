@@ -12,6 +12,11 @@
   }
   ul{
     margin: 30px 0 10px 30px;
+    li.active{
+      a{
+        color: #a67b41;
+      }
+    }
   }
   p{
     color: #b3b8ba;
