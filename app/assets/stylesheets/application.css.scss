@@ -2,15 +2,6 @@
  *= require font-awesome
  *= require bootstrap
  *= require sessions
- *= require user_navbar
+ *= require_directory ./home
  *= require_self
 */
-
-.product-nav-tabs{
-  margin-bottom: 20px;
-}
-
-.product-info{
-  margin-bottom: 20px;
-}
-

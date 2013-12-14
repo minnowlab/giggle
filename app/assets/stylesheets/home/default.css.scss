@@ -1,0 +1,22 @@
+body{
+  background-color: #f4fafc;
+}
+
+a{
+  color: #4c8ca1;
+}
+
+a:hover{
+  color: #a67b41;
+  font-weight: bold;
+}
+
+.btn-primary{
+  background-color: #4c8ca1;
+  border: 1px solid #b3b8ba;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+  background-color: #a67b4e;
+  border: 1px solid #bfbbb7;
+}
