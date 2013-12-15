@@ -10,7 +10,7 @@ class Evaluate < ActiveRecord::Base
   validates :user_id, presence: true
 
   def feed
-    Message.where("messageable_type LIKE ? AND messageable_id = ?", "%Evaluate%", id)
+    Message.where("messageable_type = 'Evaluate' AND messageable_id = ?", id)
   end
 
   def self.search_evaluate this_params

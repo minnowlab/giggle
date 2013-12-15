@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   end
 
   def feed
-    Message.where("messageable_type LIKE ? AND messageable_id = ? ", "%Product%", id)
+    Message.where("messageable_type = 'Product' AND messageable_id = ? ", id)
   end
 
   def cover_picture picture_category
