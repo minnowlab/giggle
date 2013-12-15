@@ -1,33 +1,29 @@
 <div class="row">
-  <div class="col-lg-8">
-    <div>
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div id="about_product">
       <%= render 'shared/product_head' %>
-    </div>
-    <hr>
-    <div>
-      <%= link_to "我想写评测", new_product_evaluate_path(product_id: @product), class:"btn btn-primary" %>
-    </div>  
-    <hr>
-    <div>
-      <% @evaluates.each do |evaluate| %>
-        <h3>
-        	<%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %>
-        </h3>
-        <p>
-        	<%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.
-        </p>
-        <small>
-        	<%= evaluate.details.truncate(300) %>
-        </small>
-        <hr style="border:1px dashed gray" />
-      <% end %>
-    </div>
-
-  </div>
-  
-
-  <div class="col-lg-4">
-    <div class="well">
+      <div id="all_evaluates">
+        <div>
+          <%= link_to "我想写评测", new_product_evaluate_path(product_id: @product), class:"btn btn-primary" %>
+        </div>  
+        <hr>
+        <div>
+          <% @evaluates.each do |evaluate| %>
+            <div class="evaluate_item">
+              <h3>
+                <%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %>
+              </h3>
+              <p>
+                <%= link_to evaluate.user.try(:name), "#" %>
+                <%= time_ago_in_words(evaluate.created_at) %> 前发布
+              </p>
+              <p>
+                <%= evaluate.details.truncate(300) %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
