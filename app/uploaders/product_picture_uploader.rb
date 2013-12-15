@@ -31,11 +31,11 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    resize_to_limit(800, 600)
+    process :resize_and_pad => [800, 800]
   end
 
   version :small do
-    resize_to_limit(400, 300)
+    process :resize_and_pad => [400, 400]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
