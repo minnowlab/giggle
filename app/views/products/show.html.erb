@@ -1,41 +1,72 @@
 <div class="row">
-  <div class="col-lg-8">
-    <%= render 'shared/product_head' %>
-    <hr>
-    <p>
-      <i class="fa fa-quote-left"></i>
-        <%= @product.description %>
-    </p>
-    <hr>
-    <p>
-      <i class="fa fa-clock-o"></i> 
-        创建时间： <%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
-    </p>
-    <hr>
-    <p>
-      <%= simple_format(@product.details) %>
-    </p>
-    <hr>
-    <hr>
-    <h4>评测</h4>
-    <div>
-      <% @evaluates.each do |evaluate| %>
-        <h3><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h3>
-        <p><%= evaluate.user.try(:name) %> <%= time_ago_in_words(evaluate.created_at) %> 前发布.</p>
-        <small><%= evaluate.details.truncate(50) %></small>
-      <% end %>
-    </div>
-    <hr>
-    <hr>
-    <div>
-      <%= render 'messages_show' %>
-      <hr>
-      <%= render 'message_form' %>
-    </div>
-  </div>
-
-  <div class="col-lg-4">
-    <div class="well">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div id="about_product">
+      <%= render 'shared/product_head' %>
+      <div id="product_info">
+        <div class="product_container">
+          <h3 class="product_name">
+            <i class="fa fa-info-circle"></i>
+            <%= @product.name %>
+          </h3>
+          <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+              <%= image_tag @product.cover_picture(:large) %>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-6">
+              <div class="product_description">
+                <ul class="list-unstyled">
+                  <li class="border_bottom">
+                    <label>价格</label>
+                    <strong>¥ <%= @product.price %></strong>
+                  </li>
+                  <li class="border_bottom">
+                    <label>创建时间</label>
+                    <span><%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
+                  </li>
+                  <li class="border_bottom">
+                    <label>产品描述</label>
+                    <span><%= @product.description %></span>
+                  </li>
+                  <li>
+                    <%= link_to "#", class: "btn btn-primary" do %>
+                      <i class="fa fa-shopping-cart"></i>
+                      购买
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <%= simple_format(@product.details) %>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h3>
+          <i class="fa fa-bullseye"></i>
+          评测
+        </h3>
+        <hr>
+        <div class="limit_evaluates">
+          <% @evaluates.each do |evaluate| %>
+            <div class="evaluate_item">
+              <h4><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h4>
+              <small>
+                <%= link_to evaluate.user.try(:name), "#" %> /  
+                <%= time_ago_in_words(evaluate.created_at) %> 前发布
+              </small>
+              <p class="evaluate_details_abbr"><%= evaluate.details.truncate(100) %></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="messages_container">
+          <%= render 'messages_show' %>
+          <%= render 'message_form' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

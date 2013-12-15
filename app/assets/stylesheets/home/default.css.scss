@@ -20,3 +20,19 @@ a:hover{
   background-color: #a67b4e;
   border: 1px solid #bfbbb7;
 }
+
+hr{
+  border-top: 1px solid #ebf5f8;
+}
+
+.menu_list{
+  color: #4c8ca1;
+  ul{
+    font-weight: bold;
+    li.active{
+      a{
+        color: #a67b41;
+      }
+    }
+  }
+}
