@@ -1,9 +1,8 @@
-<%= form_for(@message, url: create_message_product_evaluate_path(product: @product), method: :post) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-
-  <div class="row">
-    <div class="col-md-3">
-      <% if signed_in? %>
+<div class="row">
+  <div class="col-md-3">
+    <% if signed_in? %>
+      <%= form_for(@message, url: create_message_product_evaluate_path(product: @product), method: :post) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="form-group">
       	  <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
         </div>
@@ -13,11 +12,9 @@
         <div class="actions">
           <%= f.submit "确认提交", class: 'btn btn-primary' %>
         </div>
-        <hr>
-      <% else %>
-        请<%= link_to "登录", user_sign_in_path %>后发表评论!
-      <hr>
       <% end %>
-    </div>
+    <% else %>
+      请<%= link_to "登录", user_sign_in_path %>后发表评论!
+    <% end %>
   </div>
-<% end %>
+</div>

@@ -1,22 +1,30 @@
-<%= paginate @message_items %>
-<h4>
-  <%= @message_items.any? ? "评论(#{@evaluate.feed.count}条评论, #{@evaluate.feed.map(&:user_id).uniq.count}人参与)" : "暂无评论" %>
-</h4>
+<h3>
+  <i class="fa fa-comment-o"></i>
+  评论
+  <small>
+    （
+    <%= @message_items.any? ? "#{@product.feed.count}条评论，#{@product.feed.map(&:user_id).uniq.count}人参与" : "暂无评论" %>
+    ）
+  </small>
+</h3>
+<hr>
+<div id="all_messages">
   <% @message_items.each do |message| %>
-    <span>
-      <%= message.user.try(:name) %>
-    </span>,
-    <small>
-      <%= time_ago_in_words(message.created_at) %> 前发布.
-    </small>
-    <div>
-      <%= simple_format(message.content) %>
-      <% if current_user?(message.user) %>
-        <%= link_to "修改",  edit_message_product_evaluate_path(message_id: message) %>
-        <%= link_to "删除", destroy_message_product_evaluate_path(message_id: message), method: :delete %>
-      <% end %>
+    <div class="message_item">
+      <p>
+        <%= link_to message.user.try(:name), "#" %>    
+        <small>  
+          <%= time_ago_in_words(message.created_at) %> 前发布
+        </small>
+      </p>
+      <div>
+        <%= simple_format(message.content) %>
+        <% if current_user?(message.user) %>
+          <%= link_to "修改", edit_message_product_evaluate_path(message_id: message) %>
+          <%= link_to "删除", destroy_message_product_evaluate_path(message_id: message), method: :delete %>
+        <% end %>
+      </div>
     </div>
-    <hr>
   <% end %>
-
+</div>
 <%= paginate @message_items %>
