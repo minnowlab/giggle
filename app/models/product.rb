@@ -20,4 +20,8 @@ class Product < ActiveRecord::Base
   def feed
     Message.where("messageable_type LIKE ? AND messageable_id = ? ", "%Product%", id)
   end
+
+  def cover_picture picture_category
+    self.product_pictures.where(cover: true).first.try(:picture_url, picture_category)
+  end
 end

@@ -1,12 +1,12 @@
-<div class="text-center">
-  <h1>
-    <%= @product.name %>
-  </h1>	
-</div>
-<ul class="nav nav-tabs">
-  <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'show' %>"><%= link_to "产品", @product %></li>
-  <li class="<%= 'active' if params[:controller] == 'evaluates' %>"><%= link_to "评测", product_evaluates_path(product_id: @product) %></li>
-  <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'show_messages' %>"><%= link_to "留言", show_messages_product_path(@product) %></li>
-</ul>
-<div>
+<div id="about_product_select" class="menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    </li>
+    <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'show' %>"><%= link_to "产品", @product %></li>
+    <li> / </li>
+    <li class="<%= 'active' if params[:controller] == 'evaluates' %>"><%= link_to "评测", product_evaluates_path(product_id: @product) %></li>
+    <li> / </li>
+    <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'show_messages' %>"><%= link_to "留言", show_messages_product_path(@product) %></li>
+  </ul>
 </div>

@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div id="products_sort" class="menu_list"> 
+      <ul class="list-inline">
+        <li>
+          <i class="fa fa-search"></i>
+        </li>
+        <li class="<%= 'active' if params[:sort].blank? %>">
+          <%= link_to "默认排序", products_path %>
+        </li>
+        <li> / </li>
+        <li class="<%= 'active' if params[:sort] == 'popularity' %>">
+          <%= link_to "人气", products_path(sort: "popularity") %>
+        </li>
+      </ul>
+      <p>根据您的需求或者喜好进行排序。</p>
+    </div>
+  </div>
+</div>
