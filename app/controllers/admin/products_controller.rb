@@ -59,6 +59,18 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
 
+  def destroy_product_picture
+    @product_picture = ProductPicture.find(params[:id])
+    @product = @product_picture.product
+    @product_picture.destroy
+    flash[:success] = '删除成功！'
+    redirect_to admin_product_path(@product)
+  end
+
+  def update_product_picture_cover
+        
+  end
+
   private
   
     def find_product

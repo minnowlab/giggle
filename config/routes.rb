@@ -9,6 +9,8 @@ Giggle::Application.routes.draw do
     resources :products do
       member do
         post :create_product_picture
+        delete :destroy_product_picture
+        patch :update_product_picture_cover
       end
     end
     resources :messages 
