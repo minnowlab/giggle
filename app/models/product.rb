@@ -21,6 +21,10 @@ class Product < ActiveRecord::Base
     Message.where("messageable_type = 'Product' AND messageable_id = ? ", id)
   end
 
+  def product_picture_feed
+    ProductPicture.where("product_id = ?", id)
+  end
+
   def cover_picture picture_category
     self.product_pictures.where(cover: true).first.try(:picture_url, picture_category)
   end
