@@ -22,20 +22,14 @@ Giggle::Application.routes.draw do
   end
 
   resources :products, only: [:index, :show] do
+    resources :messages, except: [:new, :show]
     resources :evaluates do
       member do
         post :create_message
-        delete :destroy_message
-        get :edit_message
-        patch :update_message
       end
     end
     member do
       post :create_message
-      delete :destroy_message
-      get :edit_message
-      patch :update_message
-      get :show_messages
     end
   end
   

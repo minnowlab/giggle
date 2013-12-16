@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :create_message, :show_messages]
-  before_action :find_message, only: [:destroy_message, :edit_message, :update_message]
+
   def index
     @products = Product.all
   end
@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   def show
     @evaluates = @product.evaluates.order("created_at desc").limit(5)
     @message = @product.messages.build
-    @message_items = @product.feed.page(params[:page])
+    @messages = @product.feed.page(params[:page])
   end
  
   def create_message
@@ -22,13 +22,6 @@ class ProductsController < ApplicationController
         format.js
       end
     end
-  end
-
-  def destroy_message
-    @product = @message.messageable
-    @message.destroy
-    flash[:success] = '删除成功！'
-    redirect_to @product
   end
 
   def edit_message
@@ -45,11 +38,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show_messages
-    @message = @product.messages.build
-    @message_items = @product.feed.page(params[:page])
-  end
-
   private
 
     def find_product
@@ -58,13 +46,5 @@ class ProductsController < ApplicationController
 
     def messages_params
       params.require(:message).permit(:content, :product_id)
-    end
-
-    def find_message
-      @message = Message.find(params[:message_id])
-    end
-
-    def message_update_params
-      params.require(:message).permit(:content)
     end
 end

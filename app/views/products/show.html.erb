@@ -65,7 +65,20 @@
           <% end %>
         </div>
         <div class="messages_container">
-          <%= render 'messages_show' %>
+          <h3>
+            <i class="fa fa-comment-o"></i>
+            评论
+            <small>
+              （
+              <%= @messages.any? ? "#{@product.feed.count}条评论，#{@product.feed.map(&:user_id).uniq.count}人参与" : "暂无评论" %>
+              ）
+            </small>
+          </h3>
+          <hr>
+          <div id="all_messages">
+            <%= render partial: 'messages/message', collection: @messages %>
+          </div>
+          <%= paginate @messages %>
           <%= render 'message_form' %>
         </div>
       </div>

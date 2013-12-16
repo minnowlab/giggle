@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div id="about_product">
+      <%= render 'shared/product_head' %>
+      <div id="messages_item_info">
+        <h3>
+          <i class="fa fa-comment-o"></i>
+          评论
+          <small>
+            （
+            <%= @messages.any? ? "#{@product.feed.count}条评论，#{@product.feed.map(&:user_id).uniq.count}人参与" : "暂无评论" %>
+            ）
+          </small>
+        </h3>
+        <hr>
+        <div id="all_messages">
+          <%= render partial: 'message', collection: @messages %>
+        </div>
+        <%= paginate @messages %>
+        <%= render 'message_form' %>
+      </div>
+    </div>
+  </div>
+</div>
