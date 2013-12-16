@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
 
   def update_message
     if @message.update(message_update_params) 
-      @product = @message.product
+      @product = @message.messageable
       flash[:success] = '修改成功！'
       redirect_to @product
     else
