@@ -30,7 +30,7 @@
         </div>
         <hr>
       <% else %>
-        请<%= link_to "登录", user_sign_in_path %>后发表评论!
+        请<%= link_to "登录", "#sign_in_modal", "data-toggle" => "modal" %>后发表评论!
       <hr>
       <% end %>
     </div>

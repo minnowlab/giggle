@@ -42,8 +42,8 @@
               <%= image_tag product_picture.picture_url(:small) %>
             </div>
             <div class="caption">
-              <%= link_to_if product_picture.cover, "已设为封面", "#", class: "btn btn-info btn-xs disabled" do %>
-                <%= link_to "设置为封面", setting_cover_admin_product_picture_path(product_picture), class: "btn btn-info btn-xs", method: :patch %>
+              <%= link_to_if @product.cover == product_picture, "已设为封面", "#", class: "btn btn-info btn-xs disabled" do %>
+                <%= link_to "设置为封面", setting_cover_admin_product_path(cover_id: product_picture.id), class: "btn btn-info btn-xs", method: :patch %>
               <% end %>
               <%= link_to "删除", admin_product_picture_path(product_picture), class: "btn btn-danger btn-xs", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
             </div>

@@ -1,21 +1,15 @@
 Giggle::Application.routes.draw do
 
-  get '/sign-in', to: 'sessions#new', as: :user_sign_in
-  delete '/sign-out', to: 'sessions#destroy', as: :user_sign_out
-  resources :sessions, only: :create
+  resource :session, only: [:create, :destroy]
 
   namespace :admin do
     root 'products#index'
     resources :products do
       member do
-        post :create_product_picture
-      end
-    end
-    resources :product_pictures do
-      member do
         patch :setting_cover
       end
     end
+    resources :product_pictures
     resources :messages 
     resources :users
     resources :product_categories
@@ -26,9 +20,6 @@ Giggle::Application.routes.draw do
         end
       end
   end
- 
-  resources :admins
-  match '/signup', to: 'admins#new', via: 'get'
 
   resources :products, only: [:index, :show] do
     resources :evaluates do
@@ -56,7 +47,6 @@ Giggle::Application.routes.draw do
       patch :update_password
     end
   end
-
 
   root 'products#index'
 end

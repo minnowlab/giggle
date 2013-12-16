@@ -5,12 +5,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">添加产品图片</h4>
       </div>
-      <%= form_for(@product_picture, url: create_product_picture_admin_product_path(@product), html: {multipart: true}) do |f| %>
+      <%= form_for(@product_picture, url: admin_product_pictures_path, html: {multipart: true}) do |f| %>
         <div class="modal-body">
           <div class="form-group">
             <%= f.label :picture %>
             <%= f.file_field :picture %>
             <%= f.hidden_field :picture_cache %>
+            <%= f.hidden_field :product_id, value: @product.id %>
           </div>
         </div>
         <div class="modal-footer">

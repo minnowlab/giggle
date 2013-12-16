@@ -19,21 +19,15 @@
     <div class="main_nav navbar-collapse navbar-ex1-collapse collapse">
       <ul class="navigation list-inline pull-right">
         <% if signed_in? %>
-          <li><%= link_to "后台管理", admin_root_path %></li>
-          <li><%= link_to "您好，#{current_user.name}", current_user %></li>
-          <li>
-            <%= link_to user_sign_out_path, method: "delete" do %>
-              <i class="fa fa-sign-out"></i>
-              登出
-            <% end %>
-          </li>
+          <%= render "layouts/navbar/success_sign_in_navbar" %>
         <% else %>
           <li>
-            <%= link_to user_sign_in_path do %>
+            <%= link_to "#sign_in_modal", "data-toggle" => "modal" do %>
               <i class="fa fa-sign-in"></i>
               登入
             <% end %>
           </li>
+          <%= render "layouts/shared/sign_in_modal" %>
         <% end %>
       </ul>
     </div>

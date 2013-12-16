@@ -1,0 +1,43 @@
+<div class="modal" id="sign_in_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">请登录</h4>
+      </div>
+      <%= form_tag session_path, class: "form-horizontal", remote: true do %>
+        <div class="modal-body">
+          <div id="sign_in_alert" class="hidden alert alert-danger"></div>
+          <div class="form-group">
+            <label class="control-label col-sm-3">邮箱</label>
+            <div class="col-sm-7">
+              <%= text_field_tag :email, "", class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3">密码</label>
+            <div class="col-sm-7">
+              <%= password_field_tag :password, "", class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag :remember_me, nil, false %>
+                  记得我？
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= button_tag class: "btn btn-primary", type: :submit do %>
+            <i class="fa fa-sign-in"></i> 
+            登录
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
