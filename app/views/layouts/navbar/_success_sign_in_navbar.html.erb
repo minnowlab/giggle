@@ -1,0 +1,8 @@
+<li><%= link_to "后台管理", admin_root_path %></li>
+<li><%= link_to "您好，#{current_user.name}", current_user %></li>
+<li>
+  <%= link_to session_path, method: "delete" do %>
+    <i class="fa fa-sign-out"></i>
+    登出
+  <% end %>
+</li>
