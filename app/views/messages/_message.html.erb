@@ -8,8 +8,8 @@
   <div>
     <%= simple_format(message.content) %>
     <% if current_user?(message.user) %>
-      <%= link_to "修改", edit_message_product_path(message_id: message) %>
-      <%= link_to "删除", destroy_message_product_path(message_id: message), method: :delete %>
+      <%= link_to "修改", edit_product_message_path(@product, message) %>
+      <%= link_to "删除", product_message_path(@product, message), method: :delete %>
     <% end %>
   </div>
 </div>

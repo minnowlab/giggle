@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-3">
+    <% if signed_in? %>
+      <%= form_for(@message, url: product_messages_path(@product, model_name: controller_name), method: :post, remote: true) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
+          <%= f.hidden_field :messageable_id, value: params[:id] %>
+        </div>
+        <hr>
+        <em>不超过140个字</em>
+        <hr>
+        <div class="actions">
+          <%= f.submit "确认提交", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    <% else %>
+      请<%= link_to "登录", "#sign_in_modal", "data-toggle" => "modal" %>后发表评论!
+    <% end %>
+  </div>
+</div>
