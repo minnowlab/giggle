@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h2>
+    <%= @product_picture.title %>
+  </h2>
+</div>
+
+<div class="word_center">
+  产品：<%= @product_picture.product.try(:name) %>
+  <br>
+  创建时间：<%= @product_picture.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
+</div>
+

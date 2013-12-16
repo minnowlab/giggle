@@ -1,6 +1,10 @@
 class Admin::ProductPicturesController < Admin::BaseController
-  before_action :find_product_picture, only: [:destroy, :setting_cover]
+  before_action :find_product_picture, only: [:show, :destroy, :setting_cover]
  
+  def index
+    @product_pictures = ProductPicture.page(params[:page])
+  end
+
   def destroy
     @product_picture.destroy
     flash[:success] = '删除成功！'
