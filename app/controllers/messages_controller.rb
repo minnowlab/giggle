@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = @product.messages.build(message_params.merge(user: current_user))
+    @feed_count = @product.feed
     respond_to do |format|
       if @message.save
         format.html { redirect_to :back }
@@ -45,6 +46,7 @@ class MessagesController < ApplicationController
   def create_evaluate_message
     @evaluate = Evaluate.find(params[:evaluate_id])
     @message = @evaluate.messages.build(message_params.merge(user: current_user))
+    @feed_count = @evaluate.feed
     respond_to do |format|
       if @message.save
         format.html { redirect_to :back }
