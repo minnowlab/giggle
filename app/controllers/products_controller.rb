@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @evaluates = @product.evaluates.order("created_at desc").limit(5)
+    @evaluates = @product.evaluates.order("id desc").limit(5)
     @message = @product.messages.build
     @messages = @product.feed.page(params[:page])
   end

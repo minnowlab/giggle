@@ -8,8 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    model_name = params[:model_name].capitalize.chop
-    @message = current_user.messages.build(message_params.merge(messageable_type: model_name))
+    @message = @product.messages.build(message_params.merge(user: current_user))
     respond_to do |format|
       if @message.save
         format.html { redirect_to :back }
@@ -43,6 +42,20 @@ class MessagesController < ApplicationController
     redirect_to :back
   end
 
+  def create_evaluate_message
+    @evaluate = Evaluate.find(params[:evaluate_id])
+    @message = @evaluate.messages.build(message_params.merge(user: current_user))
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to :back }
+        format.js { render 'create'}
+      else
+        format.html { redirect_to :back }
+        format.js { render 'create'}
+      end
+    end
+  end
+
   private
     def find_product
       @product = Product.find(params[:product_id])
@@ -53,6 +66,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:content, :messageable_id)
+      params.require(:message).permit(:content)
     end
 end

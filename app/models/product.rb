@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 
-  has_many :messages, :as => :messageable
+  has_many :messages, as: :messageable
   has_many :evaluates
   has_many :product_pictures
   belongs_to :product_category

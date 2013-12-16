@@ -2,7 +2,7 @@ class Evaluate < ActiveRecord::Base
 
   belongs_to :product
   belongs_to :user
-  has_many :messages, :as => :messageable
+  has_many :messages, as: :messageable
 
   validates :title, presence: true
   validates :details, presence: true

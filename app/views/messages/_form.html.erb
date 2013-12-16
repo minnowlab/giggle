@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col-md-3">
     <% if signed_in? %>
-      <%= form_for(@message, url: product_messages_path(@product, model_name: controller_name), method: :post, remote: true) do |f| %>
+      <%= form_for(@message, url: @evaluate.nil? ? product_messages_path(@product) : create_evaluate_message_product_messages_path(@product, evaluate_id: @evaluate.id), method: :post, remote: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="form-group">
           <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
-          <%= f.hidden_field :messageable_id, value: params[:id] %>
         </div>
         <hr>
         <em>不超过140个字</em>

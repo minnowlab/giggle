@@ -2,8 +2,10 @@ class Message < ActiveRecord::Base
 
   belongs_to :messageable, :polymorphic => true
   belongs_to :user
-  default_scope -> { order('created_at DESC') }
+
   validates :content, presence: true, length: { maximum: 140 }
+  validates :messageable_type, inclusion: { in: %w(Product Evaluate),
+                                            message: "%{value} is not a valid type" }
 
   def self.message_search this_params
     message = Message.all
@@ -16,6 +18,10 @@ class Message < ActiveRecord::Base
     message = message.where(user_id: users_ids) if this_params[:user].present?
     message = message.where(messageable_type: this_params[:sort]) if this_params[:sort].present?
     message
+  end
+
+  def self.filter_model_name model_name
+    model_name == 'evaluates' ? "Evaluate" : "Product"
   end
 
 end

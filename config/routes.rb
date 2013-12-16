@@ -22,7 +22,11 @@ Giggle::Application.routes.draw do
   end
 
   resources :products, only: [:index, :show] do
-    resources :messages, except: [:new, :show]
+    resources :messages, except: [:new, :show] do
+      collection do
+        post :create_evaluate_message
+      end
+    end
     resources :evaluates
   end
   
