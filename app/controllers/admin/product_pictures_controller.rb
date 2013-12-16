@@ -9,12 +9,12 @@ class Admin::ProductPicturesController < Admin::BaseController
       redirect_to :back
     else
       flash.now[:danger] = '创建产品图片失败，请重新创建！'
-      render 'show'
+      redirect_to :back
     end
   end
  
   def index
-    @product_pictures = ProductPicture.page(params[:page])
+    @product_pictures = ProductPicture.search_picture(params).page(params[:page])
   end
 
   def destroy

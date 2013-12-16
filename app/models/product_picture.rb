@@ -6,6 +6,15 @@ class ProductPicture < ActiveRecord::Base
 
   before_save :update_picture_attributes
 
+
+  def self.search_picture this_params
+    product_picture = ProductPicture.all
+    product_ids = Product.where("name LIKE ?", "%#{this_params[:product_key]}%").map(&:id) if this_params[:product_key].present?
+    product_picture = product_picture.where("product_id = ?", product_ids) if this_params[:product_key].present?
+    product_picture
+  end
+
+
   private
   
     def update_picture_attributes
