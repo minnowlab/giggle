@@ -7,12 +7,26 @@ class MessagesController < ApplicationController
     @messages = @product.feed.page(params[:page])
   end
 
+  def create
+    model_name = params[:model_name].capitalize.chop
+    @message = current_user.messages.build(message_params.merge(messageable_type: model_name))
+    respond_to do |format|
+      if @message.save
+        format.html { redirect_to :back }
+        format.js
+      else
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
+
   def edit
   end
 
   def update
     if @message.update(message_params)
-      flash[:success] = "编辑失败，请重新编辑！"
+      flash[:success] = "留言更新成功！"
       redirect_page = @message.messageable_type == "Evaluate" ?
                       product_evaluate_path(@product, @message.messageable) : 
                       product_path(@product)
@@ -39,6 +53,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :messageable_id)
     end
 end

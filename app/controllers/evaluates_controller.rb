@@ -1,5 +1,5 @@
 class EvaluatesController < ApplicationController
-  before_action :find_evaluate, only: [:show, :create_message]
+  before_action :find_evaluate, only: [:show, :edit, :update]
 
   def index
   	@product = Product.find(params[:product_id])
@@ -10,9 +10,6 @@ class EvaluatesController < ApplicationController
     @message = @evaluate.messages.build
     @messages = @evaluate.feed.page(params[:page])
     @product = @evaluate.product
-  end
-
-  def edit
   end
 
   def new
@@ -32,19 +29,10 @@ class EvaluatesController < ApplicationController
     end
   end
 
-  def update
+  def edit
   end
 
-  def create_message
-    @message = @evaluate.messages.build(messages_params.merge(user: current_user))
-    if @message.save
-      flash[:success] = '评论成功！'
-      redirect_to product_evaluate_path(:product_id, @evaluate)
-    else
-      @message_items = @evaluate.feed.page(params[:page])
-      flash.now[:danger] = '评论失败,请重新评论!'
-      render 'show'
-    end
+  def update
   end
 
   private
@@ -55,9 +43,4 @@ class EvaluatesController < ApplicationController
     def evaluate_params
       params.require(:evaluate).permit(:title, :details)
     end
-
-    def messages_params
-      params.require(:message).permit(:content, :evaluate_id, :product_id)
-    end
-
 end

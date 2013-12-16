@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :create_message, :show_messages]
+  before_action :find_product, only: :show
 
   def index
     @products = Product.all
@@ -10,41 +10,10 @@ class ProductsController < ApplicationController
     @message = @product.messages.build
     @messages = @product.feed.page(params[:page])
   end
- 
-  def create_message
-    @message = @product.messages.build(messages_params.merge(user: current_user))
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @product }
-        format.js
-      else
-        format.html { render 'show' }
-        format.js
-      end
-    end
-  end
-
-  def edit_message
-  end
-
-  def update_message
-    if @message.update(message_update_params) 
-      @product = @message.messageable
-      flash[:success] = '修改成功！'
-      redirect_to @product
-    else
-      flash.now[:danger] = '修改失败，请重新修改！'
-      render 'edit_message'
-    end
-  end
 
   private
 
     def find_product
       @product = Product.find(params[:id])
-    end
-
-    def messages_params
-      params.require(:message).permit(:content, :product_id)
     end
 end
