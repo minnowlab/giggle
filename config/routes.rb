@@ -6,14 +6,10 @@ Giggle::Application.routes.draw do
     root 'products#index'
     resources :products do
       member do
-        post :create_product_picture
-      end
-    end
-    resources :product_pictures do
-      member do
         patch :setting_cover
       end
     end
+    resources :product_pictures
     resources :messages 
     resources :users
     resources :product_categories

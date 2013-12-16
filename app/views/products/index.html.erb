@@ -6,7 +6,7 @@
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="item">
           <div class="product_thumbnail">
-            <%= link_to image_tag(product.cover_picture(:small)), product_path(product) %>
+            <%= link_to image_tag(product.cover.try(:picture_url, :small)), product_path(product) %>
           </div>
           <div class="product_info">
             <h5>

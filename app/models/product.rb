@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
   has_many :evaluates
   has_many :product_pictures
   belongs_to :product_category
+  belongs_to :cover, class_name: "ProductPicture", foreign_key: "cover_id"
   
   validates :name, presence: true
   validates :product_category_id, presence: true
@@ -19,9 +20,5 @@ class Product < ActiveRecord::Base
 
   def feed
     Message.where("messageable_type = 'Product' AND messageable_id = ? ", id)
-  end
-
-  def cover_picture picture_category
-    self.product_pictures.where(cover: true).first.try(:picture_url, picture_category)
   end
 end
