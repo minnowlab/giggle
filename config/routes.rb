@@ -1,5 +1,6 @@
 Giggle::Application.routes.draw do
 
+  get "user_pictures/show"
   resource :session, only: [:create, :destroy]
 
   namespace :admin do
@@ -36,8 +37,11 @@ Giggle::Application.routes.draw do
       get :change_name
       patch :update_name
       patch :update_password
+      patch :setting_cover
     end
   end
+
+  resources :user_pictures
 
   root 'products#index'
 end
