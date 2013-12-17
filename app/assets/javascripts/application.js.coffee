@@ -3,3 +3,4 @@
 #= require turbolinks
 #= require bootstrap/collapse
 #= require bootstrap/modal
+#= require bootstrap/carousel

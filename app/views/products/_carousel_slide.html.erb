@@ -1,0 +1,22 @@
+<div id="product_picture_carousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @product.product_pictures.each_with_index do |product_picture, index| %>
+      <li data-target="#product_picture_carousel" data-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>"></li>
+    <% end %>
+  </ol>
+
+  <div class="carousel-inner">
+    <% @product.product_pictures.each_with_index do |product_picture, index| %>
+      <div class="item <%= 'active' if index == 0 %>">
+        <%= image_tag product_picture.picture_url(:large) %>
+      </div>
+    <% end %>
+  </div>
+
+  <a class="left carousel-control" href="#product_picture_carousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#product_picture_carousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
