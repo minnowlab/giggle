@@ -1,2 +1,9 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <% @users.each do |user| %>
+  	<div class="col-md-2">
+  	  <%= link_to image_tag(user.find_avatar.try(:picture_url, :cover)), show_user_user_path(user) %>
+  	  <br>
+  	  <%= user.name %>
+  	</div>
+  <% end %>
+</div>

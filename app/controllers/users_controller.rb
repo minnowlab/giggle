@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   layout "user"
 
   def index
+    @users = User.all.page(params[:page])
   end
 
   def show

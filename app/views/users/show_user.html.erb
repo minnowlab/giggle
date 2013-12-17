@@ -1,27 +1,7 @@
 <%= content_for :sidebar do %>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+  <div class="container">
+    <%= image_tag @user.find_avatar.try(:picture_url, :mini) %>
+    <hr>
+    <%= @user.name %>
+  </div>
 <% end %> 
