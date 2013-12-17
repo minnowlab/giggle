@@ -1,17 +1,27 @@
-<div class="list-group-item active">用户基本信息</div>
-<div class="row">
-  <div class="container">
-    <div class="col-md-2">
-      <%= image_tag current_user.find_avatar.try(:picture_url, :cover) %>
-    </div> 
-    <div class="col-md-8">
-      用户昵称：<%= current_user.name %>
-      <br>
-      登录邮件地址：<%= current_user.email %>
-    </div>
-  </div>
-</div>
-
 <%= content_for :sidebar do %>
   <%= render 'layouts/shared/user_them' %>
 <% end %> 
+
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    </li>
+    <li class="active">
+      <%= link_to "评测", @user %>
+    </li>
+  </ul>
+</div>
+
+<div class="user_info_evaluates">
+  <% @evaluates.each do |evaluate| %>
+    <div class="evaluate_item">
+      <h4><%= link_to evaluate.title, product_evaluate_path(evaluate.product, evaluate) %></h4>
+      <small>
+        <i class="fa fa-bullseye"></i> 
+        <%= time_ago_in_words(evaluate.created_at) %>前发布
+      </small>
+      <p class="evaluate_details_abbr"><%= simple_format(evaluate.details.truncate(100)) %></p>
+    </div>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, except: :index
   layout "user"
 
   def index
@@ -6,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @evaluates = @user.evaluates
   end
 
   def edit
@@ -13,10 +15,6 @@ class UsersController < ApplicationController
 
   def update
 
-  end
-
-  def create
-    
   end
 
   def change_password
@@ -60,7 +58,6 @@ class UsersController < ApplicationController
   end
 
   def show_user
-    @user = User.find(params[:id])
   end
 
   def show_users
@@ -68,6 +65,10 @@ class UsersController < ApplicationController
   end
 
   private
+    def find_user
+      @user = User.find(params[:id])
+    end
+
     def users_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end

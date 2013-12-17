@@ -10,14 +10,14 @@
   <div class="container">
     <%= render "layouts/navbar/user_navbar" %>
     <%= render "layouts/shared/flash_notice" %>
-  </div>
-  <div class="container">
-    <div class="center-block">
-      <div class="col-md-4", id="sidebar">
+    <div class="row">
+      <div class="col-xs-12 col-md-3", id="sidebar">
         <%= yield :sidebar %>
       </div>
-      <div class="col-md-8">
-       <%= yield %>
+      <div class="col-xs-12 col-md-9">
+        <div id="user_container">
+          <%= yield %>
+        </div>
       </div>
     </div>
   </div>

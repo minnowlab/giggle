@@ -1,0 +1,30 @@
+#user_picture, #user_menu{
+  background: white;
+  -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+          border-radius: 7px;
+  border: 1px solid #ebf5f8;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#user_container{
+  background: white;
+  -webkit-border-radius: 7px;
+     -moz-border-radius: 7px;
+          border-radius: 7px;
+  border: 1px solid #ebf5f8;
+  .user_info_navbar{
+    border-bottom: 1px solid #ebf5f8;
+    ul{
+      margin: 10px;
+    }
+  }
+  .user_info_evaluates{
+    padding: 10px;
+    .evaluate_item{
+      margin: 10px;
+      border-bottom: 1px solid #ebf5f8;
+    }
+  }
+}
