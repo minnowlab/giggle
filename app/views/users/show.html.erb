@@ -1,16 +1,14 @@
 <div class="list-group-item active">用户基本信息</div>
 <div class="row">
   <div class="container">
-    <div class="col-md-4">
-      <%= image_tag current_user.cover_id.try(:picture_url, :mini) %>
+    <div class="col-md-2">
+      <%= image_tag current_user.find_avatar.try(:picture_url, :cover) %>
     </div> 
     <div class="col-md-8">
-    <div class="row">
       用户昵称：<%= current_user.name %>
-    </div>
-    <div class="row">
+      <br>
       登录邮件地址：<%= current_user.email %>
-     </div>
+    </div>
   </div>
 </div>
 

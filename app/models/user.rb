@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def find_avatar
-    UserPicture.where("id = ?", cover_id)
+    UserPicture.where("id = ?", cover_id).first
   end
 
   #Role define
