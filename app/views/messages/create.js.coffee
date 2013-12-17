@@ -1,6 +1,8 @@
 <% if @message.errors.empty? %>
-  $('<%= j(render :partial => 'message', :object => @message) %>').appendTo($('#all_messages'));
-  $('#message_content').val("");
+  $('#message_form_alert').removeClass('hidden').addClass('alert-success').text('回复成功。')
+  $('<%= j(render partial: 'message', object: @message) %>').appendTo($('#all_messages'))
+  $('#message_content').val("")
+  $('#message_count_prompt').text('<%= render partial: 'shared/message_count_prompt', locals: { feed_count: @feed_count, messages: @message } %>')
 <% else %>
-  alert("<%= @message.errors.full_messages.join(',') %>");
+  $('#message_form_alert').removeClass('hidden').addClass('alert-danger').text('<%= @message.errors.full_messages.join(',') %>')
 <% end %>

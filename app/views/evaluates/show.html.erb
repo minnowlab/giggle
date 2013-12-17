@@ -20,10 +20,8 @@
           <h3>
             <i class="fa fa-comment-o"></i>
             评论
-            <small>
-              （
-              <%= @messages.any? ? "#{@evaluate.feed.count}条评论，#{@evaluate.feed.map(&:user_id).uniq.count}人参与" : "暂无评论" %>
-              ）
+            <small id="message_count_prompt">
+              <%= render partial: "shared/message_count_prompt", locals: { feed_count: @evaluate.feed, messages: @messages } %>
             </small>
           </h3>
           <hr>

@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-xs-12 col-md-6">
     <% if signed_in? %>
       <%= form_for(@message, url: @evaluate.nil? ? product_messages_path(@product) : create_evaluate_message_product_messages_path(@product, evaluate_id: @evaluate.id), method: :post, remote: true) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+        <div id="message_form_alert" class="hidden alert"></div>
         <div class="form-group">
-          <%= f.text_area :content, size: "40x5", placeholder: "发表评论..." %>
+          <%= f.text_area :content, size: "40x5", placeholder: "发表评论...", class: "form-control" %>
         </div>
         <hr>
         <em>不超过140个字</em>

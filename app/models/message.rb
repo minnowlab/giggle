@@ -19,9 +19,4 @@ class Message < ActiveRecord::Base
     message = message.where(messageable_type: this_params[:sort]) if this_params[:sort].present?
     message
   end
-
-  def self.filter_model_name model_name
-    model_name == 'evaluates' ? "Evaluate" : "Product"
-  end
-
 end

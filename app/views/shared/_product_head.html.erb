@@ -3,10 +3,16 @@
     <li>
       <i class="fa fa-comment-o"></i>
     </li>
-    <li class="<%= 'active' if params[:controller] == 'products' && params[:action] == 'show' %>"><%= link_to "产品", @product %></li>
+    <li class="<%= 'active' if params[:controller] == 'products' %>">
+      <%= link_to "产品", @product %>
+    </li>
     <li> / </li>
-    <li class="<%= 'active' if params[:controller] == 'evaluates' %>"><%= link_to "评测", product_evaluates_path(product_id: @product) %></li>
+    <li class="<%= 'active' if params[:controller] == 'evaluates' %>">
+      <%= link_to "评测", product_evaluates_path(product_id: @product) %>
+    </li>
     <li> / </li>
-    <li class="<%= 'active' if params[:controller] == 'messages' %>"><%= link_to "留言", product_messages_path(@product) %></li>
+    <li class="<%= 'active' if params[:controller] == 'messages' %>">
+      <%= link_to "留言", product_messages_path(@product) %>
+    </li>
   </ul>
 </div>
