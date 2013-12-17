@@ -43,6 +43,9 @@ gem "font-awesome-rails"
 #Data paging
 gem 'kaminari'
 
+# Markdown
+gem 'redcarpet'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
