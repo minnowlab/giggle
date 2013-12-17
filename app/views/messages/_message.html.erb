@@ -11,9 +11,9 @@
         </small>
 
       <div>
-        <%= simple_format(message.content) %>
+        <%= markdown(message.content) %>
         <% if current_user?(message.user) %>
-         <%= link_to "修改", edit_product_message_path(@product, message) %>
+          <%= link_to "修改", edit_product_message_path(@product, message) %>
           <%= link_to "删除", product_message_path(@product, message), method: :delete %>
         <% end %>
       </div>
