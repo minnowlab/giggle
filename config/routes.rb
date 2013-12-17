@@ -31,13 +31,15 @@ Giggle::Application.routes.draw do
     resources :evaluates
   end
   
-  resource :user do
+  resources :users do
     member do
       get :change_password
       get :change_name
       patch :update_name
       patch :update_password
       patch :setting_cover
+      get :show_user
+      get :show_users
     end
   end
 

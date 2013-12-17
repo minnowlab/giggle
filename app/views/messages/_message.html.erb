@@ -1,12 +1,12 @@
 <div class="message_item">
   <div class="row">
     <div class= "col-md-1">
-      <%= image_tag message.user.find_avatar.try(:picture_url, :cover) %>
+      <%=link_to image_tag(message.user.find_avatar.try(:picture_url, :cover)), show_user_user_path(message.user) %>
     </div>
 
     <div class="col-md-10">
       <small> 
-        <%= link_to message.user.try(:name), "#" %> /   
+        <%= link_to message.user.try(:name), show_user_user_path(message.user) %> /   
         <%= time_ago_in_words(message.created_at) %> 前发布
         </small>
 

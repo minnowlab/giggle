@@ -12,18 +12,19 @@
     <%= render "layouts/shared/flash_notice" %>
   </div>
   <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <table class="table table-bordered">
-          <tbody>
-            <tr>
-              <td class="col-md-2"><%= render "layouts/shared/user_them" %></td>
-              <td class="col-md-5"><%= yield %></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="center-block">
+      <div class="col-md-4", id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+      <div class="col-md-8">
+       <%= yield %>
       </div>
     </div>
   </div>
+  <hr>
+  <div class="text-center">
+    Copyright 2013 © MinNowlab
+  </div>
 </body>
 </html>
+

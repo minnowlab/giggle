@@ -58,6 +58,14 @@ class UsersController < ApplicationController
     redirect_to user_picture_path(current_user)
   end
 
+  def show_user
+    @user = User.find(params[:id])
+  end
+
+  def show_users
+    @users = User.all.page(params[:page])
+  end
+
   private
     def users_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
