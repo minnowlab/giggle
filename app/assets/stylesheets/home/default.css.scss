@@ -36,3 +36,13 @@ hr{
     }
   }
 }
+
+.carousel-indicators li{
+  background-color: #4C8CA1;
+  border: 1px solid #FFF;
+}
+
+.carousel-indicators .active{
+  background-color: #A67B4E;
+  border: 1px solid #FFF;
+}

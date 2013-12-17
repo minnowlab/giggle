@@ -4,3 +4,4 @@
 #= require bootstrap/collapse
 #= require bootstrap/modal
 #= require bootstrap/transition
+#= require bootstrap/carousel
