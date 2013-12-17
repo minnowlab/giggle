@@ -8,20 +8,9 @@
         </div>  
         <hr>
         <div>
-          <% @evaluates.each do |evaluate| %>
-            <div class="evaluate_item">
-              <h3>
-                <%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %>
-              </h3>
-              <p>
-                <%= link_to evaluate.user.try(:name), "#" %>
-                <%= time_ago_in_words(evaluate.created_at) %> 前发布
-              </p>
-              <p>
-                <%= evaluate.details.truncate(300) %>
-              </p>
-            </div>
-          <% end %>
+        <div class="limit_evaluates">
+          <%= render 'products/evaluates' %>
+        </div>
         </div>
       </div>
     </div>

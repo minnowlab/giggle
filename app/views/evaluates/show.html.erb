@@ -6,11 +6,16 @@
         <h3>
           <%= @evaluate.title %>
         </h3>
-        <p>
-          <%= link_to @evaluate.user.try(:name), "#" %> / 
-          <i class="fa fa-clock-o"></i> 
-          <%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
-        </p>
+        <div class="row">
+          <div class= "col-md-1">
+            <%= image_tag @evaluate.user.find_avatar.try(:picture_url, :cover) %>
+          </div>
+          <p>
+            <%= link_to @evaluate.user.try(:name), "#" %> / 
+            <i class="fa fa-clock-o"></i> 
+            <%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
+          </p>
+        </div>
         <hr>
         <p>
           <%= simple_format(@evaluate.details) %>

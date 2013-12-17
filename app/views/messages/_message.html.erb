@@ -5,12 +5,11 @@
     </div>
 
     <div class="col-md-10">
-      <p>
-        <%= link_to message.user.try(:name), "#" %>    
-        <small>  
-          <%= time_ago_in_words(message.created_at) %> 前发布
+      <small> 
+        <%= link_to message.user.try(:name), "#" %> /   
+        <%= time_ago_in_words(message.created_at) %> 前发布
         </small>
-      </p>
+
       <div>
         <%= simple_format(message.content) %>
         <% if current_user?(message.user) %>

@@ -53,16 +53,7 @@
         </h3>
         <hr>
         <div class="limit_evaluates">
-          <% @evaluates.each do |evaluate| %>
-            <div class="evaluate_item">
-              <h4><%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %></h4>
-              <small>
-                <%= link_to evaluate.user.try(:name), "#" %> /  
-                <%= time_ago_in_words(evaluate.created_at) %> 前发布
-              </small>
-              <p class="evaluate_details_abbr"><%= evaluate.details.truncate(100) %></p>
-            </div>
-          <% end %>
+          <%= render 'evaluates' %>
         </div>
         <div class="messages_container">
           <h3>
