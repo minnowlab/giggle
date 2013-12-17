@@ -1,24 +1,36 @@
-<div class="modal fade" id="add_product_picture_modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">添加产品图片</h4>
+<%= render 'add_user_picture_modal' %>
+<div class="row">
+  <div class="col-md-2">
+    <p class="lead">图片管理</p>
+      <div class="col-sm-9">
+        <div class="list-group">
+          <i class="glyphicon glyphicon-floppy-open"></i>
+          <%= link_to "添加图片", "#add_user_picture_modal", class: "list-group-item",  "data-toggle" => "modal" %>
+        </div>
       </div>
-      <%= form_for(@user_picture, url: user_pictures_path, html: {multipart: true}) do |f| %>
-        <div class="modal-body">
-          <div class="form-group">
-            <%= f.label :picture %>
-            <%= f.file_field :picture %>
-            <%= f.hidden_field :picture_cache %>
-            <%= f.hidden_field :product_id, value: current_user.id %>
+  </div>
+  <i class="glyphicon glyphicon-heart-empty"></i>
+    <%= current_user.feed.any? ? "我的图片" : "还没图片？，赶紧上传吧!" %>  
+  <div class="pull-right">
+    <i class="glyphicon glyphicon-home"></i>
+    <%= link_to "返回", current_user %>
+  </div>
+  <hr>
+  <div class="col-md-10">
+    <% current_user.feed.each do |user_picture| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <div class="product_picture">
+            <%= image_tag user_picture.picture_url(:mini) %>
+          </div>
+          <div class="caption">
+            <%= link_to_if current_user.cover_id == user_picture.id, "已设为头像", "#", class: "btn btn-primary btn-xs disabled" do %>
+              <%= link_to "设置为头像", setting_cover_user_path(cover_id: user_picture.id), class: "btn btn-info btn-xs", method: :patch %>
+            <% end %>
+            <%= link_to "删除", user_picture_path(user_picture), class: "btn btn-danger btn-xs", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
           </div>
         </div>
-        <div class="modal-footer">
-          <%= f.submit "提交", class: 'btn btn-primary' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
+    <% end %>
+ </div>
 </div>
-

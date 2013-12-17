@@ -51,6 +51,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def setting_cover
+    current_user.skip_password = true
+    current_user.update(cover_id: params[:cover_id])
+    flash[:success] = '设置成功！'
+    redirect_to user_picture_path(current_user)
+  end
+
   private
     def users_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)

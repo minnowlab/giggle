@@ -1,8 +1,8 @@
 <div class="list-group-item active">用户基本信息</div>
 <div class="row">
   <div class="container">
-    <div class="col-md-1">
-      <%= image_tag current_user.cover_id.try(:picture_url, :cover) %>
+    <div class="col-md-4">
+      <%= image_tag current_user.cover_id.try(:picture_url, :mini) %>
     </div> 
     <div class="col-md-8">
     <div class="row">

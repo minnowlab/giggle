@@ -9,7 +9,7 @@ class UserPicture < ActiveRecord::Base
 
 	private
 	  def update_picture_attributes
-	  	if picture.present? && picture.changed?
+	  	if picture.present? && picture_changed?
 	  		self.picture_content_type = picture.file.content_type
 	  		self.picture_file_size = picture.file.size
 	  	end

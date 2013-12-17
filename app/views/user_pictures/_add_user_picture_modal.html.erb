@@ -1,0 +1,22 @@
+<div class="modal fade" id="add_user_picture_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">添加产品图片</h4>
+      </div>
+      <%= form_for(@user_picture, url: user_pictures_path, html: {multipart: true}) do |f| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :picture %>
+            <%= f.file_field :picture %>
+            <%= f.hidden_field :picture_cache %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "提交", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

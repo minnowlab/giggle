@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :evaluates
   has_many :messages
+  has_many :user_pictures
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
@@ -23,6 +24,14 @@ class User < ActiveRecord::Base
   def self.find_by_remember_token(token)
     user = User.find(token.split('$').first)
     (user && user.remember_token == token) ? user : nil
+  end
+
+  def feed
+    UserPicture.where("user_id = ?", id)
+  end
+
+  def find_avatar
+    UserPicture.where("id = ?", cover_id)
   end
 
   #Role define
