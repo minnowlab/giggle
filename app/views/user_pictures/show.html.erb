@@ -18,10 +18,10 @@
   <hr>
   <div class="col-md-10">
     <% current_user.feed.each do |user_picture| %>
-      <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="thumbnail">
           <div class="product_picture">
-            <%= image_tag user_picture.picture_url(:mini) %>
+            <%= image_tag user_picture.picture_url(:small) %>
           </div>
           <div class="caption">
             <%= link_to_if current_user.cover_id == user_picture.id, "已设为头像", "#", class: "btn btn-primary btn-xs disabled" do %>
