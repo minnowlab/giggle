@@ -37,11 +37,12 @@ gem 'carrierwave'
 gem "mini_magick"
 
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.0.0.0'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "font-awesome-rails"
 
 #Data paging
 gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
 # Markdown
 gem 'redcarpet'
