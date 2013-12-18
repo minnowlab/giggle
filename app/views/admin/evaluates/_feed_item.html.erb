@@ -7,6 +7,6 @@
      <%= time_ago_in_words(feed_item.created_at) %> ago.
   </span>
   <% if current_user?(feed_item.user) %>
-    <%= link_to "删除", destroy_message_admin_evaluate_path(message_id: feed_item), method: :delete %>
+    <%= link_to "删除", destroy_message_admin_evaluate_path(message_id: feed_item), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
   <% end %>
 </li>

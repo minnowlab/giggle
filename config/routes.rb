@@ -43,7 +43,7 @@ Giggle::Application.routes.draw do
       get :change_password
       patch :update_password
     end
-    resources :user_pictures, only: [:show, :destroy]
+    resources :user_pictures, only: [:show, :create, :destroy]
   end
 
   root 'products#index'
