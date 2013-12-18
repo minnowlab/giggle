@@ -2,30 +2,17 @@
   <%= render 'layouts/shared/user_them' %>
 <% end %> 
 
-<div class="user_info_navbar menu_list">
-  <ul class="list-inline">
-    <li>
-      <i class="fa fa-comment-o"></i>
-    </li>
-    <li class="active">
-      <%= link_to "修改用户信息", edit_user_path(current_user) %>
-    </li>
-    <li> / </li>
-    <li>
-      <%= link_to "修改登录密码", change_password_user_path(current_user) %>
-    </li>
-  </ul>
-</div>
+<%= render "account_edit_navbar" %>
 
 <div class="user_edit_info">
   <div class="row">
-    <%= form_for current_user, url: user_path, method: :patch, html: {class: "form-horizontal"} do |f| %>
+    <%= form_for @user, url: account_path, method: :patch, html: {class: "form-horizontal"} do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="form-group">
         <%= label_tag(:email, "邮箱：", class: "col-sm-3 control-label") %>
         <div class="col-sm-8">
           <p class="form-control-static">
-            <%= current_user.email %>
+            <%= @user.email %>
           </p>
         </div>
       </div>
@@ -33,7 +20,7 @@
         <%= label_tag(:current_name, "用户名：", class: "col-sm-3 control-label") %>
         <div class="col-sm-8">
           <p class="form-control-static">
-            <%= current_user.name %>
+            <%= @user.name %>
           </p>
         </div>
       </div>

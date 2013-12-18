@@ -31,14 +31,21 @@ Giggle::Application.routes.draw do
     resources :evaluates
   end
   
-  resources :users, except: [:new, :create] do
+  resources :users, only: [:index, :show] do
     member do
-      get :change_password, :show_user, :show_users
-      patch :update_password, :setting_cover
+      get :show_user, :show_users
+      patch :setting_cover
     end
   end
 
   resources :user_pictures
+
+  resource :account, only: [:edit, :update] do
+    collection do
+      get :change_password
+      patch :update_password
+    end
+  end
 
   root 'products#index'
 end

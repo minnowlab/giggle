@@ -1,0 +1,14 @@
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    </li>
+    <li class="<%= 'active' if action_name == 'edit' %>">
+      <%= link_to "修改用户信息", edit_account_path %>
+    </li>
+    <li> / </li>
+    <li class="<%= 'active' if action_name == 'change_password' %>">
+      <%= link_to "修改登录密码", change_password_account_path %>
+    </li>
+  </ul>
+</div>

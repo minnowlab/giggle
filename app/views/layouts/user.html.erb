@@ -12,6 +12,14 @@
     <%= render "layouts/shared/flash_notice" %>
     <div class="row">
       <div class="col-xs-12 col-md-3", id="sidebar">
+        <div id="user_picture">
+          <div class="user_picture">
+            <%= image_tag @user.find_avatar.try(:picture_url, :mini), class: "img-rounded" %>
+          </div>
+          <h5>
+            <%= @user.name %>
+          </h5>
+        </div>
         <%= yield :sidebar %>
       </div>
       <div class="col-xs-12 col-md-9">
