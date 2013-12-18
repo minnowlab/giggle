@@ -9,9 +9,16 @@
     </div>
   </div>
   <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+      <%= link_to "编辑", "#", class: "edit btn btn-default btn-primary btn-xs" %>
+      <%= link_to "预览", "#", class: "preview btn btn-default btn-xs" %>
+    </div>
+  </div>
+  <div class="form-group">
     <%= label_tag(:details, "内容：", class: "col-sm-1 control-label") %>
     <div class="col-sm-11">
       <%= f.text_area :details, size: "60x20", class: "form-control" %>
+      <div id="preview" class="hidden"></div>
     </div>
   </div>
   <hr>

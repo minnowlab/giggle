@@ -6,3 +6,4 @@
 #= require bootstrap/transition
 #= require bootstrap/carousel
 #= require bootstrap/dropdown
+#= require_directory ./home
