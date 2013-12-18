@@ -29,6 +29,9 @@ Giggle::Application.routes.draw do
       end
     end
     resources :evaluates
+    collection do
+      post :preview_markdown
+    end
   end
   
   resources :users, only: [:index, :show] do

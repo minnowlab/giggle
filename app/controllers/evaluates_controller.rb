@@ -26,13 +26,6 @@ class EvaluatesController < ApplicationController
     end
   end
 
-  def destroy
-    @evaluate.destroy
-    flash[:success] = '删除成功！'
-    redirect_to :back 
-
-  end
-
   def edit
     @product = Product.find(params[:product_id])
   end
@@ -45,6 +38,12 @@ class EvaluatesController < ApplicationController
       flash.now[:danger] = '编辑失败，请重新创建！'
       render 'edit'
     end
+  end
+
+  def destroy
+    @evaluate.destroy
+    flash[:success] = '删除成功！'
+    redirect_to :back 
   end
 
   private
