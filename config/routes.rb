@@ -33,8 +33,8 @@ Giggle::Application.routes.draw do
   
   resources :users, except: [:new, :create] do
     member do
-      get :change_password, :change_name, :show_user, :show_users
-      patch :update_name, :update_password, :setting_cover
+      get :change_password, :show_user, :show_users
+      patch :update_password, :setting_cover
     end
   end
 

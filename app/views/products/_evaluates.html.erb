@@ -7,7 +7,7 @@
       </div>
       <small>
         <%= link_to evaluate.user.try(:name), show_user_user_path(evaluate.user) %> /  
-        <%= time_ago_in_words(evaluate.created_at) %> 前发布
+        <%= time_ago_in_words(evaluate.created_at) %>前发布
       </small>
     </div>
     <p class="evaluate_details_abbr"><%= simple_format(evaluate.details.truncate(100)) %></p>

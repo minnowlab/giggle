@@ -14,16 +14,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
-  end
-
-  def change_password
-  end
-
-  def change_name
-  end
-
-  def update_name
     if current_user.authenticate(params[:user][:password])
       current_user.skip_password = true
       current_user.update(name: params[:user][:name])
@@ -31,8 +21,11 @@ class UsersController < ApplicationController
       redirect_to user_path
     else
       flash.now[:danger] = '修改失败，请输入正确密码！'
-      render 'change_name'
+      render 'edit'
     end
+  end
+
+  def change_password
   end
 
   def update_password
