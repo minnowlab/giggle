@@ -1,24 +1,23 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12">
-    <div id="about_product">
-      <%= render 'shared/product_head' %>
-      <div id="evaluate_item_info">
-        <%= form_for(@evaluate, url:(@evaluate.new_record? ? product_evaluates_path(product_id: @product) :  product_evaluate_path(product_di: @product))) do |f| %>
-          <%= render 'shared/error_messages', object: f.object %>
-          <h4>评测产品: <%= @product.name %></h4>
-          <hr>
-          标题: 
-          <%= f.text_field :title, placeholder: "请输入评测标题!", class: "form-control" %>
-          <hr>
-          <div class="form-group">
-          	<%= f.text_area :details, size: "60x10", placeholder: "请输入评测内容！", class: "form-control" %>
-          </div>
-          <hr>
-          <div class="actions">
-            <%= f.submit "确认提交", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
+<%= form_for(@evaluate, url: @evaluate.new_record? ? product_evaluates_path(@product) : product_evaluate_path(@product, @evaluate), html: {class: "form-horizontal"}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <h4>评测产品: <%= @product.name %></h4>
+  <hr>
+  <div class="form-group">
+    <%= label_tag(:title, "标题：", class: "col-sm-1 control-label") %>
+    <div class="col-sm-11">
+      <%= f.text_field :title, class: "form-control" %>
     </div>
   </div>
-</div>
+  <div class="form-group">
+    <%= label_tag(:details, "内容：", class: "col-sm-1 control-label") %>
+    <div class="col-sm-11">
+      <%= f.text_area :details, size: "60x20", class: "form-control" %>
+    </div>
+  </div>
+  <hr>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+      <%= f.submit "提交修改", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

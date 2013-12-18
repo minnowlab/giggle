@@ -104,3 +104,12 @@
   margin-bottom: 20px;
   border-bottom: 1px solid #ebf5f8;
 }
+
+#new_message{
+  .form-group{
+    margin-bottom: 0;
+  }
+  .actions{
+    margin-top: 10px;
+  }
+}

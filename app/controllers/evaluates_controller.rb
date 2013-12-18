@@ -1,28 +1,25 @@
 class EvaluatesController < ApplicationController
   before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
+  before_action :find_product
 
   def index
-  	@product = Product.find(params[:product_id])
     @evaluates = @product.evaluates
   end
 
   def show
     @message = @evaluate.messages.build
     @messages = @evaluate.feed.page(params[:page])
-    @product = @evaluate.product
   end
 
   def new
-    @product = Product.find(params[:product_id])
     @evaluate = @product.evaluates.build
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @evaluate = @product.evaluates.build(evaluate_params.merge(user: current_user))
     if @evaluate.save
       flash[:success] = '评测创建成功！'
-      redirect_to product_evaluate_path(:product_id, @evaluate)
+      redirect_to product_evaluate_path(@product, @evaluate)
     else
       flash.now[:danger] = '创建失败，请重新创建！'
       render 'new'
@@ -41,17 +38,21 @@ class EvaluatesController < ApplicationController
 
   def update
     if @evaluate.update(evaluate_params)
-      flash[:success] = '评测修改成功！'
-      redirect_to product_evaluate_path(:product_id, @evaluate)
+      flash[:success] = '评测编辑成功！'
+      redirect_to product_evaluate_path(@product, @evaluate)
     else
-      flash.now[:danger] = '修改失败，请重新修改！'
-      render "edit"
+      flash.now[:danger] = '编辑失败，请重新创建！'
+      render 'edit'
     end
   end
 
   private
     def find_evaluate
       @evaluate = Evaluate.find(params[:id])
+    end
+
+    def find_product
+      @product = Product.find(params[:product_id])
     end
 
     def evaluate_params
