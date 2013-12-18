@@ -29,7 +29,8 @@ class EvaluatesController < ApplicationController
   def destroy
     @evaluate.destroy
     flash[:success] = '删除成功！'
-    redirect_to :back
+    redirect_to :back 
+
   end
 
   def edit
@@ -58,4 +59,5 @@ class EvaluatesController < ApplicationController
     def evaluate_params
       params.require(:evaluate).permit(:title, :details)
     end
+
 end
