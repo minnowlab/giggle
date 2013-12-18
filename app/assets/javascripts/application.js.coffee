@@ -5,3 +5,4 @@
 #= require bootstrap/modal
 #= require bootstrap/transition
 #= require bootstrap/carousel
+#= require bootstrap/dropdown

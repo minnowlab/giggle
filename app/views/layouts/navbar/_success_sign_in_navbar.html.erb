@@ -1,5 +1,20 @@
-<li><%= link_to "后台管理", admin_root_path %></li>
-<li><%= link_to "您好，#{current_user.name}", current_user %></li>
+<li>
+  <div class="dropdown">
+  <%= link_to "#", "data-toggle"=>"dropdown" do %>
+    您好，
+    <%= current_user.name %> 
+    <i class="fa fa-caret-down"></i>
+  <% end %>
+  <ul id="user_navbar_dropdown" class="dropdown-menu">
+    <li>
+      <%= link_to "个人信息", current_user %>
+    </li>
+    <li>
+      <%= link_to "后台管理", admin_root_path %>
+    </li>
+  </ul>
+</li>
+<li> / </li>
 <li>
   <%= link_to session_path, method: "delete" do %>
     <i class="fa fa-sign-out"></i>
