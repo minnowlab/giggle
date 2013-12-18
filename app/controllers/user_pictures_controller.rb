@@ -1,5 +1,10 @@
 class UserPicturesController < ApplicationController
+  before_action :find_user
+  layout "user"
 
+  def index
+    @user_pictures = @user.user_pictures
+  end
 
   def show
   	@user_picture = UserPicture.new
@@ -28,8 +33,13 @@ class UserPicturesController < ApplicationController
 
   end
 
-  def user_picture_params
-    params.require(:user_picture).permit(:picture)
-  end
+  private
+    def find_user
+      @user = current_user
+    end
+    
+    def user_picture_params
+      params.require(:user_picture).permit(:picture)
+    end
 
 end

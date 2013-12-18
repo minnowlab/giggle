@@ -38,13 +38,12 @@ Giggle::Application.routes.draw do
     end
   end
 
-  resources :user_pictures
-
   resource :account, only: [:edit, :update] do
     collection do
       get :change_password
       patch :update_password
     end
+    resources :user_pictures
   end
 
   root 'products#index'
