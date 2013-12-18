@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   has_many :evaluates
   has_many :messages
   has_many :user_pictures
-  
+  has_many :collectionships, foreign_key: "user_id", dependent: :destroy
+  has_many :collections, through: :collectionships, source: :product
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
 
@@ -32,6 +34,18 @@ class User < ActiveRecord::Base
 
   def find_avatar
     UserPicture.where("id = ?", cover_id).first
+  end
+
+  def collecting?(product)
+    collectionships.find_by(product_id: product.id)
+  end
+
+  def collect!(product)
+    collectionships.create!(product_id: product.id)
+  end
+
+  def uncollect!(product)
+    collectionships.find_by(product_id: product.id).destroy
   end
 
   #Role define
