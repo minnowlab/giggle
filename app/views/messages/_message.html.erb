@@ -1,20 +1,22 @@
 <div class="message_item">
   <div class="row">
     <div class= "col-md-1">
-      <%=link_to image_tag(message.user.find_avatar.try(:picture_url, :cover)), show_user_user_path(message.user) %>
+      <%=link_to image_tag(message.user.find_avatar.try(:picture_url, :cover)), user_path(message.user) %>
     </div>
 
     <div class="col-md-10">
       <small> 
-        <%= link_to message.user.try(:name), show_user_user_path(message.user) %> /   
+        <%= link_to message.user.try(:name), user_path(message.user) %> /   
         <%= time_ago_in_words(message.created_at) %> 前发布
         </small>
 
       <div>
         <%= markdown(message.content) %>
         <% if current_user?(message.user) %>
+        <small>
           <%= link_to "修改", edit_product_message_path(@product, message) %>
           <%= link_to "删除", product_message_path(@product, message), method: :delete %>
+        </small>
         <% end %>
       </div>
     </div>

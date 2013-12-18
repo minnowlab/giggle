@@ -1,5 +1,5 @@
 class EvaluatesController < ApplicationController
-  before_action :find_evaluate, only: [:show, :edit, :update]
+  before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
 
   def index
   	@product = Product.find(params[:product_id])
@@ -29,10 +29,24 @@ class EvaluatesController < ApplicationController
     end
   end
 
+  def destroy
+    @evaluate.destroy
+    flash[:success] = '删除成功！'
+    redirect_to :back
+  end
+
   def edit
+    @product = Product.find(params[:product_id])
   end
 
   def update
+    if @evaluate.update(evaluate_params)
+      flash[:success] = '评测修改成功！'
+      redirect_to product_evaluate_path(:product_id, @evaluate)
+    else
+      flash.now[:danger] = '修改失败，请重新修改！'
+      render "edit"
+    end
   end
 
   private

@@ -2,22 +2,55 @@
   <ul class="list-inline">
     <li>
       <i class="fa fa-comment-o"></i>
-    </li>
-    <li class="active">
-      <%= link_to "评测", @user %>
-    </li>
+    <li class="active">评测</li>
+    <br>
+    <br>
+    <div class="container">
+      <% @evaluates.each do |evaluate| %>
+        <%= link_to evaluate.title, product_evaluate_path(evaluate.product, evaluate) %>
+      <br>
+      <% end %>...
+      <div>
+        <%= link_to "点击查看更多！", show_evaluates_user_path(@user) %>
+      </div>
+    </div>
   </ul>
 </div>
 
-<div class="user_info_evaluates">
-  <% @evaluates.each do |evaluate| %>
-    <div class="evaluate_item">
-      <h4><%= link_to evaluate.title, product_evaluate_path(evaluate.product, evaluate) %></h4>
-      <small>
-        <i class="fa fa-bullseye"></i> 
-        <%= time_ago_in_words(evaluate.created_at) %>前发布
-      </small>
-      <p class="evaluate_details_abbr"><%= simple_format(evaluate.details.truncate(100)) %></p>
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    <li class="active">收藏</li>
+    <br>
+    <br>
+    <div class="container">
+      <% @evaluates.each do |evaluate| %>
+        <%= link_to evaluate.title, "#" %>
+      <br>
+      <% end %>...
+      <div>
+        <%= link_to "点击查看更多！", "#" %>
+      </div>
     </div>
-  <% end %>
+  </ul>
+</div>
+
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    <li class="active">好友</li>
+    <br>
+    <br>
+    <div class="container">
+      <% @evaluates.each do |evaluate| %>
+        <%= link_to evaluate.title, "#" %>
+      <br>
+      <% end %>...
+      <div>
+        <%= link_to "点击查看更多！", "#" %>
+      </div>
+    </div>
+  </ul>
 </div>

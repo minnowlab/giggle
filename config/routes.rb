@@ -33,8 +33,8 @@ Giggle::Application.routes.draw do
   
   resources :users, only: [:index, :show] do
     member do
-      get :show_user, :show_users
       patch :setting_cover
+      get :show_evaluates
     end
   end
 
@@ -43,7 +43,7 @@ Giggle::Application.routes.draw do
       get :change_password
       patch :update_password
     end
-    resources :user_pictures
+    resources :user_pictures, only: [:show, :destroy]
   end
 
   root 'products#index'

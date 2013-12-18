@@ -1,0 +1,27 @@
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    </li>
+    <li class="active">
+      <%= link_to "评测", @user %>
+    </li>
+  </ul>
+</div>
+
+<div class="user_info_evaluates">
+  <% @evaluates.each do |evaluate| %>
+    <div class="evaluate_item">
+      <h4><%= link_to evaluate.title, product_evaluate_path(evaluate.product, evaluate) %></h4>
+      <small>
+        <i class="fa fa-bullseye"></i> 
+        <%= time_ago_in_words(evaluate.created_at) %>前发布 
+        <% if current_user?(evaluate.user) %>
+        <%= link_to "修改", edit_product_evaluate_path(evaluate.product, evaluate) %>
+        <%= link_to "删除",  product_evaluate_path(evaluate.product, evaluate), method: :delete %>
+        <% end %>
+      </small>
+      <p class="evaluate_details_abbr"><%= simple_format(evaluate.details.truncate(100)) %></p>
+    </div>
+  <% end %>
+</div>
