@@ -4,13 +4,11 @@
       <%= render 'shared/product_head' %>
       <div id="all_evaluates">
         <div>
-          <%= link_to "我想写评测", new_product_evaluate_path(product_id: @product), class:"btn btn-primary" %>
+          <%= link_to "我想写评测", new_product_evaluate_path(@product), class:"btn btn-primary" %>
         </div>  
         <hr>
-        <div>
         <div class="limit_evaluates">
-          <%= render 'products/evaluates' %>
-        </div>
+          <%= render partial: 'evaluate', collection: @evaluates %>
         </div>
       </div>
     </div>

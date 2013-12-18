@@ -1,0 +1,23 @@
+<%= form_for(@evaluate, url: @evaluate.new_record? ? product_evaluates_path(@product) : product_evaluate_path(@product, @evaluate), html: {class: "form-horizontal"}) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <h4>评测产品: <%= @product.name %></h4>
+  <hr>
+  <div class="form-group">
+    <%= label_tag(:title, "标题：", class: "col-sm-1 control-label") %>
+    <div class="col-sm-11">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:details, "内容：", class: "col-sm-1 control-label") %>
+    <div class="col-sm-11">
+      <%= f.text_area :details, size: "60x20", class: "form-control" %>
+    </div>
+  </div>
+  <hr>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+      <%= f.submit "提交修改", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
