@@ -1,0 +1,42 @@
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="glyphicon glyphicon-bookmark"></i>
+    </li>
+    <li class="active">
+      <%= link_to "收藏", @user %>
+    </li>
+  </ul>
+</div>
+
+<div id="product_items">
+  <div class="row">
+    <% @collections.each do |collection| %>
+      <div class="col-xs-12 col-sm-6 col-md-2">
+        <div class="item">
+          <div class="product_thumbnail">
+            <%= link_to image_tag(collection.cover.try(:picture_url, :mini)), collection %>
+          </div>
+          <div class="product_info">
+            <h5>
+              <%= link_to collection.name, collection %>
+            </h5>
+            <small>
+              <%= collection.description.truncate(8) %>
+            </small>
+          </div>
+          <% if current_user?(@user) %>
+            <div class="caption">
+              <%= form_for(current_user.collectionships.find_by(product_id: collection.id), html: { method: :delete }) do |f| %>
+                <div class="collection_status" data-toggle="tooltip" data-placement="right" title="已收藏">
+                  <i class="glyphicon glyphicon-bookmark"></i>
+                </div>
+                  <%= f.submit "取消收藏", class: "btn btn-xs" %>
+              <% end %>
+            </div>
+          <% end %>          
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

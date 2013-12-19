@@ -37,7 +37,7 @@ Giggle::Application.routes.draw do
   resources :users, only: [:index, :show] do
     member do
       patch :setting_cover
-      get :show_evaluates
+      get :show_evaluates, :show_collections
     end
   end
 

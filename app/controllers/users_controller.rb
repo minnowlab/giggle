@@ -7,11 +7,16 @@ class UsersController < ApplicationController
   end
 
   def show_evaluates
-    @evaluates = @user.evaluates
+    @evaluates = @user.evaluates.order("id DESC")
+  end
+
+  def show_collections
+    @collections = @user.collections.order("id DESC")
   end
 
   def show
     @evaluates = @user.evaluates.limit(8)
+    @collections = @user.collections.order("id DESC").limit(8)
   end
 
   def setting_cover

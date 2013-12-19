@@ -11,7 +11,7 @@
       <br>
       <% end %>...
       <div>
-        <%= link_to "点击查看更多！", show_evaluates_user_path(@user) %>
+        <%= link_to "点击查看更多评测！", show_evaluates_user_path(@user) %>
       </div>
     </div>
   </ul>
@@ -20,17 +20,17 @@
 <div class="user_info_navbar menu_list">
   <ul class="list-inline">
     <li>
-      <i class="fa fa-comment-o"></i>
+      <i class="glyphicon glyphicon-bookmark"></i>
     <li class="active">收藏</li>
     <br>
     <br>
     <div class="container">
-      <% @evaluates.each do |evaluate| %>
-        <%= link_to evaluate.title, "#" %>
+      <% @collections.each do |collection| %>
+        <%= link_to collection.name, collection %>
       <br>
       <% end %>...
       <div>
-        <%= link_to "点击查看更多！", "#" %>
+        <%= link_to "点击查看更多收藏！",  show_collections_user_path(@user) %>
       </div>
     </div>
   </ul>
@@ -39,7 +39,7 @@
 <div class="user_info_navbar menu_list">
   <ul class="list-inline">
     <li>
-      <i class="fa fa-comment-o"></i>
+      <i class="glyphicon glyphicon-user"></i>
     <li class="active">好友</li>
     <br>
     <br>
