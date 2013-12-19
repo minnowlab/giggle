@@ -1,0 +1,5 @@
+<% if current_user.collecting?(@product) %>
+  <%= render 'collectionships/uncollect' %>
+<% else %>
+  <%= render 'collectionships/collect' %>
+<% end %>

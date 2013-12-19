@@ -1,0 +1,5 @@
+<i class="glyphicon glyphicon-heart-empty"></i>
+<%= form_for(current_user.collectionships.build(product_id: @product.id)) do |f| %>
+  <%= f.hidden_field :product_id %>
+  <%= f.submit "收藏", class: "btn btn-xs btn-info" %>
+<% end %>
