@@ -1,11 +1,13 @@
 <div class="evaluate_item">
   <h4>
     <%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %>
+    <% if current_user?(evaluate.user) %>
     <small>
       <%= link_to edit_product_evaluate_path(@product, evaluate) do %>
         <i class="fa fa-pencil"></i>
       <% end %>
     </small>
+    <% end %>
   </h4>
   <div class="row">
     <div class="col-xs-1 col-sm-1 col-md-1">
