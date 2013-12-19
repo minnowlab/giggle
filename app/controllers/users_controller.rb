@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     current_user.skip_password = true
     current_user.update(cover_id: params[:cover_id])
     flash[:success] = '设置成功！'
-    redirect_to account_user_picture_path(current_user)
+    redirect_to :back
   end
 
   private

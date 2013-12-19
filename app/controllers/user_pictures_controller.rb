@@ -4,10 +4,10 @@ class UserPicturesController < ApplicationController
 
   def index
     @user_pictures = @user.user_pictures
+    @user_picture = UserPicture.new
   end
 
   def show
-  	@user_picture = UserPicture.new
   end
 
   def create

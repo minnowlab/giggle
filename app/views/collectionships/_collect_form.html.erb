@@ -1,5 +1,9 @@
-<% if current_user.collecting?(@product) %>
-  <%= render 'collectionships/uncollect' %>
+<% if signed_in? %>
+  <% if current_user.collecting?(@product) %>
+    <%= render 'collectionships/uncollect' %>
+  <% else %>
+    <%= render 'collectionships/collect' %>
+  <% end %>
 <% else %>
-  <%= render 'collectionships/collect' %>
+      <i class="glyphicon glyphicon-heart-empty"></i><%= @product.collectionships.count %>
 <% end %>

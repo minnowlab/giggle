@@ -46,7 +46,7 @@ Giggle::Application.routes.draw do
       get :change_password
       patch :update_password
     end
-    resources :user_pictures, only: [:show, :create, :destroy]
+    resources :user_pictures, only: [:index, :show, :create, :destroy]
   end
 
   resources :collectionships, only: [:create, :destroy]
