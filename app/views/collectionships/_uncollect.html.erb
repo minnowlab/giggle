@@ -1,6 +1,9 @@
 
-<%= form_for(current_user.collectionships.find_by(product_id: @product.id), html: { method: :delete }) do |f| %>
-  <i class="glyphicon glyphicon-heart"></i>
-  <%= @product.collectionships.count %>
+<%= form_for(current_user.collectionships.find_by(product_id: @product.id), html: { method: :delete }, remote: true) do |f| %>
+  <div class="collection_status" data-toggle="tooltip" data-placement="right" title="已收藏">
+  	<i class="glyphicon glyphicon-bookmark"></i>
+    <%= @product.collectionships.count %>
+  </div>
+
   <%= f.submit "取消收藏", class: "btn btn-xs" %>
 <% end %>

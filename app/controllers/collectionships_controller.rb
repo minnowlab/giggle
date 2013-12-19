@@ -4,12 +4,18 @@ class CollectionshipsController < ApplicationController
   def create
   	@product = Product.find(params[:collectionship][:product_id])
   	current_user.collect!(@product)
-  	redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+  	  format.js
+    end
   end
 
   def destroy
   	@product = Collectionship.find(params[:id]).product
   	current_user.uncollect!(@product)
-  	redirect_to :back
+  	respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 end

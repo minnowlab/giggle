@@ -1,7 +1,10 @@
 
-<%= form_for(current_user.collectionships.build(product_id: @product.id)) do |f| %>
+<%= form_for(current_user.collectionships.build(product_id: @product.id), remote: true) do |f| %>
   <%= f.hidden_field :product_id %>
-  <i class="glyphicon glyphicon-heart-empty"></i>
-  <%= @product.collectionships.count %>
+  <div data-toggle="tooltip" data-placement="right" title="收藏">
+  	<i class="glyphicon glyphicon-bookmark"></i>
+  	<%= @product.collectionships.count %>
+  </div>
+  
   <%= f.submit "收藏", class: "btn btn-xs btn-info" %>
 <% end %>

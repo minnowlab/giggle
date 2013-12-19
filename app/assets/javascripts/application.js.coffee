@@ -7,3 +7,4 @@
 #= require bootstrap/carousel
 #= require bootstrap/dropdown
 #= require_directory ./home
+#= require bootstrap/tooltip

@@ -5,5 +5,8 @@
     <%= render 'collectionships/collect' %>
   <% end %>
 <% else %>
-      <i class="glyphicon glyphicon-heart-empty"></i><%= @product.collectionships.count %>
+  <div data-toggle="tooltip" data-placement="right" title="收藏">
+  	<i class="glyphicon glyphicon-bookmark"></i>
+  	<%= @product.collectionships.count %>
+  </div>
 <% end %>
