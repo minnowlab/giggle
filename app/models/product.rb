@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   has_many :messages, as: :messageable
   has_many :evaluates
   has_many :product_pictures
+  has_many :collectionships, foreign_key: "product_id", dependent: :destroy
+  has_many :collectors, through: :collectionships, source: :user
   belongs_to :product_category
   belongs_to :cover, class_name: "ProductPicture", foreign_key: "cover_id"
   
