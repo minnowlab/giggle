@@ -14,8 +14,8 @@
         <%= markdown(message.content) %>
         <% if current_user?(message.user) %>
         <small>
-          <%= link_to "修改", edit_product_message_path(@product, message) %>
-          <%= link_to "删除", product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
+          <%= link_to fa_icon("pencil-square-o"), edit_product_message_path(@product, message) %>
+          <%= link_to fa_icon("trash-o"), product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
         </small>
         <% end %>
       </div>
