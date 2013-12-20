@@ -8,11 +8,21 @@
     </li>
     <li> / </li>
     <li class="<%= 'active' if params[:controller] == 'evaluates' %>">
-      <%= link_to "评测", product_evaluates_path(product_id: @product) %>
+      <%= link_to product_evaluates_path(product_id: @product) do %>
+        评测
+        <span class="badge badge_evaluate">
+          <%= @product.evaluates_count %>
+        </span>
+      <% end %>
     </li>
     <li> / </li>
     <li class="<%= 'active' if params[:controller] == 'messages' %>">
-      <%= link_to "留言", product_messages_path(@product) %>
+      <%= link_to product_messages_path(@product) do %>
+        留言
+        <span class="badge badge_product">
+          <%= @product.messages_count %>
+        </span>
+      <% end %>
     </li>
   </ul>
 </div>
