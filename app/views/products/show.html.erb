@@ -30,9 +30,8 @@
                     <span><%= @product.description %></span>
                   </li>
                   <li>
-                    <%= link_to @product.buy_link, class: "btn btn-primary", target: "_blank" do %>
-                      <i class="fa fa-shopping-cart"></i>
-                      购买
+                    <%= link_to_if @product.buy_link.present?, raw("<i class='fa fa-shopping-cart'></i>购买"), @product.buy_link, class: "btn btn-primary", target: "_blank" do %>
+                      <%= link_to "暂不提供购买", "#", class: "btn btn-default disabled" %>
                     <% end %>
                   </li>
                   <li>

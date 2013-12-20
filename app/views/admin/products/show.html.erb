@@ -31,7 +31,9 @@
             </p>
             <p>
               购买链接：
-              <%= link_to "点击查看", @product.buy_link, class: "btn btn-primary btn-xs", target: "_blank" %>
+              <%= link_to_if @product.buy_link.present?, "点击查看", @product.buy_link, class: "btn btn-primary btn-xs", target: "_blank" do %>
+                <%= link_to "暂不提供购买", "#", class: "btn btn-default btn-xs disabled" %>
+              <% end %>
             </p>
             <p>
               <i class="fa fa-info-circle"></i>
