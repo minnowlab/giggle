@@ -4,22 +4,17 @@
       <%= render 'shared/product_head' %>
       <div id="messages_item_info">
         <h4>修改留言</h4>
-        <%= form_for(@message, url: product_message_path(@product, @message), method: :patch) do |f| %>
+        <hr>
+        <%= form_for(@message, url: product_message_path(@product, @message), method: :patch, html: {class: "form-horizontal message_modify_form"}) do |f| %>
           <%= render 'shared/error_messages', object: f.object %>
-          <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                  <%= f.text_area :content, size: "40x5" %>
-                </div>
-                <hr>
-                <em>不超过140个字</em>
-                <hr>
-
-                <div class="actions">
-                  <%= f.submit "确认提交", class: 'btn btn-primary' %>
-                </div>
-                <hr>
+          <div class="form-group">
+            <div class="col-sm-5">
+              <%= f.text_area :content, size: "40x5", class: "form-control" %>
             </div>
+          </div>
+          <em class="text-muted">不超过140个字</em>
+          <div class="actions">
+            <%= f.submit "确认提交", class: 'btn btn-primary' %>
           </div>
         <% end %>
       </div>

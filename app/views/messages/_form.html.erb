@@ -5,7 +5,7 @@
         请<%= link_to "登录", "#sign_in_modal", "data-toggle" => "modal", class: "btn btn-primary btn-xs" %>之后才可以进行评论！
       </p>
     <% end %>
-    <%= form_for(@message, url: @evaluate.nil? ? product_messages_path(@product) : create_evaluate_message_product_messages_path(@product, evaluate_id: @evaluate.id), method: :post, remote: true) do |f| %>
+    <%= form_for(@message, url: @evaluate.nil? ? product_messages_path(@product) : create_evaluate_message_product_messages_path(@product, evaluate_id: @evaluate.id), method: :post, remote: true, html: {class: "message_modify_form"}) do |f| %>
       <div id="message_form_alert" class="hidden alert"></div>
       <div class="form-group">
         <%= f.text_area :content, size: "40x5", placeholder: "发表评论...", class: "form-control new_message_input", disabled: signed_in? ? false : "disabled" %>
