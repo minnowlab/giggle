@@ -21,6 +21,16 @@
               <%= @product.name %>
             </h4>
             <p>
+              发布时间：
+              <%= @product.published_at.try(:strftime, "%Y-%m-%d %H:%M:%S") %> ／ 
+              创建时间：
+              <%= @product.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+            </p>
+            <p>
+              购买链接：
+              <%= link_to "点击查看", @product.buy_link, class: "btn btn-primary btn-xs", target: "_blank" %>
+            </p>
+            <p>
               <i class="fa fa-info-circle"></i>
               <%= @product.description %>
             </p>

@@ -23,14 +23,14 @@
                   </li>
                   <li class="border_bottom">
                     <label>创建时间</label>
-                    <span><%= @product.created_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
+                    <span><%= @product.published_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
                   </li>
                   <li class="border_bottom">
                     <label>产品描述</label>
                     <span><%= @product.description %></span>
                   </li>
                   <li>
-                    <%= link_to "#", class: "btn btn-primary" do %>
+                    <%= link_to @product.buy_link, class: "btn btn-primary", target: "_blank" do %>
                       <i class="fa fa-shopping-cart"></i>
                       购买
                     <% end %>
