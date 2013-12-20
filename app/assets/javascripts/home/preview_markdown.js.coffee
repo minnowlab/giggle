@@ -21,5 +21,5 @@ window.PreviewMarkdown =
       )
       false
 
-$ ->
+$(document).on 'ready page:load', ->
   PreviewMarkdown.init()
