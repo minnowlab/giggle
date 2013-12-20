@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
 
-  belongs_to :messageable, :polymorphic => true
+  belongs_to :messageable, polymorphic: true, counter_cache: true
   belongs_to :user
 
   validates :content, presence: true, length: { maximum: 140 }
