@@ -17,8 +17,8 @@
           </p>
           <% if current_user?(@evaluate.user) %>
             <small>
-            <%= link_to "修改", edit_product_evaluate_path(@evaluate.product, @evaluate) %>
-           <%= link_to "删除",  product_evaluate_path(@evaluate.product, @evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+            <%= link_to fa_icon("pencil-square-o"), edit_product_evaluate_path(@evaluate.product, @evaluate) %>
+           <%= link_to fa_icon("trash-o"),  product_evaluate_path(@evaluate.product, @evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
             </small>
           <% end %>
         </div>
@@ -32,7 +32,7 @@
             <i class="fa fa-comment-o"></i>
             评论
             <small id="message_count_prompt">
-              <%= render partial: "shared/message_count_prompt", locals: { feed_count: @evaluate.feed, messages: @messages } %>
+              <%= render partial: "shared/message_count_prompt", locals: { feed_count: @evaluate.messages_count, messages: @messages } %>
             </small>
           </h3>
           <hr>
