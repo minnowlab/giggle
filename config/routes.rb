@@ -7,7 +7,7 @@ Giggle::Application.routes.draw do
     root 'products#index'
     resources :products do
       member do
-        patch :setting_cover
+        patch :setting_cover, :publish_operation
       end
     end
     resources :product_pictures

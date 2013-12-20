@@ -5,6 +5,9 @@
     <p class="lead">产品管理</p>
     <div class="list-group">
       <%= link_to "添加图片", "#add_product_picture_modal", class: "list-group-item",  "data-toggle" => "modal" %>
+      <%= link_to_if @product.published_at.nil?, "产品发布", publish_operation_admin_product_path(@product), class: "list-group-item", method: :patch do %>
+        <%= link_to "取消产品发布", publish_operation_admin_product_path(@product), class: "list-group-item", method: :patch %>
+      <% end %>
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::BaseController
-  before_action :find_product, only: [:show, :edit, :update, :destroy, :setting_cover]
+  before_action :find_product, except: [:index, :new, :create]
 
   def index
     @products = Product.search_product(params).page(params[:page])
@@ -53,6 +53,17 @@ class Admin::ProductsController < Admin::BaseController
     @product.update(cover: @product_picture)
     flash[:success] = '设置成功成功！'
     redirect_to :back
+  end
+
+  def publish_operation
+    publish_setting = @product.published_at.nil? ? Time.now : nil
+    if @product.update(published_at: publish_setting)
+      flash[:success] = '设置成功！'
+      redirect_to admin_product_path(@product)
+    else
+      flash[:danger] = '设置失败，请重新设置！'
+      redirect_to :back
+    end
   end
 
   private

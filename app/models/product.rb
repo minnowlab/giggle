@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  scope :published, -> { where("published_at IS NOT null") }
 
   has_many :messages, as: :messageable
   has_many :evaluates
