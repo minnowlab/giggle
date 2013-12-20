@@ -38,9 +38,16 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @feed_count = @product.feed
     @message.destroy
-    flash[:success] = "删除成功！"
-    redirect_to :back
+    respond_to do |format|
+      format.html { 
+        flash[:success] = "删除成功！"
+        redirect_to :back
+      }
+      format.js
+    end
+    
   end
 
   def create_evaluate_message

@@ -1,1 +1,1 @@
-（ <%= messages.blank? ? "暂无评论" : "#{feed_count.count}条评论，#{feed_count.map(&:user_id).uniq.count}人参与" %> ）
+（ <%= (messages.blank? or feed_count.count == 0) ? "暂无评论" : "#{feed_count.count}条评论，#{feed_count.map(&:user_id).uniq.count}人参与" %> ）
