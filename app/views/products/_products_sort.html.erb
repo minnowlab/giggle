@@ -8,7 +8,7 @@
             分类：
           </li>
           <li class="<%= 'active' if params[:category].blank? %>">
-            <%= link_to "全部", products_path(sort: params[:category]) %>
+            <%= link_to "全部", products_path(sort: params[:sort]) %>
           </li>
           <% @product_categories.each do |product_category| %>
             <li> / </li>

@@ -12,21 +12,27 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :product_category_id, presence: true
 
-  def self.search_product this_params
-    product = Product.all
-    product = product.where("name LIKE ? ", "%#{this_params[:keywords]}%") unless this_params[:keywords].blank?
-    product = product.where("price < ?", this_params[:max_price]) unless this_params[:max_price].blank?
-    product = product.where("price > ?", this_params[:min_price]) unless this_params[:min_price].blank?
-    product = product.where("product_category_id = ?", this_params[:product_category_id]) unless this_params[:product_category_id].blank?
-    product
-  end
-
   def feed
     Message.where("messageable_type = 'Product' AND messageable_id = ? ", id)
   end
 
   def product_picture_feed
     ProductPicture.where("product_id = ?", id)
+  end
+
+  def self.search_product this_params
+    product = Product.all
+    product = product.where("name LIKE ? ", "%#{this_params[:keywords]}%") if this_params[:keywords].present?
+    product = product.where("price < ?", this_params[:max_price]) if this_params[:max_price].present?
+    product = product.where("price > ?", this_params[:min_price]) if this_params[:min_price].present?
+    product = product.where("product_category_id = ?", this_params[:product_category_id]) if this_params[:product_category_id].present?
+    product
+  end
+
+  def self.classify_published product_category, sort
+    product = Product.published
+    product = product.where(product_category_id: product_category) if product_category.present?
+    product
   end
 
 end
