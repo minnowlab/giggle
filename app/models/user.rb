@@ -34,16 +34,21 @@ class User < ActiveRecord::Base
     UserPicture.where("user_id = ?", id)
   end
 
+  #Collect
   def collecting?(product)
     collectionships.find_by(product_id: product.id)
   end
 
   def collect!(product)
-    collectionships.create!(product_id: product.id)
+    collectionships.create!(product: product)
   end
 
   def uncollect!(product)
     collectionships.find_by(product_id: product.id).destroy
+  end
+
+  def collectionship_product_ids
+    collectionships.map(&:product_id)
   end
 
   #Role define

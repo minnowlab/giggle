@@ -29,6 +29,7 @@ Giggle::Application.routes.draw do
       end
     end
     resources :evaluates
+    resource :collectionship, only: [:create, :destroy]
     collection do
       post :preview_markdown
     end
@@ -48,8 +49,6 @@ Giggle::Application.routes.draw do
     end
     resources :user_pictures, only: [:index, :show, :create, :destroy]
   end
-
-  resources :collectionships, only: [:create, :destroy]
 
   root 'products#index'
 end

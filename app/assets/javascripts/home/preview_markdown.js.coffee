@@ -20,6 +20,3 @@ window.PreviewMarkdown =
           false
       )
       false
-
-$(document).on 'ready page:load', ->
-  PreviewMarkdown.init()
