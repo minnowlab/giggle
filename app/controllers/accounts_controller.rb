@@ -41,7 +41,7 @@ class AccountsController < ApplicationController
     end
 
     def users_params
-      params.require(:user).permit(:name, :password, :password_confirmation)
+      params.require(:user).permit(:name, :description, :password, :password_confirmation)
     end
   
     def update_new_password
