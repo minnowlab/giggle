@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :name, length: { maximum: 50 }
   validates :password, length: { minimum: 6 }, unless: :skip_password
+  validates :description, length: { maximum: 140 }
 
   def remember_token
     [id, Digest::SHA512.hexdigest(password_digest)].join('$')

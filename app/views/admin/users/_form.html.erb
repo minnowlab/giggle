@@ -14,6 +14,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :password %>
         <%= f.password_field :password, class: "form-control" %>
         <% unless @user.new_record? %>

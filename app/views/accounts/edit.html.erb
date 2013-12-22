@@ -5,43 +5,39 @@
 <%= render "account_edit_navbar" %>
 
 <div class="user_edit_info">
-  <div class="row">
-    <%= form_for @user, url: account_path, method: :patch, html: {class: "form-horizontal"} do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <div class="form-group">
-        <%= label_tag(:email, "邮箱：", class: "col-sm-3 control-label") %>
-        <div class="col-sm-8">
-          <p class="form-control-static">
-            <%= @user.email %>
-          </p>
-        </div>
+  <%= form_for @user, url: account_path, method: :patch, html: {class: "form-horizontal"} do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-group">
+      <%= label_tag(:email, "邮箱：", class: "col-sm-3 control-label") %>
+      <div class="col-sm-8">
+        <p class="form-control-static">
+          <%= @user.email %>
+        </p>
       </div>
-      <div class="form-group">
-        <%= label_tag(:current_name, "用户名：", class: "col-sm-3 control-label") %>
-        <div class="col-sm-8">
-          <p class="form-control-static">
-            <%= @user.name %>
-          </p>
-        </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:name, "用户名：", class: "col-sm-3 control-label") %>
+      <div class="col-sm-7">
+        <%= f.text_field :name, class: "form-control" %>
       </div>
-      <div class="form-group">
-        <%= label_tag(:name, "请输入新用户名：", class: "col-sm-3 control-label") %>
-        <div class="col-sm-7">
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:description, "用户描述：", class: "col-sm-3 control-label") %>
+      <div class="col-sm-7">
+        <%= f.text_area :description, class: "form-control" %>
       </div>
-      <div class="form-group">
-        <%= label_tag(:password, "请输入密码：", class: "col-sm-3 control-label") %>
-        <div class="col-sm-7">
-          <%= f.password_field :password, class: "form-control" %>
-        </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:password, "请输入密码：", class: "col-sm-3 control-label") %>
+      <div class="col-sm-7">
+        <%= f.password_field :password, class: "form-control" %>
       </div>
-      <hr>
-      <div class="form-group">
-        <div class="col-sm-offset-3 col-sm-7">
-          <%= f.submit "提交修改", class: "btn btn-primary" %>
-        </div>
+    </div>
+    <hr>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-7">
+        <%= f.submit "提交修改", class: "btn btn-primary" %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
