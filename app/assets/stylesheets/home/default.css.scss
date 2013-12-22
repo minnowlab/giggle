@@ -21,6 +21,11 @@ a:hover{
   border: 1px solid #bfbbb7;
 }
 
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus{
+  background-color: #4C8CA1;
+  border: #4C8CA1;
+}
+
 hr{
   border-top: 1px solid #ebf5f8;
 }
@@ -50,3 +55,19 @@ hr{
 .badge{
   background-color: #BFBBB7;
 }
+
+.pagination > li > a, .pagination > li > span {
+  padding: 2px 8px;
+  font-size: 10px;
+  border: 0;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus{
+  background-color: #FFF8F1;
+}
+
+.pagination{
+  margin: 0;
+}
+
+
