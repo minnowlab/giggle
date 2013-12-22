@@ -10,11 +10,11 @@ class UserPictureUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   version :large do
-    process :resize_and_pad => [800, 800]
+    process :resize_and_pad => [400, 400]
   end
 
   version :small do
-    process :resize_and_pad => [400, 400]
+    process :resize_and_pad => [200, 200]
   end
 
   version :mini do

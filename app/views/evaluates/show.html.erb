@@ -6,26 +6,26 @@
         <h3>
           <%= @evaluate.title %>
         </h3>
-        <div class="row">
-          <div class= "col-md-1">
-            <%= image_tag @evaluate.user.find_avatar.try(:picture_url, :cover) %>
+        <div class="media">
+          <%= link_to user_picture_cover(@evaluate.user.cover.try(:picture_url, :cover), "cover"), user_path(@evaluate.user), class: "pull-left" %>
+          <div class="media-body">
+            <h5 class="media-heading">
+              <%= link_to @evaluate.user.try(:name), user_path(@evaluate.user) %> 
+              <small>
+                <i class="fa fa-clock-o"></i> 
+                <%= time_ago_in_words(@evaluate.created_at) %>前发布 ／ 
+                <% if current_user?(@evaluate.user) %>
+                  <%= link_to fa_icon("pencil-square-o"), edit_product_evaluate_path(@evaluate.product, @evaluate) %>
+                  <%= link_to fa_icon("trash-o"),  product_evaluate_path(@evaluate.product, @evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+                <% end %>
+              </small>
+            </h5>
           </div>
-          <p>
-            <%= link_to @evaluate.user.try(:name), "#" %> / 
-            <i class="fa fa-clock-o"></i> 
-            <%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
-          </p>
-          <% if current_user?(@evaluate.user) %>
-            <small>
-            <%= link_to fa_icon("pencil-square-o"), edit_product_evaluate_path(@evaluate.product, @evaluate) %>
-           <%= link_to fa_icon("trash-o"),  product_evaluate_path(@evaluate.product, @evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
-            </small>
-          <% end %>
         </div>
         <hr>
-        <p>
+        <div>
           <%= markdown(@evaluate.details) %>
-        </p>
+        </div>
         <hr>
         <div>
           <h3>

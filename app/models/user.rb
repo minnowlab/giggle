@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :user_pictures
   has_many :collectionships, foreign_key: "user_id", dependent: :destroy
   has_many :collections, through: :collectionships, source: :product
+  belongs_to :cover, class_name: "UserPicture", foreign_key: "cover_id"
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
@@ -30,10 +31,6 @@ class User < ActiveRecord::Base
 
   def feed
     UserPicture.where("user_id = ?", id)
-  end
-
-  def find_avatar
-    UserPicture.where("id = ?", cover_id).first
   end
 
   def collecting?(product)

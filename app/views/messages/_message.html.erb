@@ -1,24 +1,19 @@
 <div id="message_item_<%= message.id %>" class="message_item">
-  <div class="row">
-    <div class= "col-md-1">
-      <%=link_to image_tag(message.user.find_avatar.try(:picture_url, :cover)), user_path(message.user) %>
-    </div>
-
-    <div class="col-md-10">
-      <small> 
-        <%= link_to message.user.try(:name), user_path(message.user) %> /   
-        <%= time_ago_in_words(message.created_at) %> 前发布
-        </small>
-
-      <div>
-        <%= markdown(message.content) %>
-        <% if current_user?(message.user) %>
+  <div class="media">
+    <%= link_to user_picture_cover(message.user.cover.try(:picture_url, :cover), "cover"), user_path(message.user), class: "pull-left" %>
+    <div class="media-body">
+      <h5 class="media-heading">
+        <%= link_to message.user.try(:name), user_path(message.user) %>
         <small>
-          <%= link_to fa_icon("pencil-square-o"), edit_product_message_path(@product, message) %>
-          <%= link_to fa_icon("trash-o"), product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
+          <%= time_ago_in_words(message.created_at) %>前发布 
+          <% if current_user?(message.user) %>
+            ／  
+            <%= link_to fa_icon("pencil-square-o"), edit_product_message_path(@product, message) %>
+            <%= link_to fa_icon("trash-o"), product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
+          <% end %>
         </small>
-        <% end %>
-      </div>
+      </h5>
+      <%= markdown(message.content) %>
     </div>
   </div>
 </div>

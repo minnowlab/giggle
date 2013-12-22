@@ -14,7 +14,7 @@
       <div class="col-xs-12 col-md-3", id="sidebar">
         <div id="user_picture">
           <div class="user_picture">
-            <%= image_tag @user.find_avatar.try(:picture_url, :mini), class: "img-rounded" %>
+            <%= user_picture_cover(@user.cover.try(:picture_url, :small), "small", class: "img-rounded") %>
           </div>
           <h5>
             <%= @user.name %>

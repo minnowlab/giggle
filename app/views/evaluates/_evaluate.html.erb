@@ -2,16 +2,18 @@
   <h4>
     <%= link_to evaluate.title, product_evaluate_path(@product, evaluate) %>
   </h4>
-  <div class="row">
-    <div class="col-xs-1 col-sm-1 col-md-1">
-      <%= link_to image_tag(evaluate.user.find_avatar.try(:picture_url, :cover)), user_path(evaluate.user) %>
+  <div class="media">
+    <%= link_to user_picture_cover(evaluate.user.cover.try(:picture_url, :cover), "cover"), user_path(evaluate.user), class: "pull-left" %>
+    <div class="media-body">
+      <h5 class="media-heading">
+        <%= link_to evaluate.user.try(:name), user_path(evaluate.user) %>
+        <small>
+          <%= time_ago_in_words(evaluate.created_at) %>前发布
+        </small>
+      </h5>
     </div>
-    <small>
-      <%= link_to evaluate.user.try(:name), user_path(evaluate.user) %> /  
-      <%= time_ago_in_words(evaluate.created_at) %>前发布
-    </small>
   </div>
-  <p class="evaluate_details_abbr">
+  <div class="evaluate_details_abbr">
     <%= markdown(evaluate.details.truncate(100)) %>
-  </p>
+  </div>
 </div>
