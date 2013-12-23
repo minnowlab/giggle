@@ -35,6 +35,14 @@ class AccountsController < ApplicationController
     end
   end
 
+  def setting_cover
+    @user_picture = @user.user_pictures.find(params[:cover_id])
+    @user.skip_password = true
+    @user.update(cover: @user_picture)
+    flash[:success] = '设置成功！'
+    redirect_to :back
+  end
+
   private
     def find_user
       @user = current_user

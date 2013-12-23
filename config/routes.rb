@@ -37,7 +37,6 @@ Giggle::Application.routes.draw do
   
   resources :users, only: [:index, :show] do
     member do
-      patch :setting_cover
       get :show_evaluates, :show_collections
     end
   end
@@ -45,7 +44,7 @@ Giggle::Application.routes.draw do
   resource :account, only: [:edit, :update] do
     collection do
       get :change_password
-      patch :update_password
+      patch :update_password, :setting_cover
     end
     resources :user_pictures, only: [:index, :show, :create, :destroy]
   end
