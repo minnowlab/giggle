@@ -7,11 +7,8 @@ class UserPicturesController < ApplicationController
     @user_picture = UserPicture.new
   end
 
-  def show
-  end
-
   def create
-  	@user_picture = @user.user_pictures.build(user_picture_params)
+    @user_picture = @user.user_pictures.build(user_picture_params)
     if @user_picture.save
       flash[:success] = '上传成功！'
       redirect_to :back
@@ -21,12 +18,8 @@ class UserPicturesController < ApplicationController
     end
   end
 
-  def update
-  	
-  end
-
   def destroy
-    @user_picture = UserPicture.find(params[:id])
+    @user_picture = @user.user_pictures.find(params[:id])
     @user_picture.destroy
     flash[:success] = '删除成功！'
     redirect_to :back
