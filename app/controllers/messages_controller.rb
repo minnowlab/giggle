@@ -71,7 +71,7 @@ class MessagesController < ApplicationController
     end
 
     def find_message
-      @message = Message.find(params[:id])
+      @message = @product.messages.find(params[:id])
     end
 
     def message_params

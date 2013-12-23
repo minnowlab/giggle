@@ -11,7 +11,7 @@ class UserPicturesController < ApplicationController
   end
 
   def create
-  	@user_picture = current_user.user_pictures.build(user_picture_params)
+  	@user_picture = @user.user_pictures.build(user_picture_params)
     if @user_picture.save
       flash[:success] = '上传成功！'
       redirect_to :back
@@ -30,7 +30,6 @@ class UserPicturesController < ApplicationController
     @user_picture.destroy
     flash[:success] = '删除成功！'
     redirect_to :back
-
   end
 
   private

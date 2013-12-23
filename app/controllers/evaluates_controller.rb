@@ -1,7 +1,7 @@
 class EvaluatesController < ApplicationController
-  before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
   before_action :find_product
-
+  before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
+  
   def index
     @evaluates = @product.evaluates
   end
@@ -48,7 +48,7 @@ class EvaluatesController < ApplicationController
 
   private
     def find_evaluate
-      @evaluate = Evaluate.find(params[:id])
+      @evaluate = @product.evaluates.find(params[:id])
     end
 
     def find_product
