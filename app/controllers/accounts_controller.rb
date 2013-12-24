@@ -8,9 +8,9 @@ class AccountsController < ApplicationController
   def update
     if @user.authenticate(params[:user][:password])
       @user.skip_password = true
-      @user.update(name: params[:user][:name])
+      @user.update(name: params[:user][:name], description: params[:user][:description])
       flash[:success] = '修改成功！'
-      redirect_to user_path
+      redirect_to action: :edit
     else
       flash.now[:danger] = '修改失败，请输入正确密码！'
       render 'edit'
@@ -22,9 +22,9 @@ class AccountsController < ApplicationController
 
   def update_password
     if @user.authenticate(params[:user][:old_password])
-      if @user.update(update_new_password)
+      if @user.update(users_params)
         flash[:success] = '修改成功！'
-        redirect_to user_path
+        redirect_to action: :change_password
       else
         flash.now[:danger] = '修改失败，请重新输入！'
         render 'change_password'
@@ -49,10 +49,6 @@ class AccountsController < ApplicationController
     end
 
     def users_params
-      params.require(:user).permit(:name, :description, :password, :password_confirmation)
-    end
-  
-    def update_new_password
       params.require(:user).permit(:password, :password_confirmation)
     end
 end

@@ -19,6 +19,11 @@
           <h5>
             <%= @user.name %>
           </h5>
+          <blockquote>
+            <small>
+              <%= @user.description %>
+            </small>
+          </blockquote>
         </div>
         <%= yield :sidebar %>
       </div>
