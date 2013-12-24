@@ -10,5 +10,9 @@
     <li class="<%= 'active' if action_name == 'change_password' %>">
       <%= link_to "修改登录密码", change_password_account_path %>
     </li>
+    <li> / </li>
+    <li class="<%= 'active' if action_name == 'index' %>">
+      <%= link_to "头像管理", account_user_pictures_path %>
+    </li>
   </ul>
 </div>

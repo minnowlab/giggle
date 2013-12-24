@@ -1,24 +1,22 @@
+<%= content_for :sidebar do %>
+  <%= render 'layouts/shared/user_them' %>
+<% end %> 
+
 <%= render 'add_user_picture_modal' %>
-<div class="row">
-  <div class="col-md-2">
-    <p class="lead"><small>头像管理</small></p>
-      <div class="col-sm-8">
-        <div class="list-group">
-          <i class="glyphicon glyphicon-floppy-open"></i>
-          <%= link_to "添加图片", "#add_user_picture_modal", class: "list-group-item",  "data-toggle" => "modal" %>
-        </div>
+<%= render "accounts/account_edit_navbar" %>
+
+<div class="user_edit_info">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="alert alert-info">
+        请最好上传像素大于<strong>400x400</strong>、并且为<strong>正方形</strong>图片作为头像，
+        <%= link_to "点击上传头像", "#add_user_picture_modal",  "data-toggle" => "modal", class: "alert-link" %>
       </div>
-  </div>
-  <i class="glyphicon glyphicon-heart-empty"></i>
-    <%= current_user.feed.any? ? "我的图片" : "还没图片？，赶紧上传吧!" %>  
-  <hr>
-  <div class="col-md-10">
+    </div>
     <% current_user.feed.each do |user_picture| %>
-      <div class="col-xs-5 col-sm-2 col-md-3">
+      <div class="col-xs-6 col-sm-3 col-md-3">
         <div class="thumbnail">
-          <div class="product_picture">
-            <%= image_tag user_picture.picture_url(:mini) %>
-          </div>
+          <%= image_tag user_picture.picture_url(:small) %>
           <div class="caption">
             <%= link_to_if current_user.cover_id == user_picture.id, "已设为头像", "#", class: "btn btn-primary btn-xs disabled" do %>
               <%= link_to "设置为头像", setting_cover_account_path(cover_id: user_picture.id), class: "btn btn-info btn-xs", method: :patch %>
@@ -28,8 +26,5 @@
         </div>
       </div>
     <% end %>
- </div>
+  </div>
 </div>
-<%= content_for :sidebar do %>
-  <%= render 'layouts/shared/user_them' %>
-<% end %> 
