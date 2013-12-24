@@ -10,9 +10,9 @@
           <div class="form-group">
             <div class="col-sm-5">
               <%= f.text_area :content, size: "40x5", class: "form-control" %>
+              <span class="help-block"><em>不超过250个字</em></span>
             </div>
           </div>
-          <em class="text-muted">不超过140个字</em>
           <div class="actions">
             <%= f.submit "确认提交", class: 'btn btn-primary' %>
           </div>

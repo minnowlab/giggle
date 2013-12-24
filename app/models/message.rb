@@ -3,7 +3,7 @@ class Message < ActiveRecord::Base
   belongs_to :messageable, polymorphic: true, counter_cache: true
   belongs_to :user
 
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 250 }
   validates :messageable_type, inclusion: { in: %w(Product Evaluate),
                                             message: "%{value} is not a valid type" }
 
