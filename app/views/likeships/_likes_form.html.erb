@@ -1,0 +1,7 @@
+<% if signed_in? %>
+   <% if current_user.liking?(@likeable) %>
+    <%= render 'likeships/unlike' %>
+  <% else %>
+    <%= render 'likeships/like' %>
+  <% end %>
+<% end %>

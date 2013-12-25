@@ -1,0 +1,4 @@
+<i class="glyphicon glyphicon-heart"></i>
+ <%= form_for(current_user.likeships.find_by(@likeable), html: { method: :delete }) do |f| %>
+   <%= f.submit "取消喜欢", class: "btn btn-xs" %>
+ <% end %>

@@ -23,6 +23,7 @@ Giggle::Application.routes.draw do
   end
 
   resources :products, only: [:index, :show] do
+
     resources :messages, except: [:new, :show] do
       collection do
         post :create_evaluate_message
@@ -30,10 +31,12 @@ Giggle::Application.routes.draw do
     end
     resources :evaluates
     resource :collectionship, only: [:create, :destroy]
+    
     collection do
       post :preview_markdown
     end
   end
+  resources :likeships, only: [:new, :create, :destroy]
   
   resources :users, only: [:index, :show] do
     member do
