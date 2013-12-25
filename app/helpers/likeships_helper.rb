@@ -1,0 +1,2 @@
+module LikeshipsHelper
+end

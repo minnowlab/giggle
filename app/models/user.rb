@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :user_pictures
   has_many :collectionships, foreign_key: "user_id", dependent: :destroy
   has_many :collections, through: :collectionships, source: :product
+  has_many :likeships, foreign_key: "user_id", dependent: :destroy
+  has_many :liks, through: :likeships, source: :likeable
   belongs_to :cover, class_name: "UserPicture", foreign_key: "cover_id"
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
