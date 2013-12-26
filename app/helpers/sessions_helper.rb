@@ -63,14 +63,9 @@ module SessionsHelper
       redirect_to user_sign_in_path
     end 
   end
-
-  def find_likeable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
+ 
+  def likeable(likeable)
+    @likeable = { likeable_type: likeable.class.to_s, likeable_id: likeable.id }
   end
 
 end

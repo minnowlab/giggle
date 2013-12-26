@@ -1,5 +1,6 @@
 <i class="glyphicon glyphicon-heart-empty"></i>
  <%= form_for(current_user.likeships.build) do |f| %>
    <%= f.hidden_field :likeable_type, value: @likeable[:likeable_type] %>
+   <%= f.hidden_field :likeable_id, value: @likeable[:likeable_id] %>
    <%= f.submit "喜欢", class: "btn btn-xs btn-info" %>
  <% end %>
