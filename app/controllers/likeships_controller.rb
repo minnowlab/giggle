@@ -1,23 +1,24 @@
 class LikeshipsController < ApplicationController
-  
-  def new
-  	
-  end
-
+  before_action :find_likeable
   def create
-     @likeship = current_user.likeships.build(likeship_params)
-     @likeship.save
-     redirect_to :back
+    current_user.like!(params[:likeable_type], params[:likeable_id])
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def destroy
-  	@likeship = Likeship.find(params[:id])
-  	@likeship.destroy
-  	redirect_to :back
-  end
-
-  private
-    def likeship_params
-      params.require(:likeship).permit(:likeable_type, :likeable_id)
+    current_user.unlike!(params[:likeable_type], params[:likeable_id])
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
+  end
+ 
+  private
+    def find_likeable
+      @likeable = Likeship.likeable(Kernel.const_get(params[:likeable_type]).find(params[:likeable_id])) 
+    end
+
 end

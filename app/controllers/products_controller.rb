@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @evaluates = @product.evaluates.order("id desc").limit(5)
     @message = @product.messages.build
     @messages = @product.feed.page(params[:page])
-    @likeable = likeable(@product)  
+    @likeable = Likeship.likeable(@product)  
   end
 
   def preview_markdown

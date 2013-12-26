@@ -36,7 +36,7 @@ Giggle::Application.routes.draw do
       post :preview_markdown
     end
   end
-  resources :likeships, only: [:create, :destroy]
+  resource :likeship, only: [:create, :destroy]
   
   resources :users, only: [:index, :show] do
     member do

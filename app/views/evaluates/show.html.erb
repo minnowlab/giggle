@@ -20,7 +20,9 @@
                 <% end %>                
               </small>              
             </h5>
-            <%= render 'likeships/likes_form' %>
+            <div id="like_link">                      
+              <%= likeable_likes_tag @likeable %>
+            </div>
           </div>
         </div>
         <hr>

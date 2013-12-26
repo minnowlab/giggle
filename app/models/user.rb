@@ -37,10 +37,6 @@ class User < ActiveRecord::Base
   end
 
   #Collect
-  def collecting?(product)
-    collectionships.find_by(product_id: product.id)
-  end
-
   def collect!(product)
     collectionships.create!(product: product)
   end
@@ -53,8 +49,17 @@ class User < ActiveRecord::Base
     collectionships.map(&:product_id)
   end
 
+  #Like
   def liking?(likeable)
     likeships.find_by(likeable)
+  end
+
+  def like!(type, id)
+    likeships.create!(likeable_type: type, likeable_id: id)
+  end  
+
+  def unlike!(type, id)
+    likeships.find_by(likeable_type: type, likeable_id: id).destroy
   end
 
   #Role define
