@@ -7,6 +7,21 @@ class Message < ActiveRecord::Base
   validates :messageable_type, inclusion: { in: %w(Product Evaluate),
                                             message: "%{value} is not a valid type" }
 
+  TYPE_NAME = {"Product"=>"产品", "Evaluate"=>"评测"}
+
+  def messageable_cn
+    TYPE_NAME[self.messageable_type] 
+  end
+
+  def messageable_name
+    case self.messageable_type
+    when "Product"
+      self.messageable.try(:name)
+    when "Evaluate"
+      self.messageable.try(:title)
+    end
+  end
+
   def self.message_search this_params
     message = Message.all
     products_ids = Product.where("name LIKE ?", "%#{this_params[:product]}%").map(&:id) if this_params[:product].present?

@@ -1,39 +1,50 @@
-<%= form_for(@message, url: (@message.new_record? ? admin_messages_path : admin_message_path(@message))) do |f| %>
+<%= form_for(@message, url: (@message.new_record? ? admin_messages_path : admin_message_path(@message)), html: {class: "form-horizontal"}) do |f| %>
   <%= render "shared/error_messages", object: @message %>
 
-  <div class="row">
-    <div class="col-md-3">
-      <% if @message.new_record? %>
-      <div class="form-group">
-        <%= f.label "产品" %>
-        <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "用户:#{current_user.name}" %>
-      </div>
-
-      <% else %>
-
-      <div class="form-group">
-        <%= f.label "产品:#{@message.product.try(:name)}" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "用户:#{@message.user.try(:name)}" %>
-      </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :content,"留言内容:" %>
-        <%= f.text_area :content, size: "50x6", class: "form-control" %>
+  <% if @message.new_record? %>
+    <div class="form-group">
+      <%= f.label "产品", class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.select :messageable_id, options_from_collection_for_select(Product.all, :id, :name),  { include_blank: false }, { class: 'form-control' } %>
+        <%= f.hidden_field :messageable_type, value: "Product" %>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= f.submit "确认提交", class: 'btn btn-primary' %>
+  <% else %>
+    <div class="form-group">
+      <%= f.label "留言类型", class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static">
+          <%= @message.messageable_cn %>
+        </p>
       </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "名称", class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static">
+          <%= @message.messageable_name %>
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "用户", class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <p class="form-control-static">
+          <%= @message.user.try(:name) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :content, "留言内容:", class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <%= f.text_area :content, rows: 4, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <%= f.submit "确认提交", class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
