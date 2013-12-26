@@ -19,9 +19,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th></th>
-      <th>图片名称</th>
-      <th></th>
+      <th>图片</th>
       <th>所属产品</th>
       <th></th>
     </tr>
@@ -29,12 +27,10 @@
   <tbody>
     <% @product_pictures.each do |product_picture| %>
       <tr>
-        <td></td>
-        <td><%= product_picture.picture %></td>
         <td><%= image_tag product_picture.picture_url(:mini) %></td>
         <td><%= product_picture.product.try(:name) %></td>
         <td>
-          <%= link_to "删除", admin_product_picture_path(product_picture, page: params[:page]), class: "btn btn-danger btn-sm", confirm: "请问您确定要删除吗？", method: :delete %>
+          <%= link_to "删除", admin_product_picture_path(product_picture, page: params[:page]), class: "btn btn-danger btn-sm", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
         </td>
       </tr>
     <% end %>
