@@ -3,6 +3,8 @@ class Evaluate < ActiveRecord::Base
   belongs_to :product, counter_cache: true
   belongs_to :user
   has_many :messages, as: :messageable
+  has_many :likeships, as: :likeable, foreign_key: "likeable_id", dependent: :destroy
+  has_many :likers, through: :likeships, source: :user
 
   validates :title, presence: true
   validates :details, presence: true

@@ -10,5 +10,5 @@ module ProductsHelper
       link_path_method = "delete"
     end
     link_to fa_icon("bookmark"), product_collectionship_path(product), class: class_name, "data-toggle"=>"tooltip", title: link_title, method: link_path_method, remote: true
-  end
+  end  
 end

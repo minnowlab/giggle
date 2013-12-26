@@ -17,9 +17,12 @@
                 <% if current_user?(@evaluate.user) %>
                   <%= link_to fa_icon("pencil-square-o"), edit_product_evaluate_path(@evaluate.product, @evaluate) %>
                   <%= link_to fa_icon("trash-o"),  product_evaluate_path(@evaluate.product, @evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
-                <% end %>
-              </small>
+                <% end %>                
+              </small>              
             </h5>
+            <div id="like_link">                      
+              <%= likeable_likes_tag @likeable %>
+            </div>
           </div>
         </div>
         <hr>

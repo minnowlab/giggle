@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :user_pictures
   has_many :collectionships, foreign_key: "user_id", dependent: :destroy
   has_many :collections, through: :collectionships, source: :product
+  has_many :likeships, foreign_key: "user_id", dependent: :destroy
+  has_many :likes, through: :likeships, source: :likeable
   belongs_to :cover, class_name: "UserPicture", foreign_key: "cover_id"
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -35,10 +37,6 @@ class User < ActiveRecord::Base
   end
 
   #Collect
-  def collecting?(product)
-    collectionships.find_by(product_id: product.id)
-  end
-
   def collect!(product)
     collectionships.create!(product: product)
   end
@@ -49,6 +47,19 @@ class User < ActiveRecord::Base
 
   def collectionship_product_ids
     collectionships.map(&:product_id)
+  end
+
+  #Like
+  def liking?(likeable)
+    likeships.find_by(likeable)
+  end
+
+  def like!(type, id)
+    likeships.create!(likeable_type: type, likeable_id: id)
+  end  
+
+  def unlike!(type, id)
+    likeships.find_by(likeable_type: type, likeable_id: id).destroy
   end
 
   #Role define

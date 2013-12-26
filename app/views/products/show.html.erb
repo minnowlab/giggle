@@ -35,6 +35,9 @@
                     <% end %>
                   </li>
                   <li>
+                    <div id="like_link">                      
+                      <%= likeable_likes_tag @likeable %>
+                    </div>
                     <div id="collect_link">
                       <%= product_collection_tag @product %>
                     </div>
