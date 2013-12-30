@@ -26,6 +26,7 @@
     <tr>
       <th>邮箱</th>
       <th>名字</th>
+      <th>角色</th>
       <th></th>
     </tr>
   </thead>
@@ -34,6 +35,7 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.name %></td>
+        <td><%= user.roles_cn %>
         <td>
           <%= link_to "编辑", edit_admin_user_path(user), class: "btn btn-primary btn-sm" %>
           <%= link_to "删除", admin_user_path(user, page: params[:page]), class: "btn btn-danger btn-sm", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
