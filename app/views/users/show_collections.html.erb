@@ -27,12 +27,7 @@
           </div>
           <% if current_user?(@user) %>
             <div class="caption">
-              <%= form_for(current_user.collectionships.find_by(product_id: collection.id), html: { method: :delete }) do |f| %>
-                <div class="collection_status" data-toggle="tooltip" data-placement="right" title="已收藏">
-                  <i class="glyphicon glyphicon-bookmark"></i>
-                </div>
-                  <%= f.submit "取消收藏", class: "btn btn-xs" %>
-              <% end %>
+              <%= link_to "取消收藏", product_collectionship_path(collection), data: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
             </div>
           <% end %>          
         </div>

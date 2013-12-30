@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
-
   attr_accessor :skip_password
   
   validates :email, presence:   true,

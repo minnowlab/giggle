@@ -31,6 +31,15 @@
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
 
+<!--       <div class="form-group">
+        <%= f.label "角色" %>
+        <%= f.collection_check_boxes :roles_mask, User::ROLES, :to_s, :humanize %>
+      </div> -->
+      <% for role in User::ROLES %>
+        <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {name: "user[roles][]"}%>
+        <%= label_tag "user_roles_#{role}", role.humanize %><br />
+      <% end %>
+      <%= hidden_field_tag "user[roles][]", "" %>
       <hr>
 
     </div>
