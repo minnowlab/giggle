@@ -36,6 +36,7 @@ GEM
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
+    callsite (0.0.11)
     cancan (1.6.10)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
@@ -80,6 +81,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.2.8)
+      callsite
+      rack-contrib
+      railties
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
@@ -90,6 +95,8 @@ GEM
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.2)
@@ -170,6 +177,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   kaminari-bootstrap (~> 3.0.1)
+  meta_request
   mini_magick
   mysql2
   puma
