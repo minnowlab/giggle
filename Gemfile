@@ -56,6 +56,9 @@ group :development, :test do
   gem "faker", "~> 1.2.0"
   gem 'puma'
   gem 'rspec-rails'
+  # DEBUG
+  gem 'better_errors'
+  gem "binding_of_caller"
 end
 
 # Use ActiveModel has_secure_password
