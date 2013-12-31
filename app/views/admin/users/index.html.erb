@@ -1,7 +1,11 @@
 <div class="page-header">
   <h2>
     用户管理
-    <small class="pull-right"><%= link_to "创建新用户", new_admin_user_path, class: "btn btn-primary" %></small>
+    <small class="pull-right">
+      <% if can? :create, User %>
+      <%= link_to "创建新用户", new_admin_user_path, class: "btn btn-primary" %>
+      <% end %>
+    </small>
   </h2>
 </div>
 
@@ -37,8 +41,12 @@
         <td><%= user.name %></td>
         <td><%= user.roles_cn %>
         <td>
+          <% if can? :update, user %>
           <%= link_to "编辑", edit_admin_user_path(user), class: "btn btn-primary btn-sm" %>
+          <% end %>
+          <% if can? :destroy, user %>
           <%= link_to "删除", admin_user_path(user, page: params[:page]), class: "btn btn-danger btn-sm", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+          <% end %>
         </td>
       </tr>
     <% end %>
