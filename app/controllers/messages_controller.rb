@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
-
+  load_and_authorize_resource only: [:edit, :update, :destroy]
   before_action :find_product
-  before_action :find_message, only: [:edit, :update, :destroy]
+
 
   def index
     @message = @product.messages.build
@@ -23,11 +23,9 @@ class MessagesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
     if @message.update(message_params)
       flash[:success] = "留言更新成功！"
       redirect_page = @message.messageable_type == "Evaluate" ?
@@ -42,7 +40,6 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-
     @feed_count = @message.messageable.messages_count - 1
     @message.destroy
     respond_to do |format|
