@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+
   before_action :find_product
   before_action :find_message, only: [:edit, :update, :destroy]
 
@@ -22,9 +23,11 @@ class MessagesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+
     if @message.update(message_params)
       flash[:success] = "留言更新成功！"
       redirect_page = @message.messageable_type == "Evaluate" ?
@@ -35,9 +38,11 @@ class MessagesController < ApplicationController
       flash.new[:danger] = "编辑失败，请重新编辑！"
       render 'edit'
     end
+    
   end
 
   def destroy
+
     @feed_count = @message.messageable.messages_count - 1
     @message.destroy
     respond_to do |format|

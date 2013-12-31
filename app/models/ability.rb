@@ -13,8 +13,16 @@ class Ability
       # manager
       can :manage, Message
       can :manage, Product
+      can :manage, Evaluate
     elsif user.is?(:user)
       # user
+      can :create, Evaluate
+      can :update, Evaluate do |evaluate|
+        evaluate.user_id == user.id
+      end
+      can :destroy, Evaluate do |evaluate|
+        evaluate.user_id == user.id
+      end
       can :create, Message
       can :update, Message do |message|
         message.user_id == user.id
@@ -30,5 +38,6 @@ class Ability
     def basic_read_only
       can :read, Message
       can :read, Product
+      can :read, Evaluate
     end
 end
