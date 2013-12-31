@@ -12,9 +12,11 @@
     <li>
       <%= link_to "修改个人信息", edit_account_path %>
     </li>
+    <% if current_user.is?(:admin) or current_user.is?(:manager) %>
     <li>
       <%= link_to "后台管理", admin_root_path %>
     </li>
+    <% end %>
   </ul>
 </li>
 <li> / </li>

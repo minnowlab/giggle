@@ -14,6 +14,9 @@ class Ability
       can :manage, Message
       can :manage, Product
       can :manage, Evaluate
+      can :manage, ProductPicture
+      can :manage, ProductCategory
+      can :read, User
     elsif user.is?(:user)
       # user
       can :create, Evaluate
@@ -39,5 +42,6 @@ class Ability
       can :read, Message
       can :read, Product
       can :read, Evaluate
+      can :read, User
     end
 end

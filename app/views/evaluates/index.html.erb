@@ -4,7 +4,9 @@
       <%= render 'shared/product_head' %>
       <div id="all_evaluates">
         <div>
+          <% if can? :new, Evaluate %>
           <%= link_to "我想写评测", new_product_evaluate_path(@product), class:"btn btn-primary" %>
+          <% end %>
         </div>  
         <hr>
         <div class="limit_evaluates">

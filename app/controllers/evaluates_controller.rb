@@ -1,4 +1,5 @@
 class EvaluatesController < ApplicationController
+  load_and_authorize_resource only: [:new, :edit, :create, :update, :destroy]
   before_action :find_product
   before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
   

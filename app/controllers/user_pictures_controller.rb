@@ -1,4 +1,5 @@
 class UserPicturesController < ApplicationController
+  load_and_authorize_resource only: [:create, :destroy]
   before_action :find_user
   layout "user"
 
