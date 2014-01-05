@@ -14,18 +14,18 @@
 
   .navbar-toggle{
     margin-top: 20px;
-    border: 3px solid #4c8ca1;
-    border-radius: 0px;
+    border: 3px solid $primary-color;
+    @include rounded-corners(0px);
     .icon-bar{
       border: none;
-      background-color: #4c8ca1;
+      background-color: $primary-color;
       height: 3px;
     }
   }
   .navbar-toggle:hover{
-    background-color: #4c8ca1;
+    background-color: $primary-color;
     .icon-bar{
-      background-color: #fff;
+      background-color: $white-color;
     }
   }
 }
@@ -41,7 +41,7 @@
       float: none;
       float: left;
       display: block;
-      border: 1px solid #4c8ca1;
+      border: 1px solid $primary-color;
       border-bottom: 0px;
       width: 100%;
       li{
@@ -51,7 +51,7 @@
         width: 100%;
         font-size: 18px;
         padding: 10px 0;
-        border-bottom: 1px solid #4c8ca1;
+        border-bottom: 1px solid $primary-color;
       }
     }
     .navbar-toggle{

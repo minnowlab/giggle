@@ -1,59 +1,58 @@
 body{
-  background-color: #f4fafc;
+  background-color: $background-color;
 }
 
 a{
-  color: #4c8ca1;
-}
-
-a:hover{
-  color: #a67b41;
-  font-weight: bold;
+  color: $primary-color;
+  &:hover{
+    color: $complementary-color;
+    font-weight: bold;
+  }
 }
 
 .btn-primary, .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active{
-  background-color: #4c8ca1;
-  border: 1px solid #b3b8ba;
+  background-color: $primary-color;
+  border: 1px solid $primary-dark-color;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.dropdown-toggle{
-  background-color: #a67b4e;
-  border: 1px solid #bfbbb7;
+  background-color: $complementary-color;
+  border: 1px solid $complementary-dark-color;
 }
 
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus{
-  background-color: #4C8CA1;
-  border: #4C8CA1;
+  background-color: $primary-color;
+  border: $primary-color;
 }
 
 hr{
-  border-top: 1px solid #ebf5f8;
+  border-top: 1px solid $primary-light-color;
 }
 
 .menu_list{
-  color: #4c8ca1;
+  color: $primary-color;
   ul{
     font-weight: bold;
     li.active{
       a{
-        color: #a67b41;
+        color: $complementary-color;
       }
     }
   }
 }
 
 .carousel-indicators li{
-  background-color: #4C8CA1;
-  border: 1px solid #FFF;
+  background-color: $primary-color;
+  border: 1px solid $white-color;
 }
 
 .carousel-indicators .active{
-  background-color: #A67B4E;
-  border: 1px solid #FFF;
+  background-color: $complementary-color;
+  border: 1px solid $white-color;
 }
 
 .badge{
-  background-color: #BFBBB7;
+  background-color: $complementary-dark-color;
 }
 
 .pagination > li > a, .pagination > li > span {
@@ -63,7 +62,7 @@ hr{
 }
 
 .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus{
-  background-color: #FFF8F1;
+  background-color: $complementary-light-color;
 }
 
 .pagination{

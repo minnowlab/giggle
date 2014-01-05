@@ -1,6 +1,11 @@
 /*
  *= require font-awesome
  *= require bootstrap
- *= require_directory ./home
  *= require_self
 */
+
+@import "home/base.css.scss";
+@import "home/default.css.scss";
+@import "home/navbar.css.scss";
+@import "home/products.css.scss";
+@import "home/user.css.scss";

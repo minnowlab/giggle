@@ -1,15 +1,13 @@
 #products_sort{
   margin-bottom: 30px;
-  background: white;
-  -webkit-border-radius: 7px;
-     -moz-border-radius: 7px;
-          border-radius: 7px;
-  border: 1px solid #ebf5f8;
+  background: $white-color;
+  @include rounded-corners(7px);
+  border: 1px solid $primary-light-color;
   .navbar_menu{
     margin: 30px 0 10px 30px;
   }
   p{
-    color: #b3b8ba;
+    color: $primary-dark-color;
     font-size: 12px;
     margin: 10px 0 30px 30px;
   }
@@ -17,11 +15,9 @@
 
 #product_items{
   .item{
-    background: white;
-    -webkit-border-radius: 7px;
-       -moz-border-radius: 7px;
-            border-radius: 7px;
-    border: 1px solid #ebf5f8;
+    background: $white-color;
+    @include rounded-corners(7px);
+    border: 1px solid $primary-light-color;
     margin-bottom: 20px;
     padding: 10px;
     .product_thumbnail{
@@ -34,13 +30,11 @@
 }
 
 #about_product{
-  background: white;
-  -webkit-border-radius: 7px;
-     -moz-border-radius: 7px;
-          border-radius: 7px;
-  border: 1px solid #ebf5f8;
+  background: $white-color;
+  @include rounded-corners(7px);
+  border: 1px solid $primary-light-color;
   #about_product_select{
-    border-bottom: 1px solid #ebf5f8;
+    border-bottom: 1px solid $primary-light-color;
     ul{
       margin: 30px 0 20px 30px;
     }
@@ -56,10 +50,10 @@
     padding: 40px 10px;
     ul{
       .border_bottom{
-        border-bottom: 1px dotted #A67B4E;
+        border-bottom: 1px dotted $complementary-color;
       }
       li{
-        color: #4C8CA1;
+        color: $primary-color;
         margin: 20px 0;
         padding-bottom: 10px;
         label{
@@ -75,7 +69,7 @@
   }
   .limit_evaluates{
     .evaluate_item{
-      border-bottom: 1px solid #ebf5f8;
+      border-bottom: 1px solid $primary-light-color;
     }
     .evaluate_details_abbr{
       margin: 10px 0 20px 0;
@@ -86,7 +80,7 @@
 #all_evaluates{
   padding: 30px;
   .evaluate_item{
-    border-bottom: 1px solid #ebf5f8;
+    border-bottom: 1px solid $primary-light-color;
     padding-bottom: 10px;
   }
 }
@@ -102,7 +96,7 @@
 .message_item{
   padding-bottom: 10px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #ebf5f8;
+  border-bottom: 1px solid $primary-light-color;
 }
 
 .message_modify_form{
@@ -110,12 +104,8 @@
 }
 
 #preview{
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-     -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075); 
-        -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075);
-             box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  @include rounded-corners(4px);
+  @include box-shadow;
   border: 1px solid #cccccc;
   padding: 6px 12px;
 }
@@ -125,7 +115,7 @@
 }
 
 .icon_mark_select{
-  color: #BFBBB7;
+  color: $complementary-dark-color;
 }
 
 .icon_mark_selected{
