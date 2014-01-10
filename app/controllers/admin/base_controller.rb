@@ -7,6 +7,6 @@ class Admin::BaseController < ApplicationController
 
   private
     def authorized_manage
-      redirect_to root_path unless current_user.is?(:manager) or current_user.is?(:admin)
+      redirect_to root_path unless current_user.is?(:manager) || current_user.is?(:admin)
     end
 end
