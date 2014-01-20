@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   layout "user"
 
   def index
-    @users = User.all.page(params[:page])
+    @users = User.all.paginate(page: params[:page])
   end
 
   def show_evaluates

@@ -23,7 +23,7 @@
   <%= link_to "返回", admin_evaluates_path, class: "btn btn-primary" %>
 </div>
 
-<%= paginate @evaluates %>
+<%= will_paginate @evaluates, renderer: BootstrapPagination::Rails %>
 <table class="table table_hover">
   <thead>
     <tr>
@@ -48,4 +48,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @evaluates %>
+<%= will_paginate @evaluates, renderer: BootstrapPagination::Rails %>

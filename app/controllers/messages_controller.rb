@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
 
   def index
     @message = @product.messages.build
-    @messages = @product.feed.page(params[:page])
+    @messages = @product.feed.paginate(page: params[:page])
   end
 
   def create

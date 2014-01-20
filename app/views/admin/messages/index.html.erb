@@ -28,7 +28,7 @@
 
 <%= render "message_nav_tabs" %>
 
-<%= paginate @messages %>
+<%= will_paginate @messages, renderer: BootstrapPagination::Rails %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -54,7 +54,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @messages %>
-
-
-
+<%= will_paginate @messages, renderer: BootstrapPagination::Rails %>

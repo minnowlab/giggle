@@ -74,7 +74,7 @@
           <div id="all_messages">
             <%= render partial: 'messages/message', collection: @messages %>
           </div>
-          <%= paginate @messages %>
+          <%= will_paginate @messages, renderer: BootstrapPagination::Rails %>
           <%= render 'messages/form' %>
         </div>
       </div>
