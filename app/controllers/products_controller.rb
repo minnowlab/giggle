@@ -10,7 +10,9 @@ class ProductsController < ApplicationController
   def show
     @evaluates = @product.evaluates.order("id desc").limit(5)
     @message = @product.messages.build
-    @messages = @product.feed.page(params[:page])
+    @per_page = Message.per_page
+    params[:page] = @product.last_page_with_per_page(@per_page) if params[:page].blank?
+    @messages = @product.feed.paginate(page: params[:page], per_page: @per_page)
     @likeable = Likeship.likeable(@product)  
   end
 

@@ -21,6 +21,11 @@ class Product < ActiveRecord::Base
     ProductPicture.where("product_id = ?", id)
   end
 
+  def last_page_with_per_page per_page
+    page = (self.messages_count.to_f / per_page).ceil
+    page > 1 ? page : nil
+  end
+
   def self.search_product this_params
     product = Product.all
     product = product.where("name LIKE ? ", "%#{this_params[:keywords]}%") if this_params[:keywords].present?

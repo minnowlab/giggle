@@ -2,7 +2,7 @@ class Admin::MessagesController < Admin::BaseController
   before_action :find_message, only: [:show, :edit, :update, :destroy, :destroy_message]
 
   def index
-    @messages = Message.message_search(params).page(params[:page])
+    @messages = Message.message_search(params).paginate(page: params[:page])
   end
 
   def show
@@ -39,7 +39,7 @@ class Admin::MessagesController < Admin::BaseController
 
   def destroy
     @message.destroy
-    @messages = Message.page(params[:page])
+    @messages = Message.paginate(page: params[:page])
     flash[:success] = '删除成功！'
     if @messages.blank?
       redirect_to admin_messages_path

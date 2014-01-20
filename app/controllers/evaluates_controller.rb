@@ -9,7 +9,7 @@ class EvaluatesController < ApplicationController
 
   def show
     @message = @evaluate.messages.build
-    @messages = @evaluate.feed.page(params[:page])
+    @messages = @evaluate.feed.paginate(page: params[:page])
     @likeable = likeable(@evaluate)
   end
 

@@ -3,7 +3,8 @@
     产品图片管理
   </h2>
 </div>
-<%= paginate @product_pictures %>
+
+<%= will_paginate @product_pictures, renderer: BootstrapPagination::Rails %>
 <div class="row">
   <%= form_tag admin_product_pictures_path, class: "form-inline", method: "get" do %>
     <div class="col-xs-2">
@@ -36,4 +37,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @product_pictures %>
+<%= will_paginate @product_pictures, renderer: BootstrapPagination::Rails %>

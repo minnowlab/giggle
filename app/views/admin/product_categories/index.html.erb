@@ -4,7 +4,8 @@
     <small class="pull-right"><%= link_to "创建新产品分类", new_admin_product_category_path, class: "btn btn-primary" %></small>
   </h2>
 </div>
-<%= paginate @product_categories %>
+
+<%= will_paginate @product_categories, renderer: BootstrapPagination::Rails %>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -25,4 +26,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @product_categories %>
+<%= will_paginate @product_categories, renderer: BootstrapPagination::Rails %>

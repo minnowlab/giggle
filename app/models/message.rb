@@ -22,6 +22,10 @@ class Message < ActiveRecord::Base
     end
   end
 
+  def self.per_page
+    25
+  end
+
   def self.message_search this_params
     message = Message.all
     products_ids = Product.where("name LIKE ?", "%#{this_params[:product]}%").map(&:id) if this_params[:product].present?

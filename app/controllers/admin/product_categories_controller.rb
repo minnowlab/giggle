@@ -2,7 +2,7 @@ class Admin::ProductCategoriesController < Admin::BaseController
   before_action :find_product_category, only: [:show, :edit, :update, :destroy, :all]
 
   def index
-    @product_categories = ProductCategory.page(params[:page])
+    @product_categories = ProductCategory.paginate(page: params[:page])
   end
 
   def show
@@ -39,7 +39,7 @@ class Admin::ProductCategoriesController < Admin::BaseController
 
   def destroy
     @product_category.destroy
-    @product_categories = ProductCategory.page(params[:page])
+    @product_categories = ProductCategory.paginate(page: params[:page])
     flash[:success] = '删除成功！'
     if @product_categories.blank?
       redirect_to admin_product_categories_path

@@ -40,8 +40,8 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 gem "font-awesome-rails"
 
 #Data paging
-gem 'kaminari'
-gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 # Markdown
 gem 'redcarpet'
