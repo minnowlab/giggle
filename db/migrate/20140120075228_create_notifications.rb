@@ -3,8 +3,7 @@ class CreateNotifications < ActiveRecord::Migration
     create_table :notifications do |t|
       t.belongs_to :user, index: true
       t.string :action
-      t.belongs_to :trackable, index: true
-      t.string :trackable_type
+      t.belongs_to :message, index: true
 
       t.timestamps
     end

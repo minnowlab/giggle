@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
+  def track_notification(message, action = params[:action])
+    notification = current_user.notifications.create! action: action, message_id: message.id   
+  end
+
+
   before_action do
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"

@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-
+  has_one :notification
   belongs_to :messageable, polymorphic: true, counter_cache: true
   belongs_to :user
 

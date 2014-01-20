@@ -67,13 +67,12 @@ ActiveRecord::Schema.define(version: 20140120080211) do
   create_table "notifications", force: true do |t|
     t.integer  "user_id"
     t.string   "action"
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
+    t.integer  "message_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "notifications", ["trackable_id"], name: "index_notifications_on_trackable_id", using: :btree
+  add_index "notifications", ["message_id"], name: "index_notifications_on_message_id", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "product_categories", force: true do |t|

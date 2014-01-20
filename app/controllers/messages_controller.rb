@@ -58,6 +58,7 @@ class MessagesController < ApplicationController
     @feed_count = @evaluate.messages_count + 1
     respond_to do |format|
       if @message.save
+        track_notification @message
         format.html { redirect_to :back }
         format.js { render 'create'}
       else
