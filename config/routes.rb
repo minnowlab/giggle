@@ -52,5 +52,7 @@ Giggle::Application.routes.draw do
     resources :user_pictures, only: [:index, :show, :create, :destroy]
   end
 
+  resources :notifications
+
   root 'products#index'
 end

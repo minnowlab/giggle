@@ -1,0 +1,4 @@
+<h1>Notifications</h1>
+<% @notifications.each do |notification| %> 
+  <%= NotificationPresenter.new(notification, self).render_notification %>
+<% end %>
