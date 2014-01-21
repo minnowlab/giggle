@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120080211) do
+ActiveRecord::Schema.define(version: 20140120075228) do
 
   create_table "collectionships", force: true do |t|
     t.integer  "user_id"
@@ -53,21 +53,10 @@ ActiveRecord::Schema.define(version: 20140120080211) do
 
   add_index "messages", ["created_at"], name: "index_messages_on_product_id_and_created_at", using: :btree
 
-  create_table "notification_relationships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "notification_id"
-    t.boolean  "read",            default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "notification_relationships", ["notification_id"], name: "index_notification_relationships_on_notification_id", using: :btree
-  add_index "notification_relationships", ["user_id"], name: "index_notification_relationships_on_user_id", using: :btree
-
   create_table "notifications", force: true do |t|
     t.integer  "user_id"
-    t.string   "action"
     t.integer  "message_id"
+    t.boolean  "read",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
