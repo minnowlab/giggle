@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  has_one :notification
+  has_many :notifications
   belongs_to :messageable, polymorphic: true, counter_cache: true
   belongs_to :user
 
@@ -38,4 +38,18 @@ class Message < ActiveRecord::Base
     message = message.where(messageable_type: this_params[:sort]) if this_params[:sort].present?
     message
   end
+
+  def track_notification current_user
+    users = []
+    evaluate = messageable
+    users << evaluate.user
+    evaluate.likers.each do |liker|
+      users << liker 
+    end
+    users.delete(current_user)
+    users.uniq.each do |user|
+     Notification.create! user_id: user.id, message_id: self.id   
+    end
+  end
+
 end
