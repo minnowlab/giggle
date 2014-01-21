@@ -68,3 +68,9 @@ hr{
 .pagination{
   margin: 0;
 }
+
+.giggle_container{
+  background: $white-color;
+  @include rounded-corners(7px);
+  border: 1px solid $primary-light-color;
+}

@@ -1,4 +1,17 @@
-<h1>Notifications</h1>
-<% @notifications.each do |notification| %> 
-  <%= NotificationPresenter.new(notification, self).render_notification %>
-<% end %>
+<h2><i class="fa fa-bell-o"></i> 提醒</h2>
+<hr>
+<div class="giggle_container">
+  <div class="row">
+    <div class="col-md-12">
+      <% @notifications.each do |notification| %> 
+        <div class="notification">
+          <% message = notification.message %> 
+          <%= link_to message.user.name, message.user %> 
+          在评测<%= link_to message.messageable.title, product_evaluate_path(product_id: message.messageable.product, id: message.messageable) %>
+          说<%= message.content %>
+          <hr>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
