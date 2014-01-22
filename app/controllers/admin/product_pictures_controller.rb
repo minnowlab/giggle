@@ -14,7 +14,7 @@ class Admin::ProductPicturesController < Admin::BaseController
   end
  
   def index
-    @product_pictures = ProductPicture.search_picture(params).paginate(page: params[:page])
+    @product_pictures = ProductPicture.search_picture(params)
   end
 
   def destroy

@@ -11,7 +11,7 @@ class ProductPicture < ActiveRecord::Base
     product_picture = ProductPicture.all
     product_ids = Product.where("name LIKE ?", "%#{this_params[:product_key]}%").map(&:id) if this_params[:product_key].present?
     product_picture = product_picture.where("product_id = ?", product_ids) if this_params[:product_key].present?
-    product_picture
+    product_picture.paginate(page: this_params[:page])
   end
 
 

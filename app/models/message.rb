@@ -23,7 +23,7 @@ class Message < ActiveRecord::Base
   end
 
   def self.per_page
-    25
+    10
   end
 
   def self.message_search this_params
@@ -36,7 +36,7 @@ class Message < ActiveRecord::Base
     message = message.where("messageable_type = 'Evaluate' AND messageable_id = ?", evaluates_ids) if this_params[:evaluate].present?
     message = message.where(user_id: users_ids) if this_params[:user].present?
     message = message.where(messageable_type: this_params[:sort]) if this_params[:sort].present?
-    message
+    message.paginate(page: this_params[:page])
   end
 
   def track_notification current_user
