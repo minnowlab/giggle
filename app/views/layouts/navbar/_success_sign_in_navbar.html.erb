@@ -1,6 +1,6 @@
 <li>
   <div class="dropdown">
-    <%= link_to "notifications", notifications_path %>
+    <%= link_to "#{find_unread_notifications}", notifications_path, class: "badge" %>
   <%= link_to "#", "data-toggle"=>"dropdown" do %>
     您好，
     <%= current_user.name %> 

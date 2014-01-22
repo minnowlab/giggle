@@ -16,6 +16,7 @@ class Ability
       can :manage, Evaluate
       can :manage, ProductPicture
       can :manage, ProductCategory
+      can :manage, Notification
       can :read, User
     elsif user.is?(:user)
       # user
@@ -32,6 +33,9 @@ class Ability
       end
       can :destroy, Message do |message|
         message.user_id == user.id
+      end
+      can :destroy, Notification do |notification|
+        notification.user_id == user.id
       end
       basic_read_only
     end

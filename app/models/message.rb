@@ -40,16 +40,13 @@ class Message < ActiveRecord::Base
   end
 
   def track_notification current_user
-    users = []
+    track_users = []
     evaluate = messageable 
-    # the bottom code is evaluate = self.messageable 
-    users << evaluate.user
-    evaluate.likers.each do |liker|
-      users << liker 
-    end
-    users.delete(current_user)
-    users.uniq.each do |user|
-     Notification.create! user_id: user.id, message_id: self.id   
+    track_users << evaluate.user
+    track_users = track_users + evaluate.likers
+    track_users.delete(current_user)
+    track_users.uniq.each do |user|
+      Notification.create! user_id: user.id, message_id: id   
     end
   end
 

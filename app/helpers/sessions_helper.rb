@@ -63,9 +63,10 @@ module SessionsHelper
       redirect_to user_sign_in_path
     end 
   end
- 
-  def likeable(likeable)
-    @likeable = { likeable_type: likeable.class.to_s, likeable_id: likeable.id }
+
+  def find_unread_notifications
+    count = current_user.notifications.where(read: false).length
+    count
   end
 
 end

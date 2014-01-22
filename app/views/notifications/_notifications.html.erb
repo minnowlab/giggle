@@ -1,0 +1,29 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <% if message == nil %>
+        <td>该资源已删除!</td>
+        <td class="col-md-1 col-md-offset-11">
+          <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
+        </td>
+      <% else %>
+        <td class="col-md-1">
+          <%= link_to user_picture_cover(message.user.cover.try(:picture_url, :cover), "cover"), user_path(message.user) %>
+        </td>
+        <td class="col-md-10">
+          <h5>
+            <%= link_to message.user.name, message.user %> 
+            <% evaluate = message.messageable %>
+          回复你关注的评测 <%= link_to evaluate.title, product_evaluate_path(product_id: evaluate.product, id: evaluate) %>:
+          </h5>
+          <p>
+            <%= message.content %>
+          </p>
+        </td>
+        <td class="col-md-1"> 
+          <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %> 
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
