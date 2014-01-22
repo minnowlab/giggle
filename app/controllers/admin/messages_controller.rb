@@ -8,22 +8,6 @@ class Admin::MessagesController < Admin::BaseController
   def show
   end
 
-  def new
-    @message = Message.new
-  end
-
-  def create
-    @message = Message.new(message_params)
-    @message.user_id = current_user.id
-    if @message.save
-      flash[:success] = '创建成功！'
-      redirect_to admin_messages_path 
-    else
-      flash.now[:danger] = '创建失败，请重新创建！'
-      render 'new'
-    end
-  end
-
   def edit
   end
 

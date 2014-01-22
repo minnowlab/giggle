@@ -12,46 +12,6 @@ describe Admin::MessagesController do
     end
   end
 
-  describe'GET#new'do
-    it "assigns a new Message to message" do
-      get :new
-      expect(assigns(:message)).to be_a_new(Message) 
-    end
-
-    it "renders the :new template" do 
-      get :new
-      expect(response).to render_template :new
-    end
-  end
-
-  describe"POST#create"do
-    context "with valid attributes" do
-      it "saves the new message in the database" do
-        expect{
-          post :create, message: attributes_for(:message)
-        }.to change(Message, :count).by(1)
-      end
-
-      it "redirects to messages#index" do
-        post :create, message: attributes_for(:message)
-        expect(response).to redirect_to admin_messages_path
-      end 
-    end
-
-    context "with invalid attributes" do
-      it "does not save the new message in the database" do
-        expect{
-          post :create, message: attributes_for(:nil_content_message)
-        }.to_not change(Message, :count)
-      end
-
-      it "re-renders the :new template" do 
-        post :create, message: attributes_for(:nil_content_message)
-        expect(response).to render_template :new
-      end 
-    end
-  end
-
   describe'GET#edit'do
     let(:message) { create(:message) }
 
