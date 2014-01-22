@@ -7,7 +7,7 @@ class NotificationPresenter < SimpleDelegator
   end
 
   def dynamic_select
-    notification.read ? "class1" : "class2"
+    notification.read ? "read" : "unread"
   end
 
   def render_notification
@@ -17,10 +17,8 @@ class NotificationPresenter < SimpleDelegator
   end
 
   def render_partial
-    locals = { notification: notification }
-    locals[:message] = notification.message
+    locals = { notification: notification, message: notification.message }
     render partial_path, locals
-
   end
 
   def partial_path
