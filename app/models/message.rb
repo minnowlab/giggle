@@ -40,14 +40,25 @@ class Message < ActiveRecord::Base
   end
 
   def track_notification current_user
+    note_user = inc_user
     track_users = []
     evaluate = messageable 
     track_users << evaluate.user
-    track_users = track_users + evaluate.likers
+    track_users = track_users + evaluate.likers + note_user
     track_users.delete(current_user)
     track_users.uniq.each do |user|
       Notification.create! user_id: user.id, message_id: id   
     end
+  end
+
+  def inc_user
+    note_user = self[:content]
+    note_user = note_user.split(" ").grep(/^@(.*)$/) { find_note_user $1 }
+    note_user
+  end
+
+  def find_note_user name
+    user = User.where("name = ?", name).first
   end
 
 end

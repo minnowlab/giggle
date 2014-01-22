@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :name, length: { maximum: 50 }
+  validates :name, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, unless: :skip_password
   validates :description, length: { maximum: 140 }
 
