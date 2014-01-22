@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   layout "user"
 
   def index
-    @users = User.all.paginate(page: params[:page])
+    @users = User.select("id, name, email")
+    render json: @users
   end
 
   def show_evaluates

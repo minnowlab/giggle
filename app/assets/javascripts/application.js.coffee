@@ -1,11 +1,12 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
+#= require jquery.caret.coffee
 #= require jquery.atwho
 #= require bootstrap/collapse
 #= require bootstrap/modal
 #= require bootstrap/transition
 #= require bootstrap/carousel
 #= require bootstrap/dropdown
-#= require_directory ./home
 #= require bootstrap/tooltip
+#= require_directory ./home
