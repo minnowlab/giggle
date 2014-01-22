@@ -52,9 +52,9 @@ class Message < ActiveRecord::Base
   end
 
   def inc_user
-    note_user = self[:content]
-    note_user = note_user.split(" ").grep(/^@(.*)$/) { find_note_user $1 }
-    note_user
+    note_users = self.content.scan(/@(\w{2,20})/).flatten
+    note_users = User.where(name: note_users) if note_users.any?
+    note_users
   end
 
   def find_note_user name
