@@ -1,11 +1,19 @@
-<h2><i class="fa fa-bell-o"></i> 提醒</h2>
-<hr>
-<div class="container_box">
+<div id="notifications" class="container_box menu_list">
   <div class="row">
     <div class="col-md-12">
-      <% @notifications.each do |notification| %> 
-        <%= NotificationPresenter.new(notification, self).render_notification %>
-      <% end %>
+      <div class="notification_title">
+        <h4 class="navbar_menu">
+          <i class="fa fa-bell-o"></i> 
+          提醒
+        </h4>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <ul class="list-unstyled">
+        <% @notifications.each do |notification| %> 
+          <%= NotificationPresenter.new(notification, self).render_notification %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

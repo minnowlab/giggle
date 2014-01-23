@@ -1,30 +1,25 @@
-<table class="table">
-  <tbody>
-    <tr>
-      <% if message == nil %>
-        <td>该资源已删除!</td>
-        <td class="col-md-1 col-md-offset-11">
-          <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
-        </td>
-      <% else %>
-        <td class="col-md-1">
-          <%= link_to user_picture_cover(message.user.cover.try(:picture_url, :cover), "cover"), user_path(message.user) %>
-        </td>
-        <td class="col-md-10">
-          <h5>
-            <%= link_to message.user.name, message.user %> 
-            <% evaluate = message.messageable %>
-            <%= describe %>
-            <%= link_to evaluate.title, product_evaluate_path(product_id: evaluate.product, id: evaluate) %>:
-          </h5>
-          <p>
-            <%= markdown(message.content) %>
-          </p>
-        </td>
-        <td class="col-md-1"> 
-          <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %> 
-        </td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+<li class="row">
+  <% if message.nil? %>
+    <div class="col-md-11">
+      该资源已删除！
+    </div>
+  <% else %>
+    <div class="col-md-1">
+      <%= link_to user_picture_cover(message.user.cover.try(:picture_url, :cover), "cover"), user_path(message.user) %>
+    </div>
+    <div class="col-md-10 notification_info">
+      <h5>
+        <%= link_to message.user.name, message.user %> 
+        <%= describe %>
+        <%= link_to message.messageable.title, product_evaluate_path(message.messageable.product, message.messageable) %>：
+        <span class="label label-danger unread_notic">新</span>
+      </h5>
+      <div>
+        <%= markdown(message.content) %>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-md-1">
+    <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
+  </div>
+</li>

@@ -1,7 +1,30 @@
-.notification {
-  padding: 16px 10px 0 10px;
-}
+#notifications{
+  .notification_title{
+    border-bottom: 1px solid $primary-light-color;
+    .navbar_menu{
+      margin: 30px 0 20px 30px;
+    }
+  }
 
-.unread {
-  color: red;
+  ul{
+    padding: 10px;
+  }
+
+  .notification {
+    padding: 16px 10px 10px 10px;
+    border-bottom: 1px solid $primary-light-color;
+    .notification_info a{
+      color: $complementary-color;
+    }
+  }
+
+  .unread_notic{
+    display: none;
+  }
+
+  .unread {
+    .unread_notic{
+      display: inline;
+    }
+  }
 }
