@@ -1,8 +1,5 @@
 #products_sort{
   margin-bottom: 30px;
-  background: $white-color;
-  @include rounded-corners(7px);
-  border: 1px solid $primary-light-color;
   .navbar_menu{
     margin: 30px 0 10px 30px;
   }
@@ -15,9 +12,6 @@
 
 #product_items{
   .item{
-    background: $white-color;
-    @include rounded-corners(7px);
-    border: 1px solid $primary-light-color;
     margin-bottom: 20px;
     padding: 10px;
     .product_thumbnail{
@@ -30,9 +24,6 @@
 }
 
 #about_product{
-  background: $white-color;
-  @include rounded-corners(7px);
-  border: 1px solid $primary-light-color;
   #about_product_select{
     border-bottom: 1px solid $primary-light-color;
     ul{

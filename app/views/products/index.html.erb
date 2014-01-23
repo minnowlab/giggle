@@ -4,7 +4,7 @@
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="item">
+        <div class="item container_box">
           <div class="product_thumbnail">
             <%= link_to image_tag(product.cover.try(:picture_url, :small)), product_path(product) %>
           </div>

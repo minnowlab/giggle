@@ -12,7 +12,7 @@
     <%= render "layouts/shared/flash_notice" %>
     <div class="row">
       <div class="col-xs-12 col-md-3", id="sidebar">
-        <div id="user_picture">
+        <div id="user_picture" class="container_box">
           <div class="user_picture">
             <%= user_picture_cover(@user.cover.try(:picture_url, :small), "small", class: "img-rounded") %>
           </div>
@@ -28,7 +28,7 @@
         <%= yield :sidebar %>
       </div>
       <div class="col-xs-12 col-md-9">
-        <div id="user_container">
+        <div id="user_container" class="container_box">
           <%= yield %>
         </div>
       </div>

@@ -1,15 +1,9 @@
 #user_picture, #user_menu{
-  background: $white-color;
-  @include rounded-corners(7px);
-  border: 1px solid $primary-light-color;
   padding: 10px;
   margin-bottom: 20px;
 }
 
 #user_container{
-  background: $white-color;
-  @include rounded-corners(7px);
-  border: 1px solid $primary-light-color;
   .user_info_navbar{
     border-bottom: 1px solid $primary-light-color;
     ul{
