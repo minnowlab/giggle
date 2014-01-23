@@ -40,9 +40,9 @@ class Message < ActiveRecord::Base
   end
 
   def track_notification current_user
-    note_user = inc_user
+    note_user = self.inc_user
     track_users = []
-    evaluate = messageable 
+    evaluate = self.messageable 
     track_users << evaluate.user
     track_users = track_users + evaluate.likers + note_user
     track_users.delete(current_user)
@@ -52,13 +52,9 @@ class Message < ActiveRecord::Base
   end
 
   def inc_user
-    note_users = self.content.scan(/@(\w{2,20})/).flatten
+    note_users = self.content.scan(/@([\w\u4e00-\u9fa5]{2,20})/).flatten
     note_users = User.where(name: note_users) if note_users.any?
     note_users
-  end
-
-  def find_note_user name
-    user = User.where("name = ?", name).first
   end
 
 end

@@ -14,17 +14,11 @@
           <h5>
             <%= link_to message.user.name, message.user %> 
             <% evaluate = message.messageable %>
-            <% if notification.user == evaluate.user %>
-              回复你的评测 ->
-            <% elsif message.inc_user.include?(current_user)%>
-              在回复时提到了你 ->
-            <% elsif %>
-              回复你关注的评测 ->
-            <% end %>
-             <%= link_to evaluate.title, product_evaluate_path(product_id: evaluate.product, id: evaluate) %>:
+            <%= describe %>
+            <%= link_to evaluate.title, product_evaluate_path(product_id: evaluate.product, id: evaluate) %>:
           </h5>
           <p>
-            <%= message.content %>
+            <%= markdown(message.content) %>
           </p>
         </td>
         <td class="col-md-1"> 
