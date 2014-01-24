@@ -46,8 +46,6 @@ gem 'will_paginate-bootstrap'
 # Markdown
 gem 'redcarpet'
 
-gem 'twitter-text'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
