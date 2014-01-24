@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+
   load_and_authorize_resource only: [:edit, :update, :destroy]
   before_action :find_product
 
@@ -78,6 +79,14 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:content)
+      message = params.require(:message).permit(:content)
+      convert = message[:content]
+      users = convert.scan(/@([\w\u4e00-\u9fa5]{2,20})/).flatten
+      users = User.where(name: users)
+      users.each do |user|
+        url = "[@#{user.name}](/users/#{user.id})"
+        convert = convert.gsub!(/(@#{user.name})/, url) 
+      end
+      message
     end
 end
