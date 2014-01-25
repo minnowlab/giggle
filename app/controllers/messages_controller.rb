@@ -80,13 +80,7 @@ class MessagesController < ApplicationController
 
     def message_params
       message = params.require(:message).permit(:content)
-      convert = message[:content]
-      users = convert.scan(/@([\w\u4e00-\u9fa5]{2,20})/).flatten
-      users = User.where(name: users)
-      users.each do |user|
-        url = "[@#{user.name}](/users/#{user.id})"
-        convert = convert.gsub!(/(@#{user.name})/, url) 
-      end
+      convert message if message[:content].include?("@")
       message
     end
 end
