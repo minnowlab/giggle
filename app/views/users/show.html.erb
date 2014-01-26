@@ -2,6 +2,30 @@
   <ul class="list-inline">
     <li>
       <i class="fa fa-comment-o"></i>
+    <li class="active">二维码</li>
+    <br>
+    <br>
+    <div class="rqrcode">
+      <table>
+        <% @qr.modules.each_index do |x| %>
+          <tr>  
+          <% @qr.modules.each_index do |y| %>
+            <% if @qr.dark?(x,y) %>
+              <td class="black"/>
+              <% else %>
+              <td class="white"/>
+            <% end %>
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </ul>
+</div>
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
     <li class="active">评测</li>
     <br>
     <br>
@@ -16,7 +40,6 @@
     </div>
   </ul>
 </div>
-
 <div class="user_info_navbar menu_list">
   <ul class="list-inline">
     <li>

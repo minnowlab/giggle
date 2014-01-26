@@ -46,8 +46,8 @@ gem 'will_paginate-bootstrap'
 # Markdown
 gem 'redcarpet'
 
-#Auto-link
-gem 'twitter-text'
+#RQRCode
+gem 'rqrcode'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

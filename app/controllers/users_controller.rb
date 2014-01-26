@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @qr = RQRCode::QRCode.new('hello world')
     @evaluates = @user.evaluates.limit(8)
     @collections = @user.collections.order("id DESC").limit(8)
   end
