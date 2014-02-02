@@ -36,6 +36,11 @@ class User < ActiveRecord::Base
     UserPicture.where("user_id = ?", id)
   end
 
+  #Notifiction
+  def unread_notifications_count
+    notifications.where(read: false).count
+  end
+
   #Collect
   def collect!(product)
     collectionships.create!(product: product)

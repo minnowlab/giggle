@@ -64,9 +64,4 @@ module SessionsHelper
     end 
   end
 
-  def find_unread_notifications
-    count = current_user.notifications.where(read: false).length
-    count
-  end
-
 end

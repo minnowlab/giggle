@@ -1,24 +1,29 @@
 <li>
   <div class="dropdown">
-    <%= link_to "#{find_unread_notifications}", notifications_path, class: "badge" %>
-  <%= link_to "#", "data-toggle"=>"dropdown" do %>
-    您好，
-    <%= current_user.name %> 
-    <i class="fa fa-caret-down"></i>
-  <% end %>
-  <ul id="user_navbar_dropdown" class="dropdown-menu">
-    <li>
-      <%= link_to "个人信息", current_user %>
-    </li>
-    <li>
-      <%= link_to "修改个人信息", edit_account_path %>
-    </li>
-    <% if current_user.is?(:admin) || current_user.is?(:manager) %>
-    <li>
-      <%= link_to "后台管理", admin_root_path %>
-    </li>
+    <%= link_to notifications_path do %>
+      <span class="badge <%= 'badge_notifications' if current_user.unread_notifications_count > 0 %>">
+        <%= current_user.unread_notifications_count %>
+      </span>
     <% end %>
-  </ul>
+    <%= link_to "#", "data-toggle"=>"dropdown" do %>
+      您好，
+      <%= current_user.name %> 
+      <i class="fa fa-caret-down"></i>
+    <% end %>
+    <ul id="user_navbar_dropdown" class="dropdown-menu">
+      <li>
+        <%= link_to "个人信息", current_user %>
+      </li>
+      <li>
+        <%= link_to "修改个人信息", edit_account_path %>
+      </li>
+      <% if current_user.is?(:admin) || current_user.is?(:manager) %>
+        <li>
+          <%= link_to "后台管理", admin_root_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </li>
 <li> / </li>
 <li>
