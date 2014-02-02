@@ -8,18 +8,12 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  def show_evaluates
-    @evaluates = @user.evaluates.order("id DESC")
-  end
-
-  def show_collections
+  def show
     @collections = @user.collections.order("id DESC")
   end
 
-  def show
-    @qr = RQRCode::QRCode.new('hello world')
-    @evaluates = @user.evaluates.limit(8)
-    @collections = @user.collections.order("id DESC").limit(8)
+  def all_evaluates
+    @evaluates = @user.evaluates.order("id DESC")
   end
 
   private

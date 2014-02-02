@@ -40,7 +40,7 @@ Giggle::Application.routes.draw do
   
   resources :users, only: [:index, :show] do
     member do
-      get :show_evaluates, :show_collections
+      get :all_evaluates
     end
   end
 

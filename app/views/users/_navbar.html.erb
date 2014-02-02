@@ -1,0 +1,14 @@
+<div class="user_info_navbar menu_list">
+  <ul class="list-inline">
+    <li>
+      <i class="fa fa-comment-o"></i>
+    </li>
+    <li class="<%= 'active' if action_name == 'show' %>">
+      <%= link_to "收藏", @user %>
+    </li>
+    <li> / </li>
+    <li class="<%= 'active' if action_name == 'all_evaluates' %>">
+      <%= link_to "评测", all_evaluates_user_path(@user) %>
+    </li>
+  </ul>
+</div>

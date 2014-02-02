@@ -1,13 +1,4 @@
-<div class="user_info_navbar menu_list">
-  <ul class="list-inline">
-    <li>
-      <i class="fa fa-comment-o"></i>
-    </li>
-    <li class="active">
-      <%= link_to "评测", @user %>
-    </li>
-  </ul>
-</div>
+<%= render "navbar" %>
 
 <div class="user_info_evaluates">
   <% @evaluates.each do |evaluate| %>
@@ -17,10 +8,10 @@
         <i class="fa fa-bullseye"></i> 
         <%= time_ago_in_words(evaluate.created_at) %>前发布 
         <% if can? :update, evaluate %>
-        <%= link_to "修改", edit_product_evaluate_path(evaluate.product, evaluate) %>
+          <%= link_to "修改", edit_product_evaluate_path(evaluate.product, evaluate) %>
         <% end %>
         <%if can? :destroy, evaluate %>
-        <%= link_to "删除",  product_evaluate_path(evaluate.product, evaluate),  date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+          <%= link_to "删除",  product_evaluate_path(evaluate.product, evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
         <% end %>
       </small>
       <p class="evaluate_details_abbr"><%= simple_format(evaluate.details.truncate(100)) %></p>

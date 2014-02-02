@@ -1,79 +1,28 @@
-<div class="user_info_navbar menu_list">
-  <ul class="list-inline">
-    <li>
-      <i class="fa fa-comment-o"></i>
-    <li class="active">二维码</li>
-    <br>
-    <br>
-    <div class="rqrcode">
-      <table>
-        <% @qr.modules.each_index do |x| %>
-          <tr>  
-          <% @qr.modules.each_index do |y| %>
-            <% if @qr.dark?(x,y) %>
-              <td class="black"/>
-              <% else %>
-              <td class="white"/>
-            <% end %>
-          <% end %>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </ul>
-</div>
-<div class="user_info_navbar menu_list">
-  <ul class="list-inline">
-    <li>
-      <i class="fa fa-comment-o"></i>
-    <li class="active">评测</li>
-    <br>
-    <br>
-    <div class="container">
-      <% @evaluates.each do |evaluate| %>
-        <%= link_to evaluate.title, product_evaluate_path(evaluate.product, evaluate) %>
-      <br>
-      <% end %>...
-      <div>
-        <%= link_to "点击查看更多评测！", show_evaluates_user_path(@user) %>
-      </div>
-    </div>
-  </ul>
-</div>
-<div class="user_info_navbar menu_list">
-  <ul class="list-inline">
-    <li>
-      <i class="glyphicon glyphicon-bookmark"></i>
-    <li class="active">收藏</li>
-    <br>
-    <br>
-    <div class="container">
-      <% @collections.each do |collection| %>
-        <%= link_to collection.name, collection %>
-      <br>
-      <% end %>...
-      <div>
-        <%= link_to "点击查看更多收藏！",  show_collections_user_path(@user) %>
-      </div>
-    </div>
-  </ul>
-</div>
+<%= render "navbar" %>
 
-<div class="user_info_navbar menu_list">
-  <ul class="list-inline">
-    <li>
-      <i class="glyphicon glyphicon-user"></i>
-    <li class="active">好友</li>
-    <br>
-    <br>
-    <div class="container">
-      <% @evaluates.each do |evaluate| %>
-        <%= link_to evaluate.title, "#" %>
-      <br>
-      <% end %>...
-      <div>
-        <%= link_to "点击查看更多！", "#" %>
+<div id="product_items">
+  <div class="row">
+    <% @collections.each do |collection| %>
+      <div class="col-xs-12 col-sm-6 col-md-2">
+        <div class="item">
+          <div class="product_thumbnail">
+            <%= link_to image_tag(collection.cover.try(:picture_url, :mini)), collection %>
+          </div>
+          <div class="product_info">
+            <h5>
+              <%= link_to collection.name, collection %>
+            </h5>
+            <small>
+              <%= collection.description.truncate(8) %>
+            </small>
+          </div>
+          <% if current_user?(@user) %>
+            <div class="caption">
+              <%= link_to "取消收藏", product_collectionship_path(collection), data: { confirm: "请问您确定要取消收藏吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
+            </div>
+          <% end %>          
+        </div>
       </div>
-    </div>
-  </ul>
+    <% end %>
+  </div>
 </div>
