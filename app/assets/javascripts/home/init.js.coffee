@@ -1,5 +1,6 @@
 $(document).on 'ready page:load', ->
   PreviewMarkdown.init()
+  ReplyEmbedded.init()
   $('[data-toggle="tooltip"]').tooltip()
 
   $('.at_textarea').atwho

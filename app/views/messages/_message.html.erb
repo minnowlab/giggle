@@ -6,9 +6,12 @@
         <%= link_to message.user.try(:name), user_path(message.user) %>
         <small>
           <%= time_ago_in_words(message.created_at) %>前发布 
-            <% if can? :destroy, message %>
-              <%= link_to fa_icon("trash-o"), product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
-            <% end %>
+          <a class="reply" href="#message_create_form" title="回复", data-name=<%= message.user.try(:name) %>>
+            <i class="fa fa-reply"></i>
+          </a>
+          <% if can? :destroy, message %>
+            <%= link_to fa_icon("trash-o"), product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
+          <% end %>
         </small>
       </h5>
       
