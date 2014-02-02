@@ -24,7 +24,7 @@ Giggle::Application.routes.draw do
 
   resources :products, only: [:index, :show] do
 
-    resources :messages, except: [:new, :show] do
+    resources :messages, only: [:index, :create, :destroy] do
       collection do
         post :create_evaluate_message
       end

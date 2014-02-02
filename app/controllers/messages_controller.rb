@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
 
-  load_and_authorize_resource only: [:edit, :update, :destroy]
+  load_and_authorize_resource only: :destroy
   before_action :find_product
-
 
   def index
     @message = @product.messages.build
@@ -21,23 +20,6 @@ class MessagesController < ApplicationController
         format.js
       end
     end
-  end
-
-  def edit
-  end
-
-  def update
-    if @message.update(message_params)
-      flash[:success] = "留言更新成功！"
-      redirect_page = @message.messageable_type == "Evaluate" ?
-                      product_evaluate_path(@product, @message.messageable) : 
-                      product_path(@product)
-      redirect_to redirect_page
-    else
-      flash.new[:danger] = "编辑失败，请重新编辑！"
-      render 'edit'
-    end
-    
   end
 
   def destroy

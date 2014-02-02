@@ -28,9 +28,6 @@ class Ability
         evaluate.user_id == user.id
       end
       can :create, Message
-      can :update, Message do |message|
-        message.user_id == user.id
-      end
       can :destroy, Message do |message|
         message.user_id == user.id
       end
