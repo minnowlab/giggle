@@ -5,6 +5,7 @@ class Ability
     if user.blank?
       # not logged in
       cannot :manage, :all
+      can :create, User
       basic_read_only
     elsif user.is?(:admin)
       # admin

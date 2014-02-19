@@ -1,7 +1,7 @@
 Giggle::Application.routes.draw do
 
-  get "user_pictures/show"
   resource :session, only: [:create, :destroy]
+  get '/sign-up', to: 'users#new', as: :sign_up
 
   namespace :admin do
     root 'products#index'

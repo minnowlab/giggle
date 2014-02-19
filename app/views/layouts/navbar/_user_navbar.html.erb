@@ -27,6 +27,12 @@
               登入
             <% end %>
           </li>
+          <li>
+            <%= link_to sign_up_path do %>
+              <i class="fa fa-users"></i>
+              注册
+            <% end %>
+          </li>
           <%= render "layouts/shared/sign_in_modal" %>
         <% end %>
       </ul>

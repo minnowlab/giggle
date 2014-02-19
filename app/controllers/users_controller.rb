@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, except: :index
-  layout "user"
+  before_action :find_user, only: [:show, :all_evaluates]
+  layout "user", except: [:new, :create]
 
   def index
     @users = User.select("id, name, email")
@@ -10,6 +10,14 @@ class UsersController < ApplicationController
 
   def show
     @collections = @user.collections.order("id DESC")
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    
   end
 
   def all_evaluates
