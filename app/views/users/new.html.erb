@@ -6,6 +6,15 @@
       </div>
       <div class="panel-body">
         <%= form_for @user do |f| %>
+          <% if @user.errors.any? %>
+            <div class="alert alert-danger">
+              <ul>
+                <% @user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <fieldset>
             <div class="form-group">
               <%= f.text_field :email, placeholder: "邮箱", class: "form-control" %>

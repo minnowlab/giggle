@@ -204,6 +204,7 @@ zh-CN:
         email: 邮箱
         name: 名字
         password: 密码
+        password_confirmation: 确认密码
       message:
         content: 留言内容
         product_id: 对应产品

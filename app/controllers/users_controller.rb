@@ -17,7 +17,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    
+    @user = User.new(user_params)
+    if @user.save
+      sign_in @user
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def all_evaluates
@@ -27,5 +33,9 @@ class UsersController < ApplicationController
   private
     def find_user
       @user = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :name, :password, :password_confirmation)
     end
 end

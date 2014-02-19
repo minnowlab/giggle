@@ -38,7 +38,7 @@ Giggle::Application.routes.draw do
   end
   resource :likeship, only: [:create, :destroy]
   
-  resources :users, only: [:index, :show] do
+  resources :users, only: [:index, :show, :create] do
     member do
       get :all_evaluates
     end
