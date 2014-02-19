@@ -2,7 +2,7 @@
 source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 # database for Active Record
 gem 'mysql2'
@@ -36,7 +36,7 @@ gem 'carrierwave'
 gem "mini_magick"
 
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.1.0'
+gem "bootstrap-sass", "~> 3.1.1.0"
 gem "font-awesome-rails"
 
 #Data paging
@@ -54,7 +54,6 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem "faker", "~> 1.2.0"
-  gem 'puma'
   gem 'rspec-rails'
   # DEBUG
   gem 'better_errors'
@@ -65,8 +64,8 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use puma as the app server
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
