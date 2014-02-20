@@ -7,3 +7,5 @@ $(document).on 'ready page:load', ->
     at: "@"
     data: "/users.json"
     tpl: "<li data-value='@${name}'>${name} <small>${email}</small></li>"
+
+  $("#evaluate_details").qeditor({})
