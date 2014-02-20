@@ -64,7 +64,7 @@
         <div class="limit_evaluates">
           <%= render partial: 'evaluates/evaluate', collection: @evaluates %>
         </div>
-        <div class="messages_container">
+        <div id="replies" class="messages_container">
           <h3>
             <i class="fa fa-comment-o"></i>
             评论
@@ -76,7 +76,7 @@
           <div id="all_messages">
             <%= render partial: 'messages/message', collection: @messages %>
           </div>
-          <%= will_paginate @messages, renderer: BootstrapPagination::Rails %>
+          <%= will_paginate @messages, renderer: BootstrapPagination::Rails, params: { anchor: 'replies' } %>
           <%= render 'messages/form' %>
         </div>
       </div>
