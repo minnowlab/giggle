@@ -3,6 +3,7 @@
 #= require turbolinks
 #= require jquery.caret.coffee
 #= require jquery.atwho
+#= require jquery.qeditor
 #= require bootstrap/collapse
 #= require bootstrap/modal
 #= require bootstrap/transition
