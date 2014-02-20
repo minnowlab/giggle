@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
-  ROLES_cn = %w[超级管理员 管理员 用户]
+  ROLES_CN = %w[超级管理员 管理员 用户]
   attr_accessor :skip_password
   
   validates :email, presence:   true,
@@ -79,8 +79,8 @@ class User < ActiveRecord::Base
   end
 
   def roles_cn
-    ROLES_cn.reject do |r|
-      ((roles_mask.to_i || 0) & 2**ROLES_cn.index(r)).zero?
+    ROLES_CN.reject do |r|
+      ((roles_mask.to_i || 0) & 2**ROLES_CN.index(r)).zero?
     end.join(',')
   end
 

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge(roles_mask: 4))
     if @user.save
       sign_in @user
       redirect_to root_path
