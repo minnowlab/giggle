@@ -9,10 +9,10 @@
       <div id="message_form_alert" class="hidden alert"></div>
       <div class="form-group">
         <%= f.text_area :content, size: "40x5", placeholder: "发表评论...", class: "form-control new_message_input at_textarea", disabled: signed_in? ? false : "disabled" %>
-        <span class="help-block"><em>不超过250个字</em></span>
+        <div class="help-block"><em>不超过250个字</em></div>
       </div>
       <div class="actions">
-        <%= f.submit "确认提交", class: 'btn btn-primary new_message_input', disabled: signed_in? ? false : "disabled" %>
+        <%= f.submit "确认提交", class: 'btn btn-primary new_message_submit', disabled: "disabled" %>
       </div>
     <% end %>
   </div>
