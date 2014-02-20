@@ -8,8 +8,10 @@ class EvaluatesController < ApplicationController
   end
 
   def show
+    @per_page = Message.per_page
+    params[:page] = @evaluate.last_page_with_per_page(@per_page) if params[:page].blank?
     @message = @evaluate.messages.build
-    @messages = @evaluate.feed.paginate(page: params[:page], per_page: Message.per_page)
+    @messages = @evaluate.feed.paginate(page: params[:page], per_page: @per_page)
     @likeable = Likeship.likeable(@evaluate)
   end
 
