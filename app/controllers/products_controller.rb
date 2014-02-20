@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :find_product, only: :show
 
   def index
-    @products = Product.classify_published(params[:category], params[:sort])
+    @products = Product.classify_published(params)
     @product_categories = ProductCategory.all
   end
 

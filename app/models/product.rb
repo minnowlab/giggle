@@ -35,10 +35,10 @@ class Product < ActiveRecord::Base
     product.paginate(page: this_params[:page])
   end
 
-  def self.classify_published product_category, sort
+  def self.classify_published this_params
     product = Product.published
-    product = product.where(product_category_id: product_category) if product_category.present?
-    product
+    product = product.where(product_category_id: this_params[:category]) if this_params[:category].present?
+    product.paginate(page: this_params[:page], per_page: 6)
   end
 
 end
