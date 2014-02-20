@@ -8,13 +8,13 @@
         <i class="fa fa-bullseye"></i> 
         <%= time_ago_in_words(evaluate.created_at) %>前发布 
         <% if can? :update, evaluate %>
-          <%= link_to "修改", edit_product_evaluate_path(evaluate.product, evaluate) %>
+          <%= link_to fa_icon("pencil-square-o"), edit_product_evaluate_path(evaluate.product, evaluate) %>
         <% end %>
         <%if can? :destroy, evaluate %>
-          <%= link_to "删除",  product_evaluate_path(evaluate.product, evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+          <%= link_to fa_icon("trash-o"), product_evaluate_path(evaluate.product, evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
         <% end %>
       </small>
-      <p class="evaluate_details_abbr"><%= simple_format(evaluate.details.truncate(100)) %></p>
+      <p class="evaluate_details_abbr"><%= strip_tags(evaluate.details).truncate(100) %></p>
     </div>
   <% end %>
 </div>
