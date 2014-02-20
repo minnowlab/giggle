@@ -105,12 +105,16 @@
   color: #f391a9;
 }
 
-.icon_mark_select{
+.icon_mark_select, .icon_like_select{
   color: $complementary-dark-color;
 }
 
-.icon_mark_selected{
+.icon_like_selected{
   color: #f87f6f;
+}
+
+.icon_mark_selected{
+  color: #f98e3f;
 }
 
 .details_textarea{

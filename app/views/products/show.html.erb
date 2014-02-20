@@ -26,6 +26,16 @@
                     <span><%= @product.published_at.strftime "%Y-%m-%d %H:%M:%S" %></span>
                   </li>
                   <li class="border_bottom">
+                    <label>操作</label>
+                    <span id="like_link">
+                      <%= likeable_likes_tag @likeable %>
+                    </span>
+                    <span> / </span>
+                    <span id="collect_link">
+                      <%= product_collection_tag @product %>
+                    </span>
+                  </li>
+                  <li class="border_bottom">
                     <label>产品描述</label>
                     <span><%= @product.description %></span>
                   </li>
@@ -33,14 +43,6 @@
                     <%= link_to_if @product.buy_link.present?, raw("<i class='fa fa-shopping-cart'></i>购买"), @product.buy_link, class: "btn btn-primary", target: "_blank" do %>
                       <%= link_to "暂不提供购买", "#", class: "btn btn-default disabled" %>
                     <% end %>
-                  </li>
-                  <li>
-                    <div id="like_link">                      
-                      <%= likeable_likes_tag @likeable %>
-                    </div>
-                    <div id="collect_link">
-                      <%= product_collection_tag @product %>
-                    </div>
                   </li>
                 </ul>
               </div>
