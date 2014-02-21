@@ -1,6 +1,6 @@
 module ProductsHelper
   def product_collection_tag product
-    return "" if current_user.blank?
+    return fa_icon("bookmark") if current_user.blank?
     class_name = "icon_mark_select"
     link_title = "收藏"
     link_path_method = "post"

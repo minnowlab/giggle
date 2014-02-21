@@ -1,7 +1,7 @@
 module LikeshipsHelper
   def likeable_likes_tag like
     @like = Object.const_get(like[:likeable_type]).where(id: like[:likeable_id]).first
-    return fa_icon("heart") if current_user.blank?
+    return "#{fa_icon('heart')} #{@like.likeships.count}人喜欢".html_safe if current_user.blank?
     class_name = "icon_like_select"
     link_title = "喜欢"
     link_path_method = "post"
