@@ -1,0 +1,16 @@
+<%= form_tag admin_products_path, method: "get", class: "form-inline" do %>
+  <div class="form-group">
+    <%= text_field_tag :keywords, params[:keywords], placeholder: "产品名称", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag :min_price, params[:min_price], placeholder: "最低价", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= text_field_tag :max_price, params[:max_price], placeholder: "最高价", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= select_tag :product_category_id, options_from_collection_for_select(ProductCategory.all, :id, :name, params[:product_category_id]), include_blank: true, class: "form-control" %>
+  </div>
+  <%= submit_tag "搜索", class: "btn btn-primary "%>
+  <%= link_to "返回", admin_products_path, class: "btn btn-default" %>
+<% end %>
