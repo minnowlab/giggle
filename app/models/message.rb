@@ -42,7 +42,7 @@ class Message < ActiveRecord::Base
     message = message.where("messageable_type = 'Product' AND messageable_id = ?", products_ids) if this_params[:product].present?
     message = message.where("messageable_type = 'Evaluate' AND messageable_id = ?", evaluates_ids) if this_params[:evaluate].present?
     message = message.where(user_id: users_ids) if this_params[:user].present?
-    message = message.where(messageable_type: this_params[:sort]) if this_params[:sort].present?
+    message = message.where(messageable_type: this_params[:messageable_type]) if this_params[:messageable_type].present?
     message.paginate(page: this_params[:page])
   end
 

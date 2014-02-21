@@ -1,11 +1,8 @@
 class Admin::MessagesController < Admin::BaseController
-  before_action :find_message, only: [:show, :edit, :update, :destroy, :destroy_message]
+  before_action :find_message, only: [:edit, :update, :destroy]
 
   def index
     @messages = Message.message_search(params)
-  end
-
-  def show
   end
 
   def edit
