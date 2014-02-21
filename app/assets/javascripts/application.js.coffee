@@ -1,7 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
-#= require jquery.caret.coffee
+#= require jquery.caret
 #= require jquery.atwho
 #= require jquery.qeditor
 #= require bootstrap/collapse

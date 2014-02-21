@@ -51,7 +51,7 @@
           <hr>
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-              <%= markdown(@product.details) %>
+              <%= sanitize(@product.details) %>
             </div>
           </div>
         </div>

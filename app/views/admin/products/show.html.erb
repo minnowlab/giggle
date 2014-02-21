@@ -41,7 +41,7 @@
             </p>
             <hr>
             <p>
-              <%= markdown(@product.details) %>
+              <%= sanitize(@product.details) %>
             </p>
           </div>    
         </div>
