@@ -200,7 +200,7 @@ zh-CN:
 
   activerecord:
     attributes:
-      users:
+      user:
         email: 邮箱
         name: 名字
         password: 密码
@@ -213,12 +213,12 @@ zh-CN:
         description: 描述
         details: 详情
         price: 价格
-      evaluates:
+      evaluate:
         title: 标题
         details: 详情
-      product_categories:
+      product_category:
         name: 名称
-      product_pictures:
+      product_picture:
         picture: 图片
         picture_content_type: 图片格式
         picture_file_size: 图片大小
