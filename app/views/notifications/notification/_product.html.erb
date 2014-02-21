@@ -1,0 +1,29 @@
+<li class="row">
+  <% if message.nil? %>
+    <div class="col-md-11">
+      该资源已删除！
+    </div>
+  <% else %>
+    <div class="col-md-1">
+      <%= link_to user_picture_cover(message.user.cover.try(:picture_url, :cover), "cover"), user_path(message.user) %>
+    </div>
+    <div class="col-md-10 notification_info">
+      <h5>
+        <%= link_to message.user.name, message.user %> 
+        在对产品 
+        <%= link_to message.messageable_name, product_path(message.messageable) %> 
+        的回复中提到了我
+        <small>
+          <%= time_ago_in_words(notification.created_at) %>前 
+        </small>
+        <span class="label label-danger unread_notic">新</span>
+      </h5>
+      <div>
+        <%= markdown(message.content) %>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-md-1">
+    <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
+  </div>
+</li>

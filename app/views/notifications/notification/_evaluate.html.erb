@@ -9,9 +9,18 @@
     </div>
     <div class="col-md-10 notification_info">
       <h5>
-        <%= link_to message.user.name, message.user %> 
-        <%= describe %>
-        <%= link_to message.messageable.title, product_evaluate_path(message.messageable.product, message.messageable) %>：
+        <%= link_to message.user.name, message.user %>
+        <% if message.evaluate_author? notification %>
+          回复了我发布的评测
+          <%= link_to message.messageable_name, product_evaluate_path(message.messageable.product, message.messageable) %>
+        <% else %>
+          在对评测 
+          <%= link_to message.messageable_name, product_evaluate_path(message.messageable.product, message.messageable) %>
+          的回复中提到了我 
+        <% end %>
+        <small>
+          <%= time_ago_in_words(notification.created_at) %>前 
+        </small>
         <span class="label label-danger unread_notic">新</span>
       </h5>
       <div>

@@ -18,25 +18,10 @@ class NotificationPresenter < SimpleDelegator
 
   def render_partial
     locals = { notification: notification, message: notification.message }
-    locals[:describe] = self.select_describe
     render partial_path, locals
   end
 
   def partial_path
-    "notifications/notifications"
+    "notifications/notification/#{notification.message.messageable_type.downcase}"
   end
-
-  def select_describe
-    if notification.message
-      evaluate = notification.message.messageable
-      if notification.message.inc_user.include?(current_user)
-        "在回复时提到了你"
-      elsif notification.user == evaluate.user
-        "回复你的评测"
-      else
-        "回复你关注的评测"
-      end
-    end 
-  end
-
 end

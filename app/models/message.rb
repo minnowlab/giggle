@@ -3,6 +3,8 @@ class Message < ActiveRecord::Base
   belongs_to :messageable, polymorphic: true, counter_cache: true
   belongs_to :user
 
+  after_create :track_notification
+
   validates :content, presence: true, length: { maximum: 300 }
   validates :messageable_type, inclusion: { in: %w(Product Evaluate),
                                             message: "%{value} is not a valid type" }
@@ -22,6 +24,10 @@ class Message < ActiveRecord::Base
     end
   end
 
+  def evaluate_author? notification
+    notification.user == notification.message.messageable.try(:user)
+  end
+
   def self.per_page
     10
   end
@@ -39,22 +45,23 @@ class Message < ActiveRecord::Base
     message.paginate(page: this_params[:page])
   end
 
-  def track_notification current_user
-    note_user = self.inc_user
+  private
+
+  def track_notification
     track_users = []
-    evaluate = self.messageable 
-    track_users << evaluate.user
-    track_users = track_users + evaluate.likers + note_user
-    track_users.delete(current_user)
+    track_users << self.messageable.user if self.messageable.try(:user).present?
+    track_users += find_user_in_content
+    track_users.delete(self.user)
     track_users.uniq.each do |user|
-      Notification.create! user_id: user.id, message_id: id   
+      Notification.create! user_id: user.id, message_id: self.id   
     end
   end
 
-  def inc_user
-    note_users = self.content.scan(/@([\w\u4e00-\u9fa5]{2,20})/).flatten
-    note_users = User.where(name: note_users) if note_users.any?
-    note_users
+  def format_user_in_content
+    self.content.scan(/@([\w\u4e00-\u9fa5]{2,20})/).flatten
   end
 
+  def find_user_in_content
+    User.where(name: format_user_in_content)
+  end
 end
