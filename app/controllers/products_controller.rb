@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @evaluates = @product.evaluates.order("id desc").limit(5)
+    @evaluates = @product.evaluates.order(id: :desc).limit(3)
     @message = @product.messages.build
     @per_page = Message.per_page
     params[:page] = @product.last_page_with_per_page(@per_page) if params[:page].blank?

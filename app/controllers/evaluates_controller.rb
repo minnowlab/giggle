@@ -4,7 +4,7 @@ class EvaluatesController < ApplicationController
   before_action :find_evaluate, only: [:show, :edit, :update, :destroy]
   
   def index
-    @evaluates = @product.evaluates
+    @evaluates = @product.evaluates.order(id: :desc)
   end
 
   def show
