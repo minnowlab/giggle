@@ -19,7 +19,6 @@ class Admin::ProductsController < Admin::BaseController
       flash[:success] = '创建成功！'
       redirect_to admin_products_path
     else
-      flash.now[:danger] = '创建失败，请重新创建！'
       render 'new'
     end
   end
@@ -32,7 +31,6 @@ class Admin::ProductsController < Admin::BaseController
       flash[:success] = '更新成功！'
       redirect_to admin_products_path
     else
-      flash.now[:danger] = '更新失败，请重新更新！'
       render 'edit'
     end
   end

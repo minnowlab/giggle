@@ -213,6 +213,8 @@ zh-CN:
         description: 描述
         details: 详情
         price: 价格
+        buy_link: 购物链接
+        product_category_id: 产品类型
       evaluate:
         title: 标题
         details: 详情
