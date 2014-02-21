@@ -1,0 +1,7 @@
+<%= form_tag admin_product_pictures_path, class: "form-inline", method: "get" do %>
+  <div class="form-group">
+    <%= text_field_tag :product_key, params[:product_key], placeholder: "商品", class: "form-control" %>
+  </div>
+  <%= submit_tag "搜索", class: "btn btn-primary "%>
+  <%= link_to "返回", admin_product_pictures_path, class: "btn btn-default" %>
+<% end %>

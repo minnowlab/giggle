@@ -4,19 +4,10 @@
   </h2>
 </div>
 
-<%= will_paginate @product_pictures, renderer: BootstrapPagination::Rails %>
-<div class="row">
-  <%= form_tag admin_product_pictures_path, class: "form-inline", method: "get" do %>
-    <div class="col-xs-2">
-      <%= text_field_tag :product_key, params[:product_key], placeholder: "商品", class: "form-control" %>
-    </div>
-    <div class="col-xs-1">
-      <%= submit_tag "搜索", class: "btn btn-primary "%>
-    </div>
-  <% end %>
-  <%= link_to "返回", admin_product_pictures_path, class: "btn btn-primary" %>
-</div>
+<%= render "search_form" %>
+<hr>
 
+<%= will_paginate @product_pictures, renderer: BootstrapPagination::Rails %>
 <table class="table table-hover">
   <thead>
     <tr>
