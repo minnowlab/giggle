@@ -4,6 +4,7 @@ class Message < ActiveRecord::Base
   belongs_to :user
 
   after_create :track_notification
+  before_create :convert_content
 
   validates :content, presence: true, length: { maximum: 300 }
   validates :messageable_type, inclusion: { in: %w(Product Evaluate),
@@ -46,6 +47,17 @@ class Message < ActiveRecord::Base
   end
 
   private
+
+  def convert_content
+    if self.content.include?("@")
+      users = find_user_in_content
+      users.each do |user|
+        url = "[@#{user.name}](/users/#{user.id})"
+        self.content.gsub!(/(@#{user.name})/, url) 
+      end
+    end
+    true
+  end
 
   def track_notification
     track_users = []

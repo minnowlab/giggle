@@ -13,14 +13,4 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, danger: exception.message
   end
-
-  def convert content 
-      message = content[:content]
-      users = message.scan(/@([\w\u4e00-\u9fa5]{2,20})/).flatten
-      users = User.where(name: users)
-      users.each do |user|
-        url = "[@#{user.name}](/users/#{user.id})"
-        message = message.gsub!(/(@#{user.name})/, url) 
-      end
-  end
 end

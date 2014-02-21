@@ -60,8 +60,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      message = params.require(:message).permit(:content)
-      convert message if message[:content].include?("@")
-      message
+      params.require(:message).permit(:content)
     end
 end
