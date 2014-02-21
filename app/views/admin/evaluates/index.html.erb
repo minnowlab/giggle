@@ -1,27 +1,14 @@
 <div class="page-header">
   <h2>
     产品评测管理
-    <small class="pull-right"><%= link_to "创建新评测", new_admin_evaluate_path, class: "btn btn-primary" %></small>
+    <small class="pull-right">
+      <%= link_to "创建新评测", new_admin_evaluate_path, class: "btn btn-primary" %>
+    </small>
   </h2>
 </div>
 
-<div class="row">
-  <%= form_tag admin_evaluates_path, class: "form-inline", method: "get" do %>
-    <div class="col-xs-2">
-      <%= text_field_tag :title, params[:title], placeholder: "标题", class: "form-control" %>
-    </div>
-    <div class="col-xs-2">
-      <%= text_field_tag :product, params[:product], placeholder: "产品", class: "form-control" %>
-    </div>
-    <div class="col-xs-2">
-      <%= text_field_tag :user, params[:user], placeholder: "用户", class: "form-control" %>
-    </div>
-    <div class="col-xs-1">
-      <%= submit_tag "搜索", class: "btn btn-primary "%>
-    </div>
-  <% end %>
-  <%= link_to "返回", admin_evaluates_path, class: "btn btn-primary" %>
-</div>
+<%= render "search_form" %>
+<hr>
 
 <%= will_paginate @evaluates, renderer: BootstrapPagination::Rails %>
 <table class="table table_hover">

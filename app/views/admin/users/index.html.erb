@@ -3,26 +3,14 @@
     用户管理
     <small class="pull-right">
       <% if can? :create, User %>
-      <%= link_to "创建新用户", new_admin_user_path, class: "btn btn-primary" %>
+        <%= link_to "创建新用户", new_admin_user_path, class: "btn btn-primary" %>
       <% end %>
     </small>
   </h2>
 </div>
 
-<div class="row">
-  <%= form_tag admin_users_path, class: "form-inline", method: "get" do %>
-    <div class="col-xs-2">
-      <%= text_field_tag :email, params[:email], placeholder: "邮箱", class: "form-control" %>
-    </div>
-    <div class="col-xs-2">
-      <%= text_field_tag :user, params[:user], placeholder: "用户名", class: "form-control" %>
-    </div>
-    <div class="col-xs-1">
-      <%= submit_tag "搜索", class: "btn btn-primary "%>
-    </div>
-  <% end %>
-  <%= link_to "返回", admin_users_path, class: "btn btn-primary" %>
-</div>
+<%= render "search_form" %>
+<hr>
 
 <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
 <table class="table table-hover">
