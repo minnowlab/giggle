@@ -8,12 +8,12 @@
             分类：
           </li>
           <li class="<%= 'active' if params[:category].blank? %>">
-            <%= link_to "全部", products_path(sort: params[:sort]) %>
+            <%= link_to "全部", sort: params[:sort] %>
           </li>
           <% @product_categories.each do |product_category| %>
             <li> / </li>
             <li class="<%= 'active' if params[:category] == product_category.id.to_s %>">
-              <%= link_to product_category.name, products_path(params.merge(category: product_category.id)) %>
+              <%= link_to product_category.name, params.merge(category: product_category.id) %>
             </li>
           <% end %>
         </ul>
@@ -23,11 +23,15 @@
             排序：
           </li>
           <li class="<%= 'active' if params[:sort].blank? %>">
-            <%= link_to "默认排序", products_path(category: params[:category]) %>
+            <%= link_to "默认排序", category: params[:category] %>
           </li>
           <li> / </li>
-          <li class="<%= 'active' if params[:sort] == 'popularity' %>">
-            <%= link_to "人气", products_path(params.merge(sort: "popularity")) %>
+          <li class="<%= 'active' if params[:sort] == 'price' %>">
+            <%= sortable "price", "价格" %>
+          </li>
+          <li> / </li>
+          <li class="<%= 'active' if params[:sort] == 'published_at' %>">
+            <%= sortable "published_at", "上架时间" %>
           </li>
         </ul>
       </div>

@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
   include ApplicationHelper
+  helper_method :sort_column, :sort_direction
   before_action :find_product, only: :show
 
   def index
-    @products = Product.classify_published(params)
+    @products = Product.order(sort_column + " " + sort_direction).classify_published(params)
     @product_categories = ProductCategory.all
   end
 
@@ -24,5 +25,13 @@ class ProductsController < ApplicationController
 
     def find_product
       @product = Product.find(params[:id])
+    end
+
+    def sort_column
+      Product.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
