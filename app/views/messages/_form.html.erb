@@ -12,7 +12,7 @@
         <div class="help-block"><em>不超过250个字</em></div>
       </div>
       <div class="actions">
-        <%= f.submit "确认提交", class: 'btn btn-primary new_message_submit', disabled: "disabled" %>
+        <%= f.submit "确认提交", class: 'btn btn-primary new_message_submit', disabled: "disabled", disable_with: "正在提交..." %>
       </div>
     <% end %>
   </div>
