@@ -6,6 +6,9 @@
     <div class="product_info">
       <h5>
         <%= link_to product.name, product_path(product) %>
+        <small>
+           ￥<%= product.price %>
+        </small>
       </h5>
       <small>
         <%= product.description.truncate(20) %>
