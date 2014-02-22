@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h2>
+    用户信息
+  </h2>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="media">
+      <div class="media-body">
+        <h5 class="media-heading">
+          名称：<%= @user.name %> / 
+          邮箱：<%= @user.email %>
+        </h5>
+        <div>
+          <%= fa_icon("clock-o") %>
+          注册时间：<%= @user.created_at.strftime "%Y-%m-%d %H:%M:%S" %>            
+        </div>
+        <div>
+          描述：
+          <%= @user.description %>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <% @user.user_pictures.each do |user_picture| %>
+        <div class="col-xs-6 col-sm-3 col-md-2">
+          <div class="thumbnail">
+            <%= image_tag user_picture.picture_url(:small) %>
+            <div class="caption">
+              <%= link_to "目前使用头像", "#", class: "btn btn-primary btn-xs disabled" if @user.cover_id == user_picture.id %>
+              <%= link_to "删除", destroy_user_picture_admin_user_path(@user, user_picture_id: user_picture.id), class: "btn btn-danger btn-xs", data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

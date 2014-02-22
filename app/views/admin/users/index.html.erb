@@ -25,7 +25,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
+        <td><%= link_to user.email, admin_user_path(user) %></td>
         <td><%= user.name %></td>
         <td><%= user.roles_cn %>
         <td>

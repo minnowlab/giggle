@@ -12,7 +12,9 @@ Giggle::Application.routes.draw do
     end
     resources :product_pictures
     resources :messages, except: [:show, :new, :create] 
-    resources :users
+    resources :users do
+      delete :destroy_user_picture, on: :member
+    end
     resources :product_categories
     resources :evaluates
   end

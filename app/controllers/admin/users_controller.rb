@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy, :destroy_user_picture]
 
   def index
     @users = User.user_search(params)
@@ -47,6 +47,12 @@ class Admin::UsersController < Admin::BaseController
     else
       redirect_to :back
     end
+  end
+
+  def destroy_user_picture
+    @user.user_pictures.find(params[:user_picture_id]).destroy
+    flash[:success] = '删除成功！'
+    redirect_to admin_user_path(@user)
   end
 
   private
