@@ -3,8 +3,20 @@
     <%= @product_category.name %> 产品    
   </h2>
 </div>
-<ul>
-  <h5>
-    <%= render @products %>
-  </h5>
-</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>产品名称</th>
+      <th>价格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
