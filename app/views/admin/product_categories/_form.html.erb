@@ -1,19 +1,16 @@
-<%= form_for(@product_category, url: (@product_category.new_record? ? admin_product_categories_path : admin_product_category_path(@product_category))) do |f| %>
+<%= form_for(@product_category, url: (@product_category.new_record? ? admin_product_categories_path : admin_product_category_path(@product_category)), html: {class: "form-horizontal"}) do |f| %>
   <%= render "shared/error_messages", object: @product_category %>
 
-  <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-1 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= f.submit "确认提交", class: 'btn btn-primary' %>
-      </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+      <%= f.submit "提交", class: "btn btn-primary", disable_with: "正在提交..." %>
     </div>
   </div>
 <% end %>

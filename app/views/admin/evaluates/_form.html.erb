@@ -1,44 +1,50 @@
-<%= form_for(@evaluate, url: (@evaluate.new_record? ? admin_evaluates_path : admin_evaluate_path(@evaluate))) do |f| %>
+<%= form_for(@evaluate, url: (@evaluate.new_record? ? admin_evaluates_path : admin_evaluate_path(@evaluate)), html: { class: "form-horizontal" }) do |f| %>
   <%= render "shared/error_messages", object: @evaluate %>
 
-  <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= f.label :title, "标题" %>
-        <%= f.text_field :title, class: "form-control" %>
-      </div>
-      <% if @evaluate.new_record? %>
-        <div class="form-group">
-          <%= f.label :product_id, "产品" %>
-          <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label "用户:#{current_user.name}" %>
-        </div>
-      <% else %>
-        <div class="form-group">
-          <%= f.label "产品:#{@evaluate.product.try(:name)}" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label "用户:#{@evaluate.user.try(:name)}" %>
-        </div>
-      <% end %>
-      <div class="form-group">
-        <%= f.label :details, "内容" %>
-        <%= f.text_area :details, size: "60x12" %>
-      </div>
-
-      <hr>
-
+  <div class="form-group">
+    <%= f.label :title, class: "col-sm-1 control-label" %>
+    <div class="col-sm-11">
+      <%= f.text_field :title, class: "form-control" %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= f.submit "确认提交", class: 'btn btn-primary' %>
+
+  <% if @evaluate.new_record? %>
+    <div class="form-group">
+      <%= f.label :product_id, class: "col-sm-1 control-label" %>
+      <div class="col-sm-11">
+        <%= f.select :product_id, options_from_collection_for_select(Product.all, :id, :name), {}, class: "form-control" %>
       </div>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.label :product_id, class: "col-sm-1 control-label" %>
+      <div class="col-sm-11">
+        <p class="form-control-static">
+          <%= @evaluate.product.try(:name) %>
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :user_id, class: "col-sm-1 control-label" %>
+      <div class="col-sm-11">
+        <p class="form-control-static">
+          <%= @evaluate.user.try(:name) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :details, class: "col-sm-1 control-label" %>
+    <div class="col-sm-11">
+      <%= f.text_area :details, class: "form-control rich_text_format" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-11">
+        <%= f.submit "确认提交", class: 'btn btn-primary', disable_with: "正在提交..." %>
     </div>
   </div>
 <% end %>

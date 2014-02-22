@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ROLES = %w[admin manager user]
   ROLES_CN = %w[超级管理员 管理员 用户]
+  ROLES_CHECKBOX = [['admin', '超级管理员'], ['manager', '管理员'], ['user', '用户']]
   attr_accessor :skip_password
   
   validates :email, presence:   true,

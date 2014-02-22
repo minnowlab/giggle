@@ -31,16 +31,16 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :details, class: "col-sm-1 control-label" %>
+    <%= f.label :product_category_id, class: "col-sm-1 control-label" %>
     <div class="col-sm-11">
-      <%= f.text_area :details, class: "form-control rich_text_format" %>
+      <%= f.select :product_category_id, options_from_collection_for_select(ProductCategory.all, :id, :name), {}, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :product_category_id, class: "col-sm-1 control-label" %>
+    <%= f.label :details, class: "col-sm-1 control-label" %>
     <div class="col-sm-11">
-      <%= f.select :product_category_id, options_from_collection_for_select(ProductCategory.all, :id, :name), {}, class: "form-control" %>
+      <%= f.text_area :details, class: "form-control rich_text_format" %>
     </div>
   </div>
 

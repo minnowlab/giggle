@@ -1,5 +1,4 @@
 $(document).on 'ready page:load', ->
-  PreviewMarkdown.init()
   ReplyEmbedded.init()
   TextareaLimit.init()
 

@@ -1,50 +1,42 @@
-<%= form_for(@message, url: (@message.new_record? ? admin_messages_path : admin_message_path(@message)), html: {class: "form-horizontal"}) do |f| %>
+<%= form_for(@message, url: admin_message_path(@message), html: {class: "form-horizontal"}) do |f| %>
   <%= render "shared/error_messages", object: @message %>
 
-  <% if @message.new_record? %>
-    <div class="form-group">
-      <%= f.label "产品", class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-        <%= f.select :messageable_id, options_from_collection_for_select(Product.all, :id, :name),  { include_blank: false }, { class: 'form-control' } %>
-        <%= f.hidden_field :messageable_type, value: "Product" %>
-      </div>
-    </div>
-  <% else %>
-    <div class="form-group">
-      <%= f.label "留言类型", class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-        <p class="form-control-static">
-          <%= @message.messageable_cn %>
-        </p>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label "名称", class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-        <p class="form-control-static">
-          <%= @message.messageable_name %>
-        </p>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "用户", class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-        <p class="form-control-static">
-          <%= @message.user.try(:name) %>
-        </p>
-      </div>
-    </div>
-  <% end %>
   <div class="form-group">
-    <%= f.label :content, "留言内容:", class: "col-sm-2 control-label" %>
+    <%= f.label :messageable_type, class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <p class="form-control-static">
+        <%= @message.messageable_cn %>
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :messageable_name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <p class="form-control-static">
+        <%= @message.messageable_name %>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :user_id, class: "col-sm-2 control-label" %>
+    <div class="col-sm-6">
+      <p class="form-control-static">
+        <%= @message.user.try(:name) %>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content, class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
       <%= f.text_area :content, rows: 4, class: "form-control" %>
     </div>
   </div>
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
-      <%= f.submit "确认提交", class: 'btn btn-primary' %>
+      <%= f.submit "确认提交", class: 'btn btn-primary', disable_with: "正在提交..." %>
     </div>
   </div>
 <% end %>

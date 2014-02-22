@@ -1,50 +1,57 @@
-<%= form_for(@user, url: (@user.new_record? ? admin_users_path : admin_user_path(@user))) do |f| %>
+<%= form_for(@user, url: (@user.new_record? ? admin_users_path : admin_user_path(@user)), html: {class: "form-horizontal"}) do |f| %>
   <%= render "shared/error_messages", object: @user %>
 
-  <div class="row">
-    <div class="col-md-3">
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.text_field :email, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "form-control" %>
-        <% unless @user.new_record? %>
-          <span class="help-block">如果不需要修改密码，请为空。</span>
-        <% end %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: "form-control" %>
-      </div>
-
-       <div class="form-group">
-        <%= f.label "角色:" %>
-        <%= f.collection_check_boxes :roles, User::ROLES, :to_s, :humanize %>
-      </div>
-      <hr>
-
+  <div class="form-group">
+    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :email, class: "form-control" %>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= f.submit "确认提交", class: 'btn btn-primary' %>
-      </div>
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :name, class: "form-control" %>
     </div>
   </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :password, class: "form-control" %>
+      <% unless @user.new_record? %>
+        <span class="help-block">如果不需要修改密码，请为空。</span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :password_confirmation, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :roles, class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.collection_check_boxes :roles, User::ROLES_CHECKBOX, :first, :last do |b| %>
+        <%= b.label(class: "checkbox-inline") { b.check_box + b.text } %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <%= f.submit "确认提交", class: 'btn btn-primary', disable_with: "正在提交..." %>
+    </div>
+  </div>
+
 <% end %>

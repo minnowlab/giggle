@@ -17,10 +17,6 @@ class ProductsController < ApplicationController
     @likeable = Likeship.likeable(@product)  
   end
 
-  def preview_markdown
-    render text: markdown(params[:body])
-  end
-
   private
 
     def find_product

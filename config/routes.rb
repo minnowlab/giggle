@@ -32,9 +32,6 @@ Giggle::Application.routes.draw do
     resources :evaluates
     resource :collectionship, only: [:create, :destroy]
     
-    collection do
-      post :preview_markdown
-    end
   end
   resource :likeship, only: [:create, :destroy]
   
