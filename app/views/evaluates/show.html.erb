@@ -19,7 +19,7 @@
                   <%= link_to fa_icon("pencil-square-o"), edit_product_evaluate_path(@evaluate.product, @evaluate) %>
                 <% end %>
                 <%if can? :destroy, @evaluate %>
-                  <%= link_to fa_icon("trash-o"),  product_evaluate_path(@evaluate.product, @evaluate), date: { confirm: "请问您确定要删除吗？" }, method: :delete %>
+                  <%= link_to fa_icon("trash-o"),  product_evaluate_path(@evaluate.product, @evaluate), data: { confirm: "请问您确定要删除吗？" }, method: :delete %>
                 <% end %>                
               </small>              
             </h5>

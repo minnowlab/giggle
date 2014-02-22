@@ -10,7 +10,7 @@
             <i class="fa fa-reply"></i>
           </a>
           <% if can? :destroy, message %>
-            <%= link_to fa_icon("trash-o"), product_message_path(@product, message), date: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
+            <%= link_to fa_icon("trash-o"), product_message_path(@product, message), data: { confirm: "请问您确定要删除吗？" }, method: :delete, remote: true %>
           <% end %>
         </small>
       </h5>

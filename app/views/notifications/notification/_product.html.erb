@@ -24,6 +24,6 @@
     </div>
   <% end %>
   <div class="col-md-1">
-    <%= link_to "删除", notification_path(notification), date: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
+    <%= link_to "删除", notification_path(notification), data: { confirm: "请问您确定要删除吗？" }, method: :delete, class: "btn btn-xs btn-danger" %>
   </div>
 </li>
