@@ -6,8 +6,6 @@ class Admin::EvaluatesController < Admin::BaseController
   end
 
   def show
-    @message = @evaluate.messages.build
-    @feed_items = @evaluate.feed
   end
 
   def edit
@@ -50,25 +48,6 @@ class Admin::EvaluatesController < Admin::BaseController
     end
   end
 
-  def create_message
-    @message = @evaluate.messages.build(message_params)
-    if @message.save
-      flash[:success] = '创建成功！'
-      redirect_to admin_evaluate_path(@evaluate)
-    else
-      @feed_items = @evaluate.feed.all
-      flash.now[:danger] = '创建失败，请重新创建！'
-      render action: :show
-    end
-  end
-
-  def destroy_message
-    @message = Message.find(params[:message_id])
-    @message.destroy
-    flash[:success] = '删除成功！'
-    redirect_to admin_evaluate_path(@evaluate)
-  end
-
   private
     
     def find_evaluate
@@ -77,9 +56,5 @@ class Admin::EvaluatesController < Admin::BaseController
 
     def evaluate_params
       params.require(:evaluate).permit(:title, :details, :product_id)
-    end
-
-    def message_params
-      params.require(:message).permit(:content, :user_id, :evaluate_id)
     end
 end

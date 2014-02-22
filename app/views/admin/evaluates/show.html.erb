@@ -4,18 +4,36 @@
   </h2>
 </div>
 
-<div class="word_center">
-  产品：<%= @evaluate.product.try(:name) %>
-  <br>
-  评测者：<%= @evaluate.user.try(:name) %>
-  <br>
-  创建时间：<%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %>
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div id="about_product" class="container_box">
+      <div id="evaluate_item_info">
+        <div class="media">
+          <div class="media-body">
+            <h5 class="media-heading">
+              用户：<%= link_to @evaluate.user.try(:name), user_path(@evaluate.user) %>
+            </h5>
+            <div>
+              <small>
+                编辑：
+                <%= link_to fa_icon("pencil-square-o"), edit_admin_evaluate_path(@evaluate) %>
+              </small>           
+            </div> 
+            <div>
+              <small>
+                <%= fa_icon("clock-o") %>
+                创建时间：<%= @evaluate.created_at.strftime "%Y-%m-%d %H:%M:%S" %> ／ 
+                <%= fa_icon("leaf") %> 
+                产品：<%= @evaluate.product.try(:name) %>             
+              </small>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div>
+          <%= sanitize(@evaluate.details) %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="evaluates_content">
-  <%= sanitize(@evaluate.details) %>
-</div>
-<hr>
-<%= render 'message_form' %>
-<hr>
-<%= render 'feed' %>
