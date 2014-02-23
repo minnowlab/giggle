@@ -1,6 +1,7 @@
 $(document).on 'ready page:load', ->
   ReplyEmbedded.init()
   TextareaLimit.init()
+  GoTop.init()
 
   $('[data-toggle="tooltip"]').tooltip()
 

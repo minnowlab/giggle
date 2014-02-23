@@ -91,3 +91,18 @@ hr{
   font-size: 12px;
   color: $primary-color;
 }
+
+.go_top {
+  background: $white-color;
+  text-align: center;
+  border: 1px solid $primary-light-color;
+  height: 30px; 
+  width: 30px;
+  display: none;
+  padding-top: 4px; 
+  overflow: hidden;
+  @include rounded-corners(7px);
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
