@@ -24,7 +24,7 @@
         <span class="label label-danger unread_notic">新</span>
       </h5>
       <div>
-        <%= markdown(message.content) %>
+        <%= sanitize(message.content) %>
       </div>
     </div>
   <% end %>

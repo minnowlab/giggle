@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
   after_create :track_notification
   before_create :convert_content
 
-  validates :content, presence: true, length: { maximum: 300 }
+  validates :content, presence: true, length: { maximum: 400 }
   validates :messageable_type, inclusion: { in: %w(Product Evaluate),
                                             message: "%{value} is not a valid type" }
 
@@ -56,6 +56,7 @@ class Message < ActiveRecord::Base
         self.content.gsub!(/(@#{user.name})/, url) 
       end
     end
+    self.content = markdown(self.content)
     true
   end
 
@@ -75,5 +76,11 @@ class Message < ActiveRecord::Base
 
   def find_user_in_content
     User.where(name: format_user_in_content)
+  end
+
+  def markdown(text)
+    markdown_render = Redcarpet::Render::HTML.new(hard_wrap: true, no_styles: true)
+    markdown = Redcarpet::Markdown.new(markdown_render, autolink: true, no_intro_emphasis: true) 
+    markdown.render(text).html_safe
   end
 end
