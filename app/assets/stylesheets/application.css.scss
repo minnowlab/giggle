@@ -12,3 +12,7 @@
 @import "home/products.css.scss";
 @import "home/user.css.scss";
 @import "home/notifications.css.scss";
+
+$nprogress-color: $primary-color;
+@import 'nprogress';
+@import 'nprogress-bootstrap';
