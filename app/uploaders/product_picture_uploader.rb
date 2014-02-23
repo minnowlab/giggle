@@ -31,7 +31,7 @@ class ProductPictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    process :resize_and_pad => [800, 800]
+    process :resize_and_pad => [600, 600]
   end
 
   version :small do
