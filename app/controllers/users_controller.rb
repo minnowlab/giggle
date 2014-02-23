@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   layout "user", except: [:new, :create]
 
   def index
-    @users = User.select("id, name, email")
+    @users = User.select("id, name").order("RAND()").limit(10)
     render json: @users
   end
 
