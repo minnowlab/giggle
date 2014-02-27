@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
   def self.user_search this_params
     user = User.all
     user = user.where("email LIKE ?", "%#{this_params[:email]}%") if this_params[:email].present?
-    user = user.where("name LIKE ?", "%#{this_params[:user]}%") if this_params[:user].present?
+    user = user.where("name LIKE ?", "%#{this_params[:name]}%") if this_params[:name].present?
     user.paginate(page: this_params[:page])
   end
 
