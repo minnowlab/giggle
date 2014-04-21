@@ -1,4 +1,4 @@
-Giggle::Application.routes.draw do
+Rails.application.routes.draw do
 
   resource :session, only: [:create, :destroy]
   get '/sign-up', to: 'users#new', as: :sign_up
