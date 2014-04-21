@@ -54,14 +54,17 @@ group :development, :test do
   gem 'meta_request'
 end
 
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rvm'
+end
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use puma as the app server
 gem 'puma'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
