@@ -1,5 +1,5 @@
-# config valid only for Capistrano 3.1
-lock '3.2.0'
+# config valid only for Capistrano 3.2.1
+lock '3.2.1'
 
 set :application, 'giggle'
 set :repo_url, 'git@example.com:me/giggle.git'
