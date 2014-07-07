@@ -14,6 +14,11 @@ Giggle是一个开源的淘宝商家展示产品的社区。
 
 当然，上面说的都不是我们凭空想象出来的概念和需求。我们都运营过淘宝店铺，并且取得了“皇冠”信誉的成绩。然后在前段时间，我们看到了 [KnewOne](http://knewone.com/) 这个产品后，发觉KnewOne的概念和定位都非常不错。看着从一个引流进淘宝购买的平台发展到独立的平台，而且速度非常惊人。所以我们决定开发一款类似KnewOne的产品，并且开源，也就是你们现在看到的Giggle。
 
+## 系统需求
+* Ruby 2.0.0 +
+* MySQL 5.6.0 +
+* ImageMagick 6.5+
+
 ## License
 
 Giggle is free software available under the [MIT license](http://en.wikipedia.org/wiki/MIT_License).
