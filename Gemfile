@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.5'
 
 # database for Active Record
-gem 'mysql2'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

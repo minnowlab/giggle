@@ -16,7 +16,7 @@ Giggle是一个开源的淘宝商家展示产品的社区。
 
 ## 系统需求
 * Ruby 2.0.0 +
-* MySQL 5.6.0 +
+* PostgreSQL 9.3.0 +
 * ImageMagick 6.5+
 
 ## 待完成
