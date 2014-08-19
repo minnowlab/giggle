@@ -19,6 +19,11 @@ Giggle是一个开源的淘宝商家展示产品的社区。
 * MySQL 5.6.0 +
 * ImageMagick 6.5+
 
+## 待完成
+* 完整的Rspec测试覆盖
+* 对IE浏览器的兼容
+* 首页的产品搜索
+
 ## License
 
 Giggle is free software available under the [MIT license](http://en.wikipedia.org/wiki/MIT_License).
