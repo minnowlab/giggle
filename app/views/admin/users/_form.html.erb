@@ -25,7 +25,7 @@
   <div class="form-group">
     <%= f.label :password, class: "col-sm-2 control-label" %>
     <div class="col-sm-4">
-      <%= f.text_field :password, class: "form-control" %>
+      <%= f.password_field :password, class: "form-control" %>
       <% unless @user.new_record? %>
         <span class="help-block">如果不需要修改密码，请为空。</span>
       <% end %>
@@ -35,7 +35,7 @@
   <div class="form-group">
     <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
     <div class="col-sm-4">
-      <%= f.text_field :password_confirmation, class: "form-control" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
   </div>
 
