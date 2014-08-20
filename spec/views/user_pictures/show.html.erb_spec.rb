@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "user_pictures/show.html.erb" do
   pending "add some examples to (or delete) #{__FILE__}"
