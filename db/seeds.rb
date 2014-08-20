@@ -11,5 +11,6 @@ if demo_user.new_record?
   demo_user.name    = "管理员"
   demo_user.password = "123456"
   demo_user.password_confirmation = "123456" 
+  demo_user.roles = ["admin"]
   demo_user.save!
 end
