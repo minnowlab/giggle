@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-demo_user = User.find_or_create_by_email("demo@demo.com")
+demo_user = User.where(email: "demo@demo.com").first_or_initialize
 if demo_user.new_record?
   demo_user.name    = "管理员"
   demo_user.password = "123456"
