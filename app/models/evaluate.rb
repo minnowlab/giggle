@@ -11,10 +11,6 @@ class Evaluate < ActiveRecord::Base
   validates :product_id, presence: true
   validates :user_id, presence: true
 
-  def feed
-    Message.where("messageable_type = 'Evaluate' AND messageable_id = ?", id)
-  end
-
   def last_page_with_per_page per_page
     page = (self.messages_count.to_f / per_page).ceil
     page > 1 ? page : nil

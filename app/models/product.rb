@@ -13,14 +13,6 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :product_category_id, presence: true
 
-  def feed
-    Message.where("messageable_type = 'Product' AND messageable_id = ? ", id)
-  end
-
-  def product_picture_feed
-    ProductPicture.where("product_id = ?", id)
-  end
-
   def last_page_with_per_page per_page
     page = (self.messages_count.to_f / per_page).ceil
     page > 1 ? page : nil

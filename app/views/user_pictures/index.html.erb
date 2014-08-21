@@ -13,7 +13,7 @@
         <%= link_to "点击上传头像", "#add_user_picture_modal",  "data-toggle" => "modal", class: "alert-link" %>
       </div>
     </div>
-    <% current_user.feed.each do |user_picture| %>
+    <% current_user.user_pictures.each do |user_picture| %>
       <div class="col-xs-6 col-sm-3 col-md-3">
         <div class="thumbnail">
           <%= image_tag user_picture.picture_url(:small) %>

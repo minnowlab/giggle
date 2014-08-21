@@ -33,10 +33,6 @@ class User < ActiveRecord::Base
     (user && user.remember_token == token) ? user : nil
   end
 
-  def feed
-    UserPicture.where("user_id = ?", id)
-  end
-
   #Notifiction
   def unread_notifications_count
     notifications.where(read: false).count

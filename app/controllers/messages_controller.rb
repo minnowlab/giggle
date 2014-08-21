@@ -5,12 +5,12 @@ class MessagesController < ApplicationController
 
   def index
     @message = @product.messages.build
-    @messages = @product.feed.paginate(page: params[:page])
+    @messages = @product.messages.paginate(page: params[:page])
   end
 
   def create
     @message = @product.messages.build(message_params.merge(user: current_user))
-    @feed_count = @product.messages_count + 1
+    @message_count_count = @product.messages_count + 1
     respond_to do |format|
       if @message.save
         format.html { redirect_to :back }
@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @feed_count = @message.messageable.messages_count - 1
+    @message_count = @message.messageable.messages_count - 1
     @message.destroy
     respond_to do |format|
       format.html { 
@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
   def create_evaluate_message
     @evaluate = Evaluate.find(params[:evaluate_id])
     @message = @evaluate.messages.build(message_params.merge(user: current_user))
-    @feed_count = @evaluate.messages_count + 1
+    @message_count = @evaluate.messages_count + 1
     respond_to do |format|
       if @message.save
         format.html { redirect_to :back }
