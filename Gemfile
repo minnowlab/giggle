@@ -7,13 +7,13 @@ gem 'rails', '4.1.5'
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # JavaScript library
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'nprogress-rails'
 gem 'turbolinks'
@@ -29,11 +29,11 @@ gem 'carrierwave'
 gem "mini_magick"
 
 # Bootstrap
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass'
 gem "font-awesome-rails"
 
 #Data paging
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
 # Markdown
@@ -46,7 +46,7 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem "faker", "~> 1.2.0"
+  gem "faker"
   gem 'rspec-rails'
   # DEBUG
   gem 'better_errors'
@@ -61,7 +61,7 @@ group :development do
 end
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby'
 
 # Use puma as the app server
 gem 'puma'
