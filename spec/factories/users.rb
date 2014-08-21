@@ -16,7 +16,7 @@ FactoryGirl.define do
     end
 
     factory :nil_password_confirmation_user do 
-      password_confirmation nil
+      password_confirmation ""
     end
   end
 end

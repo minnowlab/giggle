@@ -6,8 +6,22 @@ describe User do
   end
 
   describe 'is invalid without a params' do
-    it { expect(build(:nil_email_user)).to have(2).errors_on(:email) }
-    it { expect(build(:nil_password_user)).to have(2).errors_on(:password) }
-    it { expect(build(:nil_password_confirmation_user)).to have(1).errors_on(:password_confirmation) }
+    it "nil email user" do
+      user = build(:nil_email_user)
+      expect(user.valid?).to be_falsey
+      expect(user.errors[:email].size).to eq(2)
+    end
+
+    it "nil password user" do
+      user = build(:nil_password_user)
+      expect(user.valid?).to be_falsey
+      expect(user.errors[:password].size).to eq(2)
+    end
+
+    it "nil password_confirmation user" do
+      user = build(:nil_password_confirmation_user)
+      expect(user.valid?).to be_falsey
+      expect(user.errors[:password_confirmation].size).to eq(1)
+    end
   end
 end
