@@ -24,4 +24,22 @@ describe User do
       expect(user.errors[:password_confirmation].size).to eq(1)
     end
   end
+
+  describe "search with a params" do
+    before :each do
+      @user = create(:user)
+    end
+
+    it "have email address" do
+      expect(User.search(email: @user.email).count).to eq(1)
+    end
+
+    it "have name" do
+      expect(User.search(name: @user.name).count).to eq(1)
+    end
+
+    it "have email address and name" do
+      expect(User.search(email: @user.email, name: @user.name).count).to eq(1)
+    end
+  end
 end
