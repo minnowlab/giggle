@@ -81,8 +81,6 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
-    faker (1.4.3)
-      i18n (~> 0.5)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
@@ -183,7 +181,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.3)
+    turbolinks (2.3.0)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -209,7 +207,6 @@ DEPENDENCIES
   carrierwave
   coffee-rails
   factory_girl_rails
-  faker
   font-awesome-rails
   jbuilder
   jquery-rails

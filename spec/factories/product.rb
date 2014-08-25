@@ -1,10 +1,8 @@
-require 'faker'
-
 FactoryGirl.define do
   factory :product do
-    name { Faker::Name.name }
-    description { Faker::Lorem.sentence(10) }
-    details { Faker::Lorem.paragraph(3) }
+    name { "Apple" }
+    description { "Vero earum commodi soluta." }
+    details { "Neque dicta enim quasi. Qui corrupti est quisquam. Facere animi quod aut. Qui nulla consequuntur consectetur sapiente." }
     price 182.5
     association :product_category
 

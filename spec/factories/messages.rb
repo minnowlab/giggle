@@ -1,8 +1,6 @@
-require 'faker'
-
 FactoryGirl.define do
   factory :message do
-    content { Faker::Lorem.sentence(10) }
+    content { "Neque dicta enim quasi. Qui corrupti est quisquam. Facere animi quod aut. Qui nulla consequuntur consectetur sapiente." }
     association :product
     association :user
     association :evaluate

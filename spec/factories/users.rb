@@ -1,11 +1,9 @@
-require 'faker'
-
 FactoryGirl.define do
   factory :user do
-    email { Faker::Internet.email }
+    email { "christelle@example.org" }
     password "123456789"
     password_confirmation "123456789"
-    name { Faker::Name.name }
+    name { "christelle" }
 
     factory :nil_email_user do 
       email nil

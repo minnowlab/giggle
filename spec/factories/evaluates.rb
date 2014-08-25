@@ -1,9 +1,7 @@
-require 'faker'
-
 FactoryGirl.define do
   factory :evaluate do
-    title { Faker::Name.name }
-    details { Faker::Lorem.paragraph(3) }
+    title { "Vero earum commodi soluta." }
+    details { "Neque dicta enim quasi. Qui corrupti est quisquam. Facere animi quod aut. Qui nulla consequuntur consectetur sapiente." }
     association :user
     association :product
 

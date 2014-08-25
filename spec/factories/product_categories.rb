@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :product_category do
-    name { Faker::Name.name }
+    name { "Fruit" }
     
     factory :nil_name_product_category do 
       name nil
