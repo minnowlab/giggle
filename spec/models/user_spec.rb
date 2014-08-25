@@ -42,4 +42,22 @@ describe User do
       expect(User.search(email: @user.email, name: @user.name).count).to eq(1)
     end
   end
+
+  describe "remember user" do
+    before :each do
+      @user = create(:user)
+    end
+
+    it "check the remember token" do
+      expect(@user.remember_token).to eq([@user.id, Digest::SHA512.hexdigest(@user.password_digest)].join('$'))
+    end
+
+    it "find the remember token" do
+      expect(User.find_by_remember_token(@user.remember_token)).to eq(@user)
+    end
+
+    it "counld not find the remember token" do
+      expect(User.find_by_remember_token("#{@user.id}$62e5fd56918d7f7b9f23357385d73e27ec094a82")).to eq(nil)
+    end
+  end
 end

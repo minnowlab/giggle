@@ -1,5 +1,3 @@
-require 'faker'
-
 FactoryGirl.define do
   factory :product_category do
     name { "Fruit" }
