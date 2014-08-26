@@ -25,39 +25,39 @@ describe User do
     end
   end
 
-  describe "search with a params" do
-    before :each do
-      @user = create(:user)
-    end
+  describe ".search" do
+    let(:user) { create(:user) }
 
     it "have email address" do
-      expect(User.search(email: @user.email).count).to eq(1)
+      expect(User.search(email: user.email).count).to eq(1)
     end
 
     it "have name" do
-      expect(User.search(name: @user.name).count).to eq(1)
+      expect(User.search(name: user.name).count).to eq(1)
     end
 
     it "have email address and name" do
-      expect(User.search(email: @user.email, name: @user.name).count).to eq(1)
+      expect(User.search(email: user.email, name: user.name).count).to eq(1)
     end
   end
 
-  describe "remember user" do
-    before :each do
-      @user = create(:user)
-    end
+  describe "#remember_token" do
+    let(:user) { create(:user) }
 
     it "check the remember token" do
-      expect(@user.remember_token).to eq([@user.id, Digest::SHA512.hexdigest(@user.password_digest)].join('$'))
+      expect(user.remember_token).to eq([user.id, Digest::SHA512.hexdigest(user.password_digest)].join('$'))
     end
+  end
+
+  describe ".find_by_remember_token" do
+    let(:user) { create(:user) }
 
     it "find the remember token" do
-      expect(User.find_by_remember_token(@user.remember_token)).to eq(@user)
+      expect(User.find_by_remember_token(user.remember_token)).to eq(user)
     end
 
     it "counld not find the remember token" do
-      expect(User.find_by_remember_token("#{@user.id}$62e5fd56918d7f7b9f23357385d73e27ec094a82")).to eq(nil)
+      expect(User.find_by_remember_token("#{user.id}$62e5fd56918d7f7b9f23357385d73e27ec094a82")).to be_nil
     end
   end
 end
