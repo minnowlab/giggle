@@ -4,6 +4,7 @@ FactoryGirl.define do
     password "123456789"
     password_confirmation "123456789"
     name { "christelle" }
+    roles_mask 1
 
     factory :nil_email_user do 
       email nil
