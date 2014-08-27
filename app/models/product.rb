@@ -6,12 +6,12 @@ class Product < ActiveRecord::Base
   has_many :product_pictures
   has_many :collectionships, foreign_key: "product_id", dependent: :destroy
   has_many :collectors, through: :collectionships, source: :user
-  belongs_to :product_category
-  belongs_to :cover, class_name: "ProductPicture", foreign_key: "cover_id"
   has_many :likeships, as: :likeable, foreign_key: "likeable_id", dependent: :destroy
   has_many :likers, through: :likeships, source: :user
-  validates :name, presence: true
-  validates :product_category_id, presence: true
+  belongs_to :product_category
+  belongs_to :cover, class_name: "ProductPicture", foreign_key: "cover_id"
+
+  validates :name, :product_category_id, presence: true
 
   def last_page_with_per_page per_page
     page = (self.messages_count.to_f / per_page).ceil

@@ -6,7 +6,16 @@ describe Product do
   end
 
   describe 'is invalid without a params' do
-    it { expect(build(:nil_name_product)).to have(1).errors_on(:name) }
-    it { expect(build(:nil_product_category_id_product)).to have(1).errors_on(:product_category_id) }
+    it "nil name product" do
+      product = build(:nil_name_product)
+      expect(product.valid?).to be_falsey
+      expect(product.errors[:name].size).to eq(1)
+    end
+
+    it "nil product category id product" do
+      product = build(:nil_product_category_id_product)
+      expect(product.valid?).to be_falsey
+      expect(product.errors[:product_category_id].size).to eq(1)
+    end
   end
 end
