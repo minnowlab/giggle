@@ -1,6 +1,6 @@
 <%= form_tag admin_products_path, method: "get", class: "form-inline" do %>
   <div class="form-group">
-    <%= text_field_tag :keywords, params[:keywords], placeholder: "产品名称", class: "form-control" %>
+    <%= text_field_tag :name, params[:name], placeholder: "产品名称", class: "form-control" %>
   </div>
   <div class="form-group">
     <%= text_field_tag :min_price, params[:min_price], placeholder: "最低价", class: "form-control" %>

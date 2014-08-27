@@ -18,9 +18,9 @@ class Product < ActiveRecord::Base
     page > 1 ? page : nil
   end
 
-  def self.search_product this_params
-    product = Product.all
-    product = product.where("name LIKE ? ", "%#{this_params[:keywords]}%") if this_params[:keywords].present?
+  def self.search this_params
+    product = self.all
+    product = product.where("name LIKE ? ", "%#{this_params[:name]}%") if this_params[:name].present?
     product = product.where("price < ?", this_params[:max_price]) if this_params[:max_price].present?
     product = product.where("price > ?", this_params[:min_price]) if this_params[:min_price].present?
     product = product.where("product_category_id = ?", this_params[:product_category_id]) if this_params[:product_category_id].present?

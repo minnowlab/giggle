@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
   before_action :find_product, except: [:index, :new, :create]
 
   def index
-    @products = Product.search_product(params)
+    @products = Product.search(params)
   end
 
   def show
@@ -37,7 +37,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     @product.destroy
-    @products = Product.search_product(params)
+    @products = Product.search(params)
     flash[:success] = '删除成功！'
     if @products.blank?
       redirect_to admin_products_path
