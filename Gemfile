@@ -22,7 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 # Role
-gem 'cancan'
+gem 'cancancan'
 
 #File uploads
 gem 'carrierwave'
