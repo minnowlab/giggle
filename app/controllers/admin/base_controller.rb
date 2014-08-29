@@ -4,7 +4,6 @@ class Admin::BaseController < ApplicationController
   layout "admin"
   load_and_authorize_resource
 
-
   private
     def authorized_manage
       redirect_to root_path unless current_user.is?(:manager) || current_user.is?(:admin)

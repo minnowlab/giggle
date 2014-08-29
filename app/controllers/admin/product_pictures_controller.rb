@@ -1,7 +1,6 @@
 class Admin::ProductPicturesController < Admin::BaseController
   before_action :find_product_picture, only: [:show, :destroy, :setting_cover]
 
-
   def create
     @product_picture = ProductPicture.new(product_picture_params)
     if @product_picture.save

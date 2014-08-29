@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  include ApplicationHelper
   helper_method :sort_column, :sort_direction
   before_action :find_product, only: :show
 

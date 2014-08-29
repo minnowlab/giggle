@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :find_user, only: [:show, :all_evaluates]
   layout "user", except: [:new, :create]
 
