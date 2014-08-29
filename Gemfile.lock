@@ -102,7 +102,7 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.8.0)
       subexec (~> 0.2.1)
-    minitest (5.4.0)
+    minitest (5.4.1)
     multi_json (1.10.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
