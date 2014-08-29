@@ -29,7 +29,7 @@
               <%= f.password_field :password_confirmation, placeholder: "确认密码", class: "form-control" %>
             </div>
             
-            <%= f.submit "提交", class: "btn btn-lg btn-primary btn-block", disable_with: "正在提交..." %>
+            <%= f.submit "提交", class: "btn btn-lg btn-primary btn-block", data: { disable_with: "正在提交..." } %>
           </fieldset>
         <% end %>
       </div>
