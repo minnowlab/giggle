@@ -2,7 +2,7 @@ class Admin::MessagesController < Admin::BaseController
   before_action :find_message, only: [:edit, :update, :destroy]
 
   def index
-    @messages = Message.message_search(params)
+    @messages = Message.search(params)
   end
 
   def edit
@@ -20,7 +20,7 @@ class Admin::MessagesController < Admin::BaseController
 
   def destroy
     @message.destroy
-    @messages = Message.message_search(params)
+    @messages = Message.search(params)
     flash[:success] = '删除成功！'
     if @messages.blank?
       redirect_to admin_messages_path

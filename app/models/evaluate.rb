@@ -16,7 +16,7 @@ class Evaluate < ActiveRecord::Base
     page > 1 ? page : nil
   end
 
-  def self.search_evaluate this_params
+  def self.search this_params
     products_ids = Product.where("name like ?", "%#{this_params[:product]}%").map(&:id) if this_params[:product].present?
     users_ids = User.where("name LIKE ?", "%#{this_params[:user]}%").map(&:id) if this_params[:user].present?
     evaluate = Evaluate.all

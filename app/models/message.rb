@@ -33,7 +33,7 @@ class Message < ActiveRecord::Base
     10
   end
 
-  def self.message_search this_params
+  def self.search this_params
     message = Message.all
     products_ids = Product.where("name LIKE ?", "%#{this_params[:product]}%").map(&:id) if this_params[:product].present?
     evaluates_ids = Evaluate.where("title LIKE ?", "%#{this_params[:evaluate]}%").map(&:id) if this_params[:evaluate].present?

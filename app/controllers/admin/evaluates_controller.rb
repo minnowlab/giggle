@@ -2,7 +2,7 @@ class Admin::EvaluatesController < Admin::BaseController
   before_action :find_evaluate, only: [:show, :edit, :update, :destroy, :create_message, :destroy_message]
   
   def index
-    @evaluates = Evaluate.search_evaluate(params)
+    @evaluates = Evaluate.search(params)
   end
 
   def show
@@ -39,7 +39,7 @@ class Admin::EvaluatesController < Admin::BaseController
  
   def destroy
     @evaluate.destroy
-    @evaluates = Evaluate.search_evaluate(params)
+    @evaluates = Evaluate.search(params)
     flash[:success] = '删除成功！'
     if @evaluates.blank?
       redirect_to admin_evaluates_path
