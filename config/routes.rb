@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     resources :evaluates
   end
 
+  %w( 404 422 500 ).each do |code|
+    get code, to: "errors#show", code: code
+  end
+
   resources :products, only: [:index, :show] do
 
     resources :messages, only: [:index, :create, :destroy] do
