@@ -60,10 +60,12 @@ group :development do
 end
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
+gem 'bcrypt'
 
 # Use puma as the app server
 gem 'puma'
+
+gem 'therubyracer', platforms: :ruby
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
