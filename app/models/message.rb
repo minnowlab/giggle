@@ -35,11 +35,9 @@ class Message < ActiveRecord::Base
 
   def self.search this_params
     message = Message.all
-    products_ids = Product.where("name LIKE ?", "%#{this_params[:product]}%").map(&:id) if this_params[:product].present?
-    evaluates_ids = Evaluate.where("title LIKE ?", "%#{this_params[:evaluate]}%").map(&:id) if this_params[:evaluate].present?
     message = message.where("content LIKE ?", "%#{this_params[:content]}%") if this_params[:content].present?
-    message = message.where("messageable_type = 'Product' AND messageable_id = ?", products_ids) if this_params[:product].present?
-    message = message.where("messageable_type = 'Evaluate' AND messageable_id = ?", evaluates_ids) if this_params[:evaluate].present?
+    message = message.where(messageable: Product.where("products.name Like ?", "%#{this_params[:product]}%")) if this_params[:product].present?
+    message = message.where(messageable: Evaluate.where("products.name Like ?", "%#{this_params[:evaluate]}%")) if this_params[:evaluate].present?
     message = message.joins(:user).where("users.name LIKE ?", "%#{this_params[:user]}%") if this_params[:user].present?
     message = message.where(messageable_type: this_params[:messageable_type]) if this_params[:messageable_type].present?
     message.paginate(page: this_params[:page])
