@@ -44,8 +44,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test do
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+  gem 'guard-minitest'
+end
+
 group :development, :test do
-  gem 'factory_girl_rails'
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'meta_request'

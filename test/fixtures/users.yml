@@ -1,0 +1,6 @@
+admin:
+  email: "christelle@example.org"
+  password: "123456789"
+  password_confirmation: "123456789"
+  name: "christelle"
+  roles_mask: 1
