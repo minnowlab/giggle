@@ -1,6 +1,5 @@
-admin:
+christelle:
   email: "christelle@example.org"
-  password: "123456789"
-  password_confirmation: "123456789"
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
   name: "christelle"
   roles_mask: 1
