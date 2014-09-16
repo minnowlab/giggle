@@ -37,4 +37,49 @@ class UserTest < ActiveSupport::TestCase
     @user.password_confirmation = "123456"
     assert_not @user.save
   end
+
+  test "should remember_token equal the array join" do
+    assert_equal @user.remember_token, [@user.id, Digest::SHA512.hexdigest(@user.password_digest)].join('$')
+  end
+
+  test "should find user by remember token" do
+    assert_equal User.find_by_remember_token(@user.remember_token), @user
+  end
+
+  test "should not find user by wrong remember token" do
+    assert_nil User.find_by_remember_token("#{@user.id}$62e5fd56918d7f7b9f23357385d73e27ec094a82")
+  end
+
+  test "roles should set by array" do
+    @user.roles = ["#{User::ROLES[1]}"]
+    assert_equal @user.roles, ["#{User::ROLES[1]}"]
+  end
+
+  test "roles should equal USER::ROLES array" do
+    assert_equal @user.roles, ["#{User::ROLES[0]}"]
+  end
+
+  test "roles should get chinese array" do
+    assert_equal @user.roles_cn, User::ROLES_CN[0]
+  end
+
+  test "roles should equal admin" do
+    assert @user.is?(User::ROLES[0])
+  end
+
+  test "roles should not equal manager?" do
+    assert_not @user.is?(User::ROLES[1])
+  end
+
+  test "should find user by email address" do
+    assert_equal User.search(email: @user.email), [@user]
+  end
+
+  test "should find user by name" do
+    assert_equal User.search(name: @user.name), [@user]
+  end
+
+  test "should find user by email address and name" do
+    assert_equal User.search(email: @user.email, name: @user.name), [@user]
+  end
 end
