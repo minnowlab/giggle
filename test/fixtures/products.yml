@@ -1,0 +1,8 @@
+iPhone:
+  name: "Apple iPhone 5s"
+  description: "This update to the iPhone 5 comes equipped with a faster Apple A7 processor, an improved 8-megapixel camera, while also adding a Touch ID fingerprint sensor into the home button. "
+  details: "This update to the iPhone 5 comes equipped with a faster Apple A7 processor, an improved 8-megapixel camera, while also adding a Touch ID fingerprint sensor into the home button. "
+  price: 9.0
+  published_at: <%= Time.now %>
+  buy_link: "http://amzn.com/B00F3J0GIE"
+  product_category: cell_phones
