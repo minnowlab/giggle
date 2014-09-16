@@ -23,7 +23,7 @@ class Product < ActiveRecord::Base
     product = product.where("name LIKE ? ", "%#{this_params[:name]}%") if this_params[:name].present?
     product = product.where("price < ?", this_params[:max_price]) if this_params[:max_price].present?
     product = product.where("price > ?", this_params[:min_price]) if this_params[:min_price].present?
-    product = product.where("product_category_id = ?", this_params[:product_category_id]) if this_params[:product_category_id].present?
+    product = product.where(product_category_id: this_params[:product_category_id]) if this_params[:product_category_id].present?
     product.paginate(page: this_params[:page])
   end
 
