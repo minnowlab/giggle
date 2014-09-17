@@ -28,7 +28,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.classify_published this_params
-    product = Product.published
+    product = self.published
     product = product.where(product_category_id: this_params[:category]) if this_params[:category].present?
     product.paginate(page: this_params[:page], per_page: 6)
   end
