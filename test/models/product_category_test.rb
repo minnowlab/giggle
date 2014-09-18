@@ -9,4 +9,9 @@ class ProductCategoryTest < ActiveSupport::TestCase
     @product_category.name = nil
     assert_not @product_category.save
   end
+
+  test "should not save product category has the same name" do
+    @cell_phones = ProductCategory.new(name: "Cell Phones")
+    assert_not @cell_phones.save
+  end
 end
