@@ -34,7 +34,7 @@ class Message < ActiveRecord::Base
   end
 
   def self.search this_params
-    message = Message.all
+    message = self.all
     message = message.where("content LIKE ?", "%#{this_params[:content]}%") if this_params[:content].present?
     message = message.where(messageable: Product.where("products.name Like ?", "%#{this_params[:product]}%")) if this_params[:product].present?
     message = message.where(messageable: Evaluate.where("products.name Like ?", "%#{this_params[:evaluate]}%")) if this_params[:evaluate].present?
