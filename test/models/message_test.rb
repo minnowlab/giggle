@@ -34,4 +34,13 @@ class MessageTest < ActiveSupport::TestCase
   test "should find message by messageable type" do
     assert_equal Message.search(messageable_type: @message.messageable_type), [@message]
   end
+
+  test "should find message by user name" do
+    assert_equal Message.search(user: "christelle"), [@message]
+  end
+
+  test "message content should find a link come from convert_content" do
+    at_message = Message.create(content: "Hi @christelle, I am Green.", messageable: @message.messageable, user: @message.user)
+    assert at_message.content.include?("/users/#{@message.user.id}")
+  end
 end
