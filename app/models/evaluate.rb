@@ -6,10 +6,7 @@ class Evaluate < ActiveRecord::Base
   has_many :likeships, as: :likeable, foreign_key: "likeable_id", dependent: :destroy
   has_many :likers, through: :likeships, source: :user
 
-  validates :title, presence: true
-  validates :details, presence: true
-  validates :product_id, presence: true
-  validates :user_id, presence: true
+  validates :title, :details, :product_id, :user_id, presence: true
 
   def last_page_with_per_page per_page
     page = (self.messages_count.to_f / per_page).ceil
