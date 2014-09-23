@@ -5,8 +5,6 @@ class UserPicture < ActiveRecord::Base
 
   before_save :update_picture_attributes
 
-
-
   private
     def update_picture_attributes
       if picture.present? && picture_changed?
