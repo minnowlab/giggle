@@ -9,5 +9,4 @@ class NotificationsController < ApplicationController
     flash[:success] = "删除成功！"
     redirect_to :back
   end
-
 end

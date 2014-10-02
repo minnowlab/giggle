@@ -1,0 +1,9 @@
+unread_christelle_notification:
+  user: christelle
+  message: leave_message
+  read: false
+
+read_christelle_notification:
+  user: christelle
+  message: leave_message
+  read: true
