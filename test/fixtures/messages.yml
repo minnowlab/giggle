@@ -2,3 +2,8 @@ leave_message:
   content: "Hi, everyone."
   user: christelle
   messageable: iPhone (Product)
+
+buy_iphone_message:
+  content: "I buy a new iPhone."
+  user: christelle
+  messageable: iPhone (Product)

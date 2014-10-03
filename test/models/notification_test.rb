@@ -20,6 +20,9 @@ class NotificationTest < ActiveSupport::TestCase
   end
 
   test "should find all notification" do
-    assert_equal Notification.find_my_notifications(@user), [@unread_notification, @read_notification]
+    find_current_user_notification = Notification.find_my_notifications(@user)
+
+    assert_equal Notification.read_scope, [@read_notification, @unread_notification]
+    assert_equal find_current_user_notification, [@unread_notification, @read_notification]
   end
 end

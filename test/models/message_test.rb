@@ -3,6 +3,7 @@ require 'test_helper'
 class MessageTest < ActiveSupport::TestCase
   def setup
     @message = messages(:leave_message)
+    @buy_iphone_message = messages(:buy_iphone_message)
   end
 
   test "should not save message without content" do
@@ -28,15 +29,15 @@ class MessageTest < ActiveSupport::TestCase
   end
 
   test "should find message by product name" do
-    assert_equal Message.search(product: "iPhone"), [@message]
+    assert_equal Message.search(product: "iPhone"), [@message, @buy_iphone_message]
   end
 
   test "should find message by messageable type" do
-    assert_equal Message.search(messageable_type: @message.messageable_type), [@message]
+    assert_equal Message.search(messageable_type: @message.messageable_type), [@message, @buy_iphone_message]
   end
 
   test "should find message by user name" do
-    assert_equal Message.search(user: "christelle"), [@message]
+    assert_equal Message.search(user: "christelle"), [@message, @buy_iphone_message]
   end
 
   test "message content should find a link come from convert_content" do
