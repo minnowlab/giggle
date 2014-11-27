@@ -1,3 +1,4 @@
+#= require respond.min
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
