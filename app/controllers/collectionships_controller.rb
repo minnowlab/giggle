@@ -3,16 +3,16 @@ class CollectionshipsController < ApplicationController
   before_action :find_product
 
   def create
-  	current_user.collect!(@product)
+    current_user.collect!(@product)
     respond_to do |format|
       format.html { redirect_to :back }
-  	  format.js
+      format.js
     end
   end
 
   def destroy
-  	current_user.uncollect!(@product)
-  	respond_to do |format|
+    current_user.uncollect!(@product)
+    respond_to do |format|
       format.html { redirect_to :back }
       format.js
     end
